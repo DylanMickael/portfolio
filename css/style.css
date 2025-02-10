@@ -608,7 +608,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 /*--------------------------------------------------------------
 # Services Section
 --------------------------------------------------------------*/
-.services .service-item {
+.skills .service-item {
   background-color: #1a083d;
   box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
   height: 100%;
@@ -621,7 +621,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   margin-bottom: 32px;
 }
 
-.services .service-item .icon {
+.skills .service-item .icon {
   margin: 0 auto;
   width: 100px;
   height: 100px;
@@ -632,108 +632,108 @@ section:not(:has(.hero__slider.owl-carousel)) {
   position: relative;
 }
 
-.services .service-item .icon i {
+.skills .service-item .icon i {
   font-size: 36px;
   transition: 0.5s;
   position: relative;
 }
 
-.services .service-item .icon svg {
+.skills .service-item .icon svg {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.services .service-item .icon svg path {
+.skills .service-item .icon svg path {
   transition: 0.5s;
   fill: color-mix(in srgb, white, transparent 95%);
 }
 
-.services .service-item h3 {
+.skills .service-item h3 {
   font-weight: 700;
   margin: 10px 0 15px 0;
   font-size: 22px;
 }
 
-.services .service-item p {
+.skills .service-item p {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
 }
 
-.services .service-item:hover {
+.skills .service-item:hover {
   box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.1);
 }
 
-.services .service-item.item-cyan i {
+.skills .service-item.item-cyan i {
   color: #0dcaf0;
 }
 
-.services .service-item.item-cyan:hover .icon i {
+.skills .service-item.item-cyan:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-cyan:hover .icon path {
+.skills .service-item.item-cyan:hover .icon path {
   fill: #0dcaf0;
 }
 
-.services .service-item.item-orange i {
+.skills .service-item.item-orange i {
   color: #fd7e14;
 }
 
-.services .service-item.item-orange:hover .icon i {
+.skills .service-item.item-orange:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-orange:hover .icon path {
+.skills .service-item.item-orange:hover .icon path {
   fill: #fd7e14;
 }
 
-.services .service-item.item-teal i {
+.skills .service-item.item-teal i {
   color: #20c997;
 }
 
-.services .service-item.item-teal:hover .icon i {
+.skills .service-item.item-teal:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-teal:hover .icon path {
+.skills .service-item.item-teal:hover .icon path {
   fill: #20c997;
 }
 
-.services .service-item.item-red i {
+.skills .service-item.item-red i {
   color: #df1529;
 }
 
-.services .service-item.item-red:hover .icon i {
+.skills .service-item.item-red:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-red:hover .icon path {
+.skills .service-item.item-red:hover .icon path {
   fill: #df1529;
 }
 
-.services .service-item.item-indigo i {
+.skills .service-item.item-indigo i {
   color: #6610f2;
 }
 
-.services .service-item.item-indigo:hover .icon i {
+.skills .service-item.item-indigo:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-indigo:hover .icon path {
+.skills .service-item.item-indigo:hover .icon path {
   fill: #6610f2;
 }
 
-.services .service-item.item-pink i {
+.skills .service-item.item-pink i {
   color: #f3268c;
 }
 
-.services .service-item.item-pink:hover .icon i {
+.skills .service-item.item-pink:hover .icon i {
   color: #fff;
 }
 
-.services .service-item.item-pink:hover .icon path {
+.skills .service-item.item-pink:hover .icon path {
   fill: #f3268c;
 }
 
@@ -1160,22 +1160,22 @@ section:not(:has(.hero__slider.owl-carousel)) {
   border: 1px solid #544E5E;
   background: transparent;
   font-size: 16px;
-  color: #adadad;
+  color: #ffffff;
 }
 .footer__option__item form input::-webkit-input-placeholder {
-  color: #adadad;
+  color: #ffffff;
 }
 .footer__option__item form input::-moz-placeholder {
-  color: #adadad;
+  color: #ffffff;
 }
 .footer__option__item form input:-ms-input-placeholder {
-  color: #adadad;
+  color: #ffffff;
 }
 .footer__option__item form input::-ms-input-placeholder {
-  color: #adadad;
+  color: #ffffff;
 }
 .footer__option__item form input::placeholder {
-  color: #adadad;
+  color: #ffffff;
 }
 .footer__option__item form button {
   font-size: 20px;
@@ -1255,8 +1255,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .about__pic__item {
-  height: 400px;
-  margin-right: -10px;
+  height: 300px;
   margin-bottom: 20px;
 }
 
@@ -1269,6 +1268,26 @@ section:not(:has(.hero__slider.owl-carousel)) {
 
 .about__text__desc {
   margin-top: -10px;
+}
+
+.swiper {
+    width: 420px;
+    height: 300px;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /*---------------------
@@ -1423,7 +1442,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 # Resume Section
 --------------------------------------------------------------*/
 .resume {
-  color: whitesmoke;
+  color: #adadad;
 }
 
 .resume .resume-title {
@@ -1464,7 +1483,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 
 .resume .resume-item ul li {
   padding-bottom: 10px;
-  color: grey;
+  color: #adadad;
 }
 
 .resume .resume-item:last-child {

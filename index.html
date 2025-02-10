@@ -7,7 +7,12 @@
     <meta name="keywords" content="Videograph, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Videograph | Template</title>
+
+    <!-- Site Tite -->
+    <title>Dylan RAKOTONARIVO - Developer, Designer, Public Speaker</title>
+
+    <!-- Site Icon -->
+    <link rel="icon" type="image/png" href="img/logo/Logo-dark.png">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
@@ -21,6 +26,7 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/swiper-bundle.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <link rel="stylesheet" href="vendors/aos/aos.css" type="text/css">
 </head>
@@ -31,7 +37,7 @@
         <div class="loader"></div>
     </div>
 
-    <!-- Header Section Begin -->
+    <!-- Header Begin -->
     <header data-aos="fade-in" class="header">
         <div class="container">
             <div class="row">
@@ -39,19 +45,12 @@
                     <div class="header__nav__option">
                         <nav class="header__nav__menu mobile-menu">
                             <ul>
-                                <li class="active"><a href="/index.html">Home</a></li>
-                                <li><a href="/about.html">About</a></li>
-                                <li><a href="/portfolio.html">Portfolio</a></li>
-                                <li><a href="/services.html">Services</a></li>
-                                <li><a href="#">Pages</a>
-                                    <ul class="dropdown">
-                                        <li><a href="/about.html">About</a></li>
-                                        <li><a href="/portfolio.html">Portfolio</a></li>
-                                        <li><a href="/blog.html">Blog</a></li>
-                                        <li><a href="/blog-details.html">Blog Details</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/contact.html">Contact</a></li>
+                                <li class="active"><a href="#home">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#resume">Resume</a></li>
+                                <li><a href="#skills">Skills</a></li>
+                                <li><a href="#projects">Projects</a></li>
+                                <li><a href="#contact">Contact</a></li>
                             </ul>
                         </nav>
                         <div class="header__nav__social">
@@ -69,7 +68,7 @@
     <!-- Header End -->
 
     <!-- Hero Section Begin -->
-    <section data-aos="fade-in" class="hero">
+    <section id="hero" data-aos="fade-in" class="hero">
         <div class="hero__slider owl-carousel">
             <div class="hero__item set-bg">
                 <div class="container">
@@ -97,26 +96,27 @@
     </section>
     <!-- Hero Section End -->
 
-    <!-- About Section Begin -->
-    <section data-aos="fade-in" class="about">
+    <!-- News Section Begin -->
+    <section id="news" data-aos="fade-in" class="about">
         <div class="container">
+            <div class="section-title">
+                <span>About videograph</span>
+                <h2>WHo we are?</h2>
+            </div>
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about__pic">
-                        <div class="owl-carousel about-slider">
-                            <div class="about__pic__item set-bg" data-setbg="img/about/about-1.jpg"></div>
-                            <div class="about__pic__item set-bg" data-setbg="img/about/about-2.jpg"></div>
-                            <div class="about__pic__item set-bg" data-setbg="img/about/about-3.jpg"></div>
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide"><img src="img/about/about-1.jpg" alt="Image 1"></div>
+                                <div class="swiper-slide"><img src="img/about/about-2.jpg" alt="Image 2"></div>
+                                <div class="swiper-slide"><img src="img/about/about-3.jpg" alt="Image 3"></div>
+                            </div>
                         </div>
-                        <div class="owl-dot"></div>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="about__text">
-                        <div class="section-title">
-                            <span>About videograph</span>
-                            <h2>WHo we are?</h2>
-                        </div>
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="services__item">
@@ -138,10 +138,10 @@
             </div>
         </div>
     </section>
-    <!-- About Section End -->
+    <!-- News Section End -->
 
-    <!-- Services Section Begin -->
-    <section data-aos="fade-in" class="services">
+    <!-- About Section Begin -->
+    <section id="about" data-aos="fade-in" class="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -202,9 +202,9 @@
             </div>
         </div>
     </section>
-    <!-- Services Section End -->
+    <!-- About Section End -->
     
-    <!-- Team Section Begin -->
+    <!-- Skills Section Begin -->
     <section data-aos="fade-in" class="team">
         <div class="container">
             <div class="row">
@@ -280,10 +280,82 @@
             </div>
         </div>
     </section>
-    <!-- Team Section End -->
+    <!-- Skills Section End -->
 
-    <!-- Skills Section -->
-    <section id="services" class="services">
+    <!-- Resume Section Begin -->
+    <section id="resume" data-aos="fade-in" class="resume">
+      <div class="container">
+        <div class="section-title">
+            <span>About videograph</span>
+            <h2>WHo we are?</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="resume-title">Resume</h3>
+            <div class="resume-item pb-0">
+              <h4>Brandon Johnson</h4>
+              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
+              <ul>
+                <li>Portland par 127,Orlando, FL</li>
+                <li>(123) 456-7891</li>
+                <li>alice.barkley@example.com</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>Master of Fine Arts &amp; Graphic Design</h4>
+              <h5>2015 - 2016</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
+              <h5>2010 - 2014</h5>
+              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
+              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
+            </div><!-- Edn Resume Item -->
+
+          </div>
+
+          <div class="col-lg-6">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Senior graphic design specialist</h4>
+              <h5>2019 - Present</h5>
+              <p><em>Experion, New York, NY </em></p>
+              <ul>
+                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
+                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
+                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
+                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+            <div class="resume-item">
+              <h4>Graphic design specialist</h4>
+              <h5>2017 - 2018</h5>
+              <p><em>Stepping Stone Advertising, New York, NY</em></p>
+              <ul>
+                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
+                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
+                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
+                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
+              </ul>
+            </div><!-- Edn Resume Item -->
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+    <!-- Resume Section End -->
+
+    <!-- Stack Section Begin -->
+    <section id="skills" data-aos="fade-in" class="skills">
       <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -293,7 +365,7 @@
                 </div>
             </div>
         </div>
-        <div class="row" data-aos="fade-up">
+        <div class="row" data-aos="fade-in">
 
           <div class="col-lg-4 col-md-6 service-item-container">
             <div class="service-item item-cyan position-relative">
@@ -394,82 +466,10 @@
       </div>
 
     </section>
-    <!-- /Skills Section -->
+    <!-- Stack Section End -->
 
-    <!-- Resume Section -->
-    <section data-aos="fade-in" class="resume">
-      <div class="container">
-        <div class="section-title">
-            <span>About videograph</span>
-            <h2>WHo we are?</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="resume-title">Resume</h3>
-            <div class="resume-item pb-0">
-              <h4>Brandon Johnson</h4>
-              <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
-              <ul>
-                <li>Portland par 127,Orlando, FL</li>
-                <li>(123) 456-7891</li>
-                <li>alice.barkley@example.com</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item">
-              <h4>Master of Fine Arts &amp; Graphic Design</h4>
-              <h5>2015 - 2016</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui ut dignissimos deleniti nerada porti sand markend</p>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart dila</p>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>Senior graphic design specialist</h4>
-              <h5>2019 - Present</h5>
-              <p><em>Experion, New York, NY </em></p>
-              <ul>
-                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
-                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
-                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
-                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-    <!-- /Resume Section -->
-
-    <!-- Portfolio Section Begin -->
-    <section data-aos="fade-in" class="portfolio">
+    <!-- Projects Section Begin -->
+    <section id="projects" data-aos="fade-in" class="portfolio">
         <div class="container">
             <div class="section-title">
                 <span>About videograph</span>
@@ -627,10 +627,10 @@
             </div>
         </div>
     </section>
-    <!-- Portfolio Section End -->
+    <!-- Projects Section End -->
 
-    <!-- Contact Widget Section Begin -->
-    <section data-aos="fade-in" class="contact-widget">
+    <!-- Contact Section Begin -->
+    <section id="contact" data-aos="fade-in" class="contact-widget">
         <div class="container">
             <div class="section-title">
                 <span>About videograph</span>
@@ -687,9 +687,9 @@
             </div>
         </div>
     </section>
-    <!-- Contact Widget Section End -->
+    <!-- Contact Section End -->
 
-    <!-- Footer Section Begin -->
+    <!-- Footer Begin -->
     <footer class="footer">
         <div class="container">
             <div class="footer__copyright">
@@ -706,7 +706,7 @@
             </div>
         </div>
     </footer>
-    <!-- Footer Section End -->
+    <!-- Footer End -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -720,6 +720,7 @@
     <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/jquery.slicknav.js"></script>
     <script src="js/owl.carousel.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
 </body>
 

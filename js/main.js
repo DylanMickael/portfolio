@@ -200,6 +200,19 @@
     });
 
     /*------------------
+        Image Swiper
+    --------------------*/
+    var swiper = new Swiper(".mySwiper", {
+        effect: "cards",
+        grabCursor: true,
+        initialSlide: 1,
+        cardsEffect: {
+            perSlideOffset: 10,
+            perSlideRotate: 2,
+        },
+    });
+
+    /*------------------
         AOS
     --------------------*/
     function aosInit() {
