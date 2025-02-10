@@ -1,0 +1,252 @@
+/*  ---------------------------------------------------
+    Template Name: Dreams
+    Description: Dreams wedding template
+    Author: Colorib
+    Author URI: https://colorlib.com/
+    Version: 1.0
+    Created: Colorib
+---------------------------------------------------------  */
+
+'use strict';
+
+(function ($) {
+
+    /*------------------
+        Preloader
+    --------------------*/
+    $(window).on('load', function () {
+        $(".loader").fadeOut();
+        $("#preloder").delay(200).fadeOut("slow");
+
+        /*------------------
+            Portfolio filter
+        --------------------*/
+        $('.portfolio__filter li').on('click', function () {
+            $('.portfolio__filter li').removeClass('active');
+            $(this).addClass('active');
+        });
+        if ($('.portfolio__gallery').length > 0) {
+            var containerEl = document.querySelector('.portfolio__gallery');
+            var mixer = mixitup(containerEl);
+        }
+    });
+
+    /*------------------
+        Scroll
+    --------------------*/
+    window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        if (window.scrollY > 10) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+
+
+    /*------------------
+        Background Set
+    --------------------*/
+    $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
+
+    //Masonary
+    $('.work__gallery').masonry({
+        itemSelector: '.work__item',
+        columnWidth: '.grid-sizer',
+        gutter: 10
+    });
+
+    /*------------------
+		Navigation
+	--------------------*/
+    $(".mobile-menu").slicknav({
+        prependTo: '#mobile-menu-wrap',
+        allowParentLinks: true
+    });
+
+    /*------------------
+		Hero Slider
+	--------------------*/
+    $('.hero__slider').owlCarousel({
+        loop: false,
+        dots: false,
+        mouseDrag: false,
+        animateOut: '',
+        animateIn: '',
+        items: 1,
+        margin: 0,
+        smartSpeed: 0,
+        autoHeight: false,
+        autoplay: false,
+    });
+
+    /*------------------
+        Testimonial Slider
+    --------------------*/
+    $(".about-slider").owlCarousel({
+        items: 1,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        nav: false,
+        dots: true,
+    });
+
+    var dot = $('.about-slider .owl-dot');
+    dot.each(function () {
+        var index = $(this).index() + 1;
+        if (index < 10) {
+            $(this).html('0').append(index);
+        } else {
+            $(this).html(index);
+        }
+    });
+
+    // Background Image Handling
+    $(".set-bg").each(function () {
+        var bg = $(this).attr("data-setbg");
+        $(this).css("background-image", "url(" + bg + ")");
+    });
+
+    /*------------------
+        Testimonial Slider
+    --------------------*/
+    $(".testimonial__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 3,
+        dots: true,
+        dotsEach: 2,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+        responsive: {
+            992: {
+                items: 3
+            },
+            768: {
+                items: 2
+            },
+            320: {
+                items: 1
+            }
+        }
+    });
+
+    /*------------------
+        Latest Slider
+    --------------------*/
+    $(".latest__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 1,
+        dots: true,
+        dotsEach: 2,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+    });
+
+    /*------------------
+        Logo Slider
+    --------------------*/
+    $(".logo__carousel").owlCarousel({
+        loop: true,
+        margin: 100,
+        items: 6,
+        dots: false,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+        responsive: {
+            992: {
+                items: 5
+            },
+            768: {
+                items: 4
+            },
+            480: {
+                items: 3
+            },
+            320: {
+                items: 2
+            }
+        }
+    });
+
+    /*------------------
+        Video Popup
+    --------------------*/
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+    });
+
+    /*------------------
+        Counter
+    --------------------*/
+    $('.counter_num').each(function () {
+        $(this).prop('Counter', 0).animate({
+            Counter: $(this).text()
+        }, {
+            duration: 4000,
+            easing: 'swing',
+            step: function (now) {
+                $(this).text(Math.ceil(now));
+            }
+        });
+    });
+
+    /*------------------
+        AOS
+    --------------------*/
+    function aosInit() {
+        AOS.init({
+            offset: 10,
+            duration: 1000,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: false
+        });
+    }
+    window.addEventListener('load', aosInit);
+
+    /*------------------
+        Typed
+    --------------------*/
+    const selectTyped = document.querySelector('.typed');
+    if (selectTyped) {
+        let typed_strings = selectTyped.getAttribute('data-typed-items');
+        typed_strings = typed_strings.split(',');
+        new Typed('.typed', {
+            strings: typed_strings,
+            loop: true,
+            typeSpeed: 100,
+            backSpeed: 50,
+            backDelay: 1800
+        });
+    }
+
+    /*------------------
+        Balls
+    --------------------*/
+    const balls = document.querySelectorAll(".ball");
+
+    const positions = [
+        { x: -14, y: -20, size: 300 },
+        { x: 94, y: 94, size: 300 },
+    ];
+
+    balls.forEach((ball, index) => {
+        if (positions[index]) {
+            const { x, y, size } = positions[index];
+
+            ball.style.left = `${x}%`;
+            ball.style.top = `${y}%`;
+            ball.style.width = `${size}px`;
+            ball.style.height = `${size}px`;
+        }
+    });
+})(jQuery);
