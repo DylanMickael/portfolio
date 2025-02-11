@@ -568,8 +568,8 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 .hero__image__container::before {
   content: "";
-  height: 55%;
-  width: 100%;
+  height: 58%;
+  width: 98%;
   position: absolute;
   bottom: 16%;
   right: 1%;
@@ -580,7 +580,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   width: 460px !important;
   position: absolute;
   bottom: 16%;
-  left: 14%;
+  left: 13%;
   margin-bottom: 2px;
 }
 @media only screen and (max-width: 405px) {
@@ -592,11 +592,6 @@ section:not(:has(.hero__slider.owl-carousel)) {
     position: absolute;
     bottom: 16%;
     right: 2%;
-  }
-}
-@media screen and (max-width: 576px) {
-  .hero__image__container::before {
-    width: 98% !important;
   }
 }
 @keyframes shadow-apparition {
