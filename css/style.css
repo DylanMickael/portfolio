@@ -1332,7 +1332,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .swiper {
-  width: 440px;
+  width: 430px;
   height: 300px;
 }
 
