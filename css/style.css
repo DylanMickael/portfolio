@@ -49,7 +49,7 @@ h4,
 h5,
 h6 {
   margin: 0;
-  color: white;
+  color: #ffffff;
   font-weight: 800;
   font-family: "Play", sans-serif;
 }
@@ -194,7 +194,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   z-index: 1;
 }
 .primary-btn:hover {
-  color: white !important;
+  color: #ffffff !important;
 }
 .primary-btn:hover:before {
   height: 100%;
@@ -1259,7 +1259,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 
 .footer__copyright__text {
   margin-bottom: 0;
-  color: white;
+  color: #ffffff;
   opacity: 0.5;
   font-size: 14px;
   font-weight: 300;
@@ -1460,7 +1460,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   width: 70px;
   line-height: 70px;
   text-align: center;
-  color: white;
+  color: #ffffff;
   font-size: 25px;
   transform: translateY(5px);
 }
@@ -1506,7 +1506,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .resume .resume-title {
-  color: white;
+  color: #ffffff;
   font-size: 26px;
   font-weight: 700;
   margin-top: 20px;
@@ -1525,7 +1525,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
-  color: whitesmoke;
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
@@ -1697,7 +1697,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 .pagination__option .number__pagination {
   font-size: 18px;
-  color: whitesmoke;
+  color: #ffffff;
   height: 50px;
   width: 50px;
   background-color: #1a083d;
@@ -2070,7 +2070,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   height: 65px;
   width: 65px;
   line-height: 50px;
-  color: white;
+  color: #ffffff;
   font-size: 25px;
   margin-bottom: 10px;
   display: flex;
@@ -2136,7 +2136,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   border: none;
   background: #1a083d;
   font-size: 16px;
-  color: white;
+  color: #ffffff;
   padding-left: 20px;
   font-weight: 300;
   margin-right: 20px;
