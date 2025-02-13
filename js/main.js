@@ -298,12 +298,39 @@
             userId
         ).then(
             (response) => {
-                alert('Your mail is sent!');
+                alert('Your message has been sent!');
                 form.reset();
             },
             (err) => {
                 alert('Oops... ' + JSON.stringify(error));
             }
         );
+    });
+
+    /*------------------
+        Menu Scroll
+    --------------------*/
+    function determinerSectionActive() {
+        const links = document.querySelectorAll('#navigation li a');
+
+        const scrollPosition = window.scrollY;
+
+        const sections = ['hero', 'resume', 'services', 'skills', 'projects', 'contact'];
+
+        sections.forEach((sectionId, index) => {
+            const sectionTop = document.getElementById(sectionId).offsetTop;
+            const sectionBottom = sectionTop + document.getElementById(sectionId).offsetHeight;
+
+            if (scrollPosition >= (sectionTop - 500) && scrollPosition < sectionBottom) {
+                links.forEach((link) => link.parentElement.classList.remove('active'));
+                links[index].parentElement.classList.add('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', determinerSectionActive);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        determinerSectionActive();
     });
 })(jQuery);
