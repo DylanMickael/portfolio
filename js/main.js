@@ -262,4 +262,48 @@
             ball.style.height = `${size}px`;
         }
     });
+
+
+    /*------------------
+        Mail Sender
+    --------------------*/
+    const userId = 'eqWIHcTZUiGnh6cH5';
+    const templateId = 'template_ue7t2rb';
+    const serviceId = 'service_2f6kux5';
+
+    const recipientEmail = 'mickaelrakotonarivo@gmail.com';
+
+    const form = document.getElementById('contact-form');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        const templateParams = {
+            to_name: 'Dylan',
+            to_email: recipientEmail,
+            from_name: name,
+            from_email: email,
+            from_phone: phone,
+            message: `${message}`,
+        };
+
+        emailjs.send(
+            serviceId,
+            templateId,
+            templateParams,
+            userId
+        ).then(
+            (response) => {
+                alert('Your mail is sent!');
+                form.reset();
+            },
+            (err) => {
+                alert('Oops... ' + JSON.stringify(error));
+            }
+        );
+    });
 })(jQuery);
