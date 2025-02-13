@@ -1436,7 +1436,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 
 .services__item {
   margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 .services__item:hover .services__item__icon:after {
   -webkit-transform: rotate(45deg);
