@@ -263,7 +263,6 @@
         }
     });
 
-
     /*------------------
         Mail Sender
     --------------------*/
@@ -332,5 +331,12 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         determinerSectionActive();
+    });
+
+    /*------------------
+        CV Download
+    --------------------*/
+    $("#btn-download-cv").click(function () {
+        window.open('pdf/CV-Dylan-RAKOTONARIVO.pdf', '_blank');
     });
 })(jQuery);
