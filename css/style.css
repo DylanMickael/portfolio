@@ -25,7 +25,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #100028;
+  background-color: #000120;
   font-family: "Josefin Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -149,7 +149,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .set-bg {
-  background-color: #100028;
+  background-color: #000120;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -304,7 +304,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Header
 -----------------------*/
 .header {
-  background-color: #100028 !important;
+  background-color: #000120 !important;
   position: fixed;
   left: 0;
   top: 0;
@@ -662,7 +662,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .skills .skills-item {
-  background-color: #1a083d;
+  background-color: #020828;
   box-shadow: 0px 5px 90px 0px rgba(0, 0, 0, 0.1);
   height: 100%;
   padding: 60px 30px;
@@ -699,7 +699,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 
 .skills .skills-item .icon svg .svg-path {
   transition: 0.5s;
-  fill: #100028;
+  fill: #000120;
 }
 
 .skills .skills-item h3 {
@@ -795,7 +795,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 -----------------------*/
 .work {
   overflow: hidden;
-  background: #100028;
+  background: #000120;
 }
 
 .work__gallery {
@@ -888,7 +888,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Counter
 -----------------------*/
 .counter {
-  background: #100028;
+  background: #000120;
   height: 840px;
   padding-top: 380px;
   overflow: hidden;
@@ -899,7 +899,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .counter__item {
-  background: #1a083d;
+  background: #020828;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
       transform: rotate(45deg);
@@ -1056,7 +1056,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Latest
 -----------------------*/
 .latest {
-  background: #100028;
+  background: #000120;
   padding-bottom: 80px;
 }
 
@@ -1098,7 +1098,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 .callto.sp__callto {
   padding-top: 0;
-  background: #100028;
+  background: #000120;
 }
 
 .callto__text h2 {
@@ -1304,7 +1304,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   About
 -----------------------*/
 .about {
-  background: #100028;
+  background: #000120;
 }
 
 .about__pic__item {
@@ -1417,7 +1417,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Services
 -----------------------*/
 .services {
-  background: #100028;
+  background: #000120;
   padding-bottom: 60px;
   padding-top: 110px;
 }
@@ -1473,7 +1473,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Services Page
 -----------------------*/
 .services-page {
-  background: #100028;
+  background: #000120;
   padding-bottom: 50px;
 }
 
@@ -1481,7 +1481,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Logo
 -----------------------*/
 .logo {
-  background: #100028;
+  background: #000120;
   padding: 100px 20px;
 }
 
@@ -1558,7 +1558,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Portfolio
 -----------------------*/
 .portfolio {
-  background: #100028;
+  background: #000120;
 }
 
 .portfolio__filter {
@@ -1692,7 +1692,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   color: #ffffff;
   height: 50px;
   width: 50px;
-  background-color: #1a083d;
+  background-color: #020828;
   line-height: 50px;
   text-align: center;
   display: inline-block;
@@ -1703,7 +1703,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
     Blog
 -----------------------*/
 .blog {
-  background: #100028;
+  background: #000120;
   display: flex;
   justify-content: center;
 }
@@ -1831,7 +1831,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Blog Details
 -----------------------*/
 .blog-details {
-  background: #100028;
+  background: #000120;
 }
 
 .blog__details__text {
@@ -2048,7 +2048,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Contact Widget
 -----------------------*/
 .contact-widget {
-  background: #100028;
+  background: #000120;
   padding-bottom: 70px;
 }
 .contact__widget__item {
@@ -2104,7 +2104,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Contact
 -----------------------*/
 .contact {
-  background: #100028;
+  background: #000120;
   padding-top: 0;
   overflow: hidden;
 }
@@ -2126,7 +2126,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   height: 50px;
   width: 100%;
   border: none;
-  background: #1a083d;
+  background: #020828;
   font-size: 16px;
   color: #ffffff;
   padding-left: 20px;
@@ -2147,7 +2147,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   height: 110px;
   width: 100%;
   border: none;
-  background: #1a083d;
+  background: #020828;
   font-size: 16px;
   color: #adadad;
   padding-top: 12px;
