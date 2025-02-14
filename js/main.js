@@ -217,8 +217,8 @@
     --------------------*/
     function aosInit() {
         AOS.init({
-            offset: 10,
-            duration: 1000,
+            offsetTop: 50,
+            duration: 500,
             easing: 'ease-in-out',
             once: false,
             mirror: false
@@ -248,8 +248,8 @@
     const balls = document.querySelectorAll(".ball");
 
     const positions = [
-        { x: -14, y: -20, size: 300 },
-        { x: 94, y: 94, size: 300 },
+        { x: -15, y: -20, size: 300 },
+        { x: 94, y: 81, size: 400 },
     ];
 
     balls.forEach((ball, index) => {
@@ -339,4 +339,9 @@
     $("#btn-download-cv").click(function () {
         window.open('pdf/CV-Dylan-RAKOTONARIVO.pdf', '_blank');
     });
+
+    /*------------------
+        Parallax Scroll
+    --------------------*/
+    var rellax = new Rellax('.rellax');
 })(jQuery);

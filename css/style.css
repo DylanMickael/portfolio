@@ -25,7 +25,7 @@ html {
 
 body {
   height: 100%;
-  background-color: #000120;
+  background-color: #000116;
   font-family: "Josefin Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -103,6 +103,25 @@ ol {
   margin: 0;
 }
 
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: white; /* Black color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: white; /* Darker black color on hover */
+}
+
+::-webkit-scrollbar-track {
+  background: #000116; /* Darker background */
+}
+
 /*---------------------
   Helper CSS
 -----------------------*/
@@ -110,7 +129,10 @@ section {
   position: relative !important;
   padding: 10px;
 }
-section:not(:has(.hero__slider.owl-carousel)) {
+.about {
+  margin-top: 100px;
+}
+section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   margin-top: 400px;
 }
 .section-title {
@@ -149,7 +171,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 
 .set-bg {
-  background-color: #000120;
+  background-color: #000116;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -304,7 +326,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Header
 -----------------------*/
 .header {
-  background-color: #000120 !important;
+  background-color: #000116 !important;
   position: fixed;
   left: 0;
   top: 0;
@@ -446,9 +468,9 @@ section:not(:has(.hero__slider.owl-carousel)) {
     transparent 20%
   );
 
-  filter: blur(60px);
+  filter: blur(80px);
   z-index: 10;
-  opacity: 0.9;
+  opacity: 0.5;
 }
 
 /*---------------------
@@ -566,7 +588,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   bottom: 16%;
   right: 1%;
   border: solid rgba(0, 0, 255, 0.2) 2px;
-  animation: shadow-apparition 0.7s ease-in 1.4s forwards;
+  animation: shadow-apparition 0.7s ease-in 1.2s forwards;
 }
 .hero__image {
   width: 460px !important;
@@ -575,6 +597,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   left: 13%;
   margin-bottom: 2px;
 }
+
 @media only screen and (max-width: 405px) {
   .hero__image__container::before {
     content: "";
@@ -593,7 +616,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   }
   to {
     border: solid #00bfe7 2px;
-    box-shadow: 0px 0px 40px #00bfe7;
+    box-shadow: 0px 0px 40px #00c1e7c3;
   }
 }
 /*--------------------------------------------------------------
@@ -699,7 +722,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 
 .skills .skills-item .icon svg .svg-path {
   transition: 0.5s;
-  fill: #000120;
+  fill: #000116;
 }
 
 .skills .skills-item h3 {
@@ -795,7 +818,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 -----------------------*/
 .work {
   overflow: hidden;
-  background: #000120;
+  background: #000116;
 }
 
 .work__gallery {
@@ -888,7 +911,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Counter
 -----------------------*/
 .counter {
-  background: #000120;
+  background: #000116;
   height: 840px;
   padding-top: 380px;
   overflow: hidden;
@@ -1056,7 +1079,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Latest
 -----------------------*/
 .latest {
-  background: #000120;
+  background: #000116;
   padding-bottom: 80px;
 }
 
@@ -1098,7 +1121,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
 }
 .callto.sp__callto {
   padding-top: 0;
-  background: #000120;
+  background: #000116;
 }
 
 .callto__text h2 {
@@ -1304,7 +1327,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   About
 -----------------------*/
 .about {
-  background: #000120;
+  background: #000116;
 }
 
 .about__pic__item {
@@ -1417,9 +1440,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Services
 -----------------------*/
 .services {
-  background: #000120;
-  padding-bottom: 60px;
-  padding-top: 110px;
+  background: #000116;
 }
 
 .services__title p {
@@ -1473,7 +1494,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Services Page
 -----------------------*/
 .services-page {
-  background: #000120;
+  background: #000116;
   padding-bottom: 50px;
 }
 
@@ -1481,7 +1502,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Logo
 -----------------------*/
 .logo {
-  background: #000120;
+  background: #000116;
   padding: 100px 20px;
 }
 
@@ -1558,7 +1579,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Portfolio
 -----------------------*/
 .portfolio {
-  background: #000120;
+  background: #000116;
 }
 
 .portfolio__filter {
@@ -1703,7 +1724,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
     Blog
 -----------------------*/
 .blog {
-  background: #000120;
+  background: #000116;
   display: flex;
   justify-content: center;
 }
@@ -1831,7 +1852,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Blog Details
 -----------------------*/
 .blog-details {
-  background: #000120;
+  background: #000116;
 }
 
 .blog__details__text {
@@ -2048,7 +2069,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Contact Widget
 -----------------------*/
 .contact-widget {
-  background: #000120;
+  background: #000116;
   padding-bottom: 70px;
 }
 .contact__widget__item {
@@ -2104,7 +2125,7 @@ section:not(:has(.hero__slider.owl-carousel)) {
   Contact
 -----------------------*/
 .contact {
-  background: #000120;
+  background: #000116;
   padding-top: 0;
   overflow: hidden;
 }
