@@ -467,7 +467,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   
   background: radial-gradient(
     circle,
-    rgb(85, 12, 0) 100%,
+    rgb(110, 17, 2) 100%,
     transparent 20%
   );
 
