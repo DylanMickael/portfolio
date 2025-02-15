@@ -129,6 +129,9 @@ section {
   position: relative !important;
   padding: 10px;
 }
+.section-title {
+  z-index: 11 !important;
+}
 .about {
   margin-top: 100px;
 }
@@ -464,7 +467,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   
   background: radial-gradient(
     circle,
-    rgba(220, 63, 35, 0.684) 100%,
+    rgb(85, 12, 0) 100%,
     transparent 20%
   );
 

@@ -248,8 +248,13 @@
     const balls = document.querySelectorAll(".ball");
 
     const positions = [
-        { x: -15, y: -20, size: 300 },
-        { x: 94, y: 81, size: 400 },
+        { x: -12, y: -18, size: 300 },
+        { x: 92, y: 80, size: 600 },
+        { x: 50, y: 120, size: 300 },
+        { x: -20, y: 102, size: 320 },
+        { x: 90, y: -40, size: 400 },
+        { x: -10, y: 100, size: 400 },
+        { x: 92, y: 50, size: 400 },
     ];
 
     balls.forEach((ball, index) => {
