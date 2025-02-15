@@ -218,7 +218,7 @@
     function aosInit() {
         AOS.init({
             offsetTop: 10,
-            duration: 500,
+            duration: 600,
             easing: 'ease-in-out',
             once: false,
             mirror: true
