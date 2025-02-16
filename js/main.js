@@ -36,7 +36,7 @@
     --------------------*/
     window.addEventListener("scroll", function () {
         const header = document.querySelector(".header");
-        if (window.scrollY > 10) {
+        if (window.scrollY > 20) {
             header.classList.add("scrolled");
         } else {
             header.classList.remove("scrolled");
@@ -217,7 +217,7 @@
     --------------------*/
     function aosInit() {
         AOS.init({
-            offsetTop: 10,
+            offsetTop: 1,
             duration: 600,
             easing: 'ease-in-out',
             once: false,
@@ -248,7 +248,7 @@
     const balls = document.querySelectorAll(".ball");
 
     const positions = [
-        { x: -14, y: -18, size: 300 },
+        { x: -20, y: -30, size: 400 },
         { x: 92, y: 80, size: 500 },
         { x: 70, y: -15, size: 220 },
         { x: -10, y: -40, size: 250 },
@@ -359,9 +359,9 @@
     // studio.initialize();
 
     // const project = core.getProject("Portolio");
-    // const sheet = project.sheet("Contact Section");
+    // const scene1 = project.sheet("Contact Card Fading");
 
-    // const theatreCard = sheet.object("Contact Card", {
+    // const theatreCard = scene.object("Contact Card", {
     //     size: {
     //         w: 0,
     //         h: 0,
@@ -378,5 +378,9 @@
     //     // $(".card").css("height", `${newValues.size.h}`);
     //     $(".card").css("transform", `translate(${newValues.position.x}px, ${newValues.position.y}px)`);
     //     $(".card").css("opacity", `${newValues.opacity}%`);
+    // });
+
+    // $(".card").on("click", () => {
+    //     scene1.sequence.play({range: [0, 3]});
     // });
 })(jQuery);
