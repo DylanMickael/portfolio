@@ -41,7 +41,14 @@ h4,
 h5,
 h6 {
   margin: 0;
-  color: #ffffff;
+  background: linear-gradient(
+    360deg, 
+    white, 
+    white,
+    white
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 800;
   font-family: "Play", sans-serif;
 }
@@ -133,7 +140,7 @@ section {
   z-index: 11 !important;
 }
 .about {
-  margin-top: 100px;
+  margin-top: 200px;
 }
 section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   margin-top: 400px;
@@ -694,7 +701,6 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   padding: 60px 30px;
   text-align: center;
   transition: 0.3s;
-  border-radius: 5px;
 }
 
 .skills .skills-item .icon {
@@ -2071,6 +2077,69 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 /*---------------------
   Contact Widget
 -----------------------*/
+.card {
+  padding: 50px 50px 50px 50px;
+  overflow: visible;
+  background: linear-gradient(to top right, #020828 0%, #040d44 100%);
+  position: relative;
+  z-index: 1;
+  border-radius: 0px;
+  transition: all 0.3s ease;
+}
+
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.card::before {
+  opacity: 0.9;
+  background: linear-gradient(to bottom right, #040d44 0%, #040d44 100%);
+  transform: rotate(3deg);
+}
+
+.card::after {
+  opacity: 0.9;
+  background: linear-gradient(to top right, #020828 0%, #020828 100%);
+  transform: rotate(-3deg);
+}
+
+.card-info {
+  --color: #292b2c;
+  background: var(--color);
+  color: var(--color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  position: relative;
+  z-index: 2;
+}
+
+.card .title {
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.card:hover::before,
+.card:hover::after {
+  opacity: 0;
+}
+
+.card:hover .card-info {
+  color: #364269;
+  transition: color 1s;
+}
+
 .contact-widget {
   background: #000116;
   padding-bottom: 70px;
@@ -2150,7 +2219,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   height: 50px;
   width: 100%;
   border: none;
-  background: #020828;
+  background: inherit;
+  border: solid #040d44 1px;
   font-size: 16px;
   color: #ffffff;
   padding-left: 20px;
@@ -2171,7 +2241,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   height: 110px;
   width: 100%;
   border: none;
-  background: #020828;
+  background: inherit;
+  border: solid #040d44 1px;
   font-size: 16px;
   color: #adadad;
   padding-top: 12px;
