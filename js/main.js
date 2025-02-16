@@ -248,7 +248,7 @@
     const balls = document.querySelectorAll(".ball");
 
     const positions = [
-        { x: -12, y: -18, size: 300 },
+        { x: -14, y: -18, size: 300 },
         { x: 92, y: 80, size: 500 },
         { x: 70, y: -15, size: 220 },
         { x: -10, y: -40, size: 250 },
@@ -350,4 +350,33 @@
         Parallax Scroll
     --------------------*/
     var rellax = new Rellax('.rellax');
+
+    /*------------------
+        Theatre
+    --------------------*/
+    // var { core, studio } = Theatre;
+
+    // studio.initialize();
+
+    // const project = core.getProject( "Portolio" );
+    // const sheet = project.sheet( "Scene" );
+
+    // const abstractCard = sheet.object( "box", {
+    //     size: {
+    //         w: 0,
+    //         h: 0,
+    //     }, 
+    //     position: {
+    //         x: 0,
+    //         y: 0
+    //     },
+    //     opacity: 100
+    // });
+
+    // abstractCard.onValuesChange((newValues) => {
+    //     // $(".card").css( "width" ,`${ newValues.size.w}`);
+    //     // $(".card").css("height", `${ newValues.size.h}`);
+    //     $(".card").css("transform", `translate(${newValues.position.x}px, ${newValues.position.y}px)`);
+    //     $(".card").css("opacity", `${newValues.opacity}%`);
+    // });
 })(jQuery);
