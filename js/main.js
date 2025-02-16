@@ -252,7 +252,7 @@
         { x: 92, y: 80, size: 500 },
         { x: 70, y: -15, size: 220 },
         { x: -10, y: -40, size: 250 },
-        { x: 90, y: -40, size: 400 },
+        { x: 92, y: -40, size: 300 },
         { x: -15, y: -40, size: 300 },
         { x: 90, y: -20, size: 300 },
         { x: -12, y: -40, size: 300 },
@@ -358,10 +358,10 @@
 
     // studio.initialize();
 
-    // const project = core.getProject( "Portolio" );
-    // const sheet = project.sheet( "Scene" );
+    // const project = core.getProject("Portolio");
+    // const sheet = project.sheet("Contact Section");
 
-    // const abstractCard = sheet.object( "box", {
+    // const theatreCard = sheet.object("Contact Card", {
     //     size: {
     //         w: 0,
     //         h: 0,
@@ -373,9 +373,9 @@
     //     opacity: 100
     // });
 
-    // abstractCard.onValuesChange((newValues) => {
-    //     // $(".card").css( "width" ,`${ newValues.size.w}`);
-    //     // $(".card").css("height", `${ newValues.size.h}`);
+    // theatreCard.onValuesChange((newValues) => {
+    //     // $(".card").css( "width" ,`${newValues.size.w}`);
+    //     // $(".card").css("height", `${newValues.size.h}`);
     //     $(".card").css("transform", `translate(${newValues.position.x}px, ${newValues.position.y}px)`);
     //     $(".card").css("opacity", `${newValues.opacity}%`);
     // });
