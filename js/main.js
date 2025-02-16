@@ -354,33 +354,38 @@
     /*------------------
         Theatre
     --------------------*/
-    // var { core, studio } = Theatre;
+    var { core, studio } = Theatre;
 
-    // studio.initialize();
+    // Restore to set new animations
+    studio.initialize();
+    studio.ui.hide();
+    // studio.ui.restore();
 
-    // const project = core.getProject("Portolio");
-    // const scene1 = project.sheet("Contact Card Fading");
+    // Export states of new animations and replace the down below
+    const project = core.getProject("Portolio", {state:state});
+    const scene1 = project.sheet("Contact Card Twinkle");
 
-    // const theatreCard = scene.object("Contact Card", {
-    //     size: {
-    //         w: 0,
-    //         h: 0,
-    //     }, 
-    //     position: {
-    //         x: 0,
-    //         y: 0
-    //     },
-    //     opacity: 100
-    // });
+    const theatreCard = scene1.object("Contact Card", {
+        size: {
+            w: 0,
+            h: 0,
+        }, 
+        position: {
+            x: 0,
+            y: 0
+        },
+        opacity: 100
+    });
 
-    // theatreCard.onValuesChange((newValues) => {
-    //     // $(".card").css( "width" ,`${newValues.size.w}`);
-    //     // $(".card").css("height", `${newValues.size.h}`);
-    //     $(".card").css("transform", `translate(${newValues.position.x}px, ${newValues.position.y}px)`);
-    //     $(".card").css("opacity", `${newValues.opacity}%`);
-    // });
+    theatreCard.onValuesChange((newValues) => {
+        // Uncomment to animate the card using size or position
+        // $(".card").css( "width" ,`${newValues.size.w}`);
+        // $(".card").css("height", `${newValues.size.h}`);
+        // $(".card").css("transform", `translate(${newValues.position.x}px, ${newValues.position.y}px)`);
+        $(".card").css("opacity", `${newValues.opacity}%`);
+    });
 
-    // $(".card").on("click", () => {
-    //     scene1.sequence.play({range: [0, 3]});
-    // });
+    $(".contact-button").on("click", () => {
+        scene1.sequence.play({range: [0, 3]});
+    });
 })(jQuery);
