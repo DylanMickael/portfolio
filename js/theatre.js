@@ -47512,7 +47512,7 @@ Instead found: ${devStringify(butFoundInstead)}` : "";
     const visiblityState = useVal(studio3.atomP.ahistoric.visibilityState);
     (0, import_react245.useEffect)(() => {
       if (visiblityState === "everythingIsHidden") {
-        console.warn(`Theatre Studio is hidden. Use the keyboard shortcut 'alt + \\' to restore the studio, or call studio.ui.restore().`);
+        // console.warn(`Theatre Studio is hidden. Use the keyboard shortcut 'alt + \\' to restore the studio, or call studio.ui.restore().`);
       }
       return () => {
       };
