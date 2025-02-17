@@ -696,7 +696,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 .carousel--item {
   display: inline-block;
   width: 400px;
-  padding: 3vw;
+  padding: 0 20px;
   user-select: none;
 } 
 
