@@ -581,6 +581,9 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 /*---------------------
   Hero
 -----------------------*/
+.hero {
+  user-select: none;
+}
 .hero__slider.owl-carousel .owl-item.active .hero__text span {
   top: 0;
   opacity: 1;
@@ -1394,11 +1397,18 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   margin-right: 0;
 }
 
-.footer__option {
-  padding-bottom: 35px;
-  padding-top: 75px;
+.footer__nav__social {
+  display: inline-block;
+  position: relative;
 }
-
+.footer__nav__social a {
+  color: white;
+  font-size: 28px;
+  margin-right: 50px;
+}
+.footer__nav__social a:last-child {
+  margin-right: 0;
+}
 .footer__option__item {
   margin-bottom: 35px;
 }

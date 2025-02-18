@@ -374,6 +374,21 @@
     });
 
     /*------------------
+        Social Media link
+    --------------------*/
+    function updateSocialVisibility() {
+        if ($(".slicknav_menu").css("display") === "none") {
+            $("#footer__nav__social").addClass("d-none");
+        } else {
+            $("#footer__nav__social").removeClass("d-none");
+        }
+    }
+
+    updateSocialVisibility();
+
+    $(window).on('resize', updateSocialVisibility);
+
+    /*------------------
         Theatre
     --------------------*/
     var { core, studio } = Theatre;
