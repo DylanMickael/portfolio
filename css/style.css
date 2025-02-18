@@ -27,8 +27,12 @@ body {
   height: 100%;
   background-color: #000116;
   font-family: "Josefin Sans", sans-serif;
-  cursor: url("/img/cursors/rocket.png") 0 0, auto !important;
+  cursor: url("/img/cursors/rocket-launch.png") 0 0, auto !important;
   -webkit-font-smoothing: antialiased;
+}
+
+button, a, img:not(.hero__image) {
+  cursor: url("/img/cursors/astronaut.png") 0 0, auto !important;
 }
 
 html, body {
@@ -37,8 +41,8 @@ html, body {
 
 .cursor {
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 5px;
+    height: 5px;
     background-color: #0044ff;
     border-radius: 50%;
     box-shadow: 0 0 10px #0044ff, 0 0 20px #0044ff, 0 0 30px #0044ff;
@@ -272,7 +276,6 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   overflow: hidden;
   height: 3rem;
   background-size: 300% 300%;
-  cursor: pointer;
   backdrop-filter: blur(1rem);
   transition: 0.5s;
   animation: gradient_301 5s ease infinite;
@@ -702,14 +705,6 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 .carousel {
   width: 100%;
   padding: 100px 0;
-}
-
-.carousel img {
-  cursor: grab;
-}
-
-.carousel.dragging img {
-  cursor: grabbing;
 }
 
 .carousel--wrap {
@@ -1842,7 +1837,6 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   color: #adadad;
   margin-right: 5px;
   display: inline-block;
-  cursor: pointer;
   padding: 6px 22px;
 }
 .portfolio__filter li.active {
@@ -2501,7 +2495,6 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   box-shadow: 6px 6px 0 black;
   transform: skewX(-15deg);
   border: none;
-  cursor: pointer;
 }
 
 .cta:focus {
