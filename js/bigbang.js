@@ -10,8 +10,11 @@ let params; // Object to store parameters controlled by the UI
 let clock = new THREE.Clock(); // Clock to keep track of elapsed time
 
 // Initialize the scene and start the animation loop.
-init();
-animate();
+$("#startButton").on("click", (e) => {
+    $("#singularity").hide();
+    init();
+    animate();
+})
 
 // --------------------------------------------------------------------------------
 // Function: init()
@@ -161,7 +164,7 @@ function generateSprite() {
 function setupGUI() {
     // Define default parameters.
     params = {
-        expansionSpeed: 100, // Scales how fast the particles expand.
+        expansionSpeed: 80, // Scales how fast the particles expand.
         particleSize: 5, // Particle point size.
         bloomStrength: 2, // Bloom effect strength.
         bloomRadius: 0.5, // Bloom effect radius.
@@ -225,7 +228,7 @@ function animate() {
     // Gradually add additional elements to the universe:
     // After 10 seconds, add a galaxy cluster; after 15 seconds, add a nebula.
     let elapsed = clock.elapsedTime;
-    if (elapsed > 10 && !galaxySystem) {
+    if (elapsed > 50 && !galaxySystem) {
         createGalaxyCluster();
     }
     if (elapsed > 0 && !nebula) {
