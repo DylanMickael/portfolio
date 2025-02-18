@@ -27,11 +27,34 @@ body {
   height: 100%;
   background-color: #000116;
   font-family: "Josefin Sans", sans-serif;
+  cursor: url("/img/cursors/rocket.png") 0 0, auto !important;
   -webkit-font-smoothing: antialiased;
 }
 
 html, body {
   overflow-x: hidden !important;
+}
+
+.cursor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #0044ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #0044ff, 0 0 20px #0044ff, 0 0 30px #0044ff;
+    pointer-events: none;
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.5);
+    }
 }
 
 h1,
@@ -877,7 +900,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 
 .skills .skills-item h3 {
   font-weight: 700;
-  margin: 10px 0 15px 0;
+  margin: 10px 0 30px 0;
   font-size: 22px;
 }
 
@@ -936,7 +959,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 }
 
 .skills .skills-item.item-red:hover .icon .svg-path {
-  fill: #df154b;
+  fill: #b16969;
 }
 
 .skills .skills-item.item-indigo path {
@@ -963,6 +986,43 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   fill: #f3268c;
 }
 
+.toolbox {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+
+.tool {
+  padding: 10px;
+  margin: 5px;
+  border: solid 1px;
+  border-radius: 50px;
+  font-size: 12px;
+}
+.tool:hover {
+  color: white;
+}
+.tool.blue {
+  border-color: #0044ff;
+  color: #0044ff !important;
+}
+.tool.pink {
+  border-color: #f3268c;
+  color: #f3268c !important;
+}
+.tool.red {
+  border-color: #451bde;
+  color: #451bde !important;
+}
+.tool.purple {
+  border-color: #b16969;
+  color: #b16969 !important;
+}
+.tool.blue:hover {
+  border-color: #0044ff;
+  color: #0044ff !important;
+}
 /*---------------------
   Work
 -----------------------*/

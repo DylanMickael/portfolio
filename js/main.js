@@ -352,6 +352,28 @@
     var rellax = new Rellax('.rellax');
 
     /*------------------
+        Cursor
+    --------------------*/
+    let trail = [];
+    const trailLength = 20;
+
+    document.addEventListener('mousemove', (e) => {
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        document.body.appendChild(cursor);
+
+        cursor.style.left = `${e.pageX + 20}px`;
+        cursor.style.top = `${e.pageY + 20}px`;
+
+        trail.push(cursor);
+
+        if (trail.length > trailLength) {
+            const oldCursor = trail.shift();
+            oldCursor.remove();
+        }
+    });
+
+    /*------------------
         Theatre
     --------------------*/
     var { core, studio } = Theatre;
