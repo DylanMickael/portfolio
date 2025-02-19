@@ -9,12 +9,33 @@ let particleCount = 50000; // Number of particles for the Big Bang explosion
 let params; // Object to store parameters controlled by the UI
 let clock = new THREE.Clock(); // Clock to keep track of elapsed time
 
-// Initialize the scene and start the animation loop.
-$("#startButton").on("click", (e) => {
-    $("#singularity").hide();
-    init();
-    animate();
-})
+// Animate the text
+setTimeout(() => {
+    animateText(() => {
+        init();
+        animate();
+
+        $("#singularity").hide();
+
+        setTimeout(() => {
+            $("#typed-text").addClass("fade-down");
+            $(".typed-cursor").addClass("fade-down");
+
+            setTimeout(() => {
+                $("#typed-text").addClass("inactive");
+                $(".typed-cursor").addClass("inactive");
+            }, 10);
+        }, 3000);
+        
+        setTimeout(() => {
+            $("#final-text").removeClass("d-none").addClass("fade-up");
+
+            setTimeout(() => {
+                $("#final-text").addClass("active");
+            }, 10);
+        }, 7800);
+    });
+}, 0);
 
 // --------------------------------------------------------------------------------
 // Function: init()
@@ -38,6 +59,7 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true; // Enable shadow maps for added realism.
+    renderer.setClearColor(0x000110); // Set background color of the animation
     document.body.appendChild(renderer.domElement);
 
     // Add OrbitControls so the user can explore the scene.
@@ -350,4 +372,34 @@ function generateNebulaTexture() {
         context.fillRect(x, y, 1, 1);
     }
     return new THREE.CanvasTexture(canvas);
+}
+
+
+// --------------------------------------------------------------------------------
+// Function: animateText()
+// Uses canvas drawing to create a nebula-like texture with a radial gradient and
+// random noise to simulate stars and gaseous clouds.
+// --------------------------------------------------------------------------------
+function animateText(startAnimation) {
+    const options = {
+        strings: [
+            "",
+            "At the beginning,",
+            "what you do may look small.",
+            "But one day,",
+            "you will expand...",
+            "LIKE A SINGULARITY.",
+        ],
+        typeSpeed: 35,
+        backSpeed: 25,
+        loop: false,
+        showCursor: true,
+        backDelay: 2500,
+        cursorChar: "|",
+        onComplete: function (self) {
+            startAnimation();
+        }
+    };
+
+    const typed = new Typed("#typed-text", options);
 }

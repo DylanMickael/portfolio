@@ -3,7 +3,8 @@ body {
     position: relative;
     margin: 0;
     overflow: hidden;
-    background-color: black;
+    background-color: #000110;
+    font-family: "Josefin Sans", sans-serif;
 }
 
 canvas {
@@ -16,7 +17,7 @@ canvas {
     row-gap: 20px;
     align-items: center;
     position: absolute;
-    top: 80%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, 0);
 }
@@ -25,15 +26,27 @@ canvas {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
-    width: 20px;
-    height: 20px;
+    transform: translate(-50%, -10px);
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     background-color: rgba(200, 200, 255, 0.8);
     box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
                 0 0 20px 8px rgba(200, 210, 255, 0.7), 
-                0 0 30px 10px rgba(200, 210, 255, 0.5);
+                0 0 30px 10px rgba(100, 110, 255, 0.5);
     animation: scintillement 2s infinite alternate;
+}
+
+#final-text {
+    font-size: 48px;
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes scintillement {
@@ -41,18 +54,130 @@ canvas {
         opacity: 1;
         box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
                     0 0 20px 8px rgba(200, 210, 255, 0.7), 
-                    0 0 30px 10px rgba(200, 210, 255, 0.5);
+                    0 0 30px 10px rgba(100, 110, 255, 0.5);
     }
     50% {
         opacity: 0.8;
         box-shadow: 0 0 15px 7px rgba(200, 210, 255, 1), 
                     0 0 25px 10px rgba(200, 210, 255, 0.8), 
-                    0 0 35px 15px rgba(200, 210, 255, 0.6);
+                    0 0 30px 10px rgba(100, 110, 255, 0.6);
     }
     100% {
         opacity: 1;
         box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
                     0 0 20px 8px rgba(200, 210, 255, 0.7), 
-                    0 0 30px 10px rgba(200, 210, 255, 0.5);
+                    0 0 30px 10px rgba(100, 110, 255, 0.5);
     }
+}
+
+/* Text */
+.text-container {
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: "Play", sans-serif;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    column-gap: 2px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(50px); /* Déplace l'élément vers le bas */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-up.active {
+    opacity: 1;
+    transform: translateY(0); /* Ramène l'élément à sa position normale */
+}
+
+.fade-down {
+    opacity: 1;
+    transform: translateY(0); /* Déplace l'élément vers le bas */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-down.inactive {
+    opacity: 0;
+    transform: translateY(50px); /* Ramène l'élément à sa position normale */
+}
+
+/* Button */
+#button-container {
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+    animation: appearAnimation 10s forwards;
+}
+
+@keyframes appearAnimation {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    12% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    20%, 30% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    25%, 35% {
+        transform: translateX(0);
+        opacity: 0.4;
+    }
+    40%, 80% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+button {
+    display: flex;
+    align-items: center;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0.8em 1.3em 0.8em 0.9em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(to right, #0f0c2950, #302b6350, #24243e50);
+    backdrop-filter: blur(10px);
+    border: none;
+}
+
+button svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+button span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+button:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+button:hover span {
+  transform: translateX(7px);
 }

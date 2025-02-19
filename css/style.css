@@ -913,7 +913,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 }
 
 .skills .skills-item.item-cyan path {
-  fill: #fff;
+  fill: #1b4fded0;
 }
 
 .skills .skills-item.item-cyan:hover .icon path {
@@ -924,32 +924,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   fill: #1b4fde;
 }
 
-.skills .skills-item.item-orange path {
-  color: #fff;
-}
-
-.skills .skills-item.item-orange:hover .icon path {
-  color: #fff;
-}
-
-.skills .skills-item.item-orange:hover .icon .svg-path {
-  fill: #fd7e14;
-}
-
-.skills .skills-item.item-teal path {
-  color: #fff;
-}
-
-.skills .skills-item.item-teal:hover .icon path {
-  color: #fff;
-}
-
-.skills .skills-item.item-teal:hover .icon .svg-path {
-  fill: #20c997;
-}
-
 .skills .skills-item.item-red path {
-  color: #fff;
+  color: #d06b6bd0;
 }
 
 .skills .skills-item.item-red:hover .icon path {
@@ -957,11 +933,11 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 }
 
 .skills .skills-item.item-red:hover .icon .svg-path {
-  fill: #b16969;
+  fill: #d06b6b;
 }
 
 .skills .skills-item.item-indigo path {
-  color: #fff;
+  color: #6610f2d0;
 }
 
 .skills .skills-item.item-indigo:hover .icon path {
@@ -973,7 +949,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 }
 
 .skills .skills-item.item-pink path {
-  color: #fff;
+  color: #f3268cd0;
 }
 
 .skills .skills-item.item-pink:hover .icon path {
@@ -1014,8 +990,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   color: #451bde !important;
 }
 .tool.purple {
-  border-color: #b16969;
-  color: #b16969 !important;
+  border-color: #d06b6b;
+  color: #d06b6b !important;
 }
 .tool.blue:hover {
   border-color: #0044ff;
