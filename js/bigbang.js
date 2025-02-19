@@ -18,24 +18,24 @@ setTimeout(() => {
         $("#singularity").hide();
 
         setTimeout(() => {
-            $("#typed-text").addClass("fade-down");
-            $(".typed-cursor").addClass("fade-down");
-
-            setTimeout(() => {
-                $("#typed-text").addClass("inactive");
-                $(".typed-cursor").addClass("inactive");
-            }, 10);
+            $("#typed-text").fadeOut(500);
+            $(".typed-cursor").fadeOut(500);
         }, 3000);
-        
-        setTimeout(() => {
-            $("#final-text").removeClass("d-none").addClass("fade-up");
 
-            setTimeout(() => {
-                $("#final-text").addClass("active");
-            }, 10);
-        }, 7800);
+        setTimeout(() => {
+            $("#final-text").fadeIn(500);
+            $("#final-button").fadeIn(500);
+        }, 7200);
     });
 }, 0);
+
+/*------------------
+    Preloader
+--------------------*/
+$(window).on('load', function () {
+    $(".loader").fadeOut();
+    $("#preloder").delay(200).fadeOut("slow");
+});
 
 // --------------------------------------------------------------------------------
 // Function: init()
@@ -383,19 +383,20 @@ function generateNebulaTexture() {
 function animateText(startAnimation) {
     const options = {
         strings: [
-            "",
+            "", 
             "At the beginning,",
-            "what you do may look small.",
+            "what you do may seem small.",
             "But one day,",
-            "you will expand...",
-            "LIKE A SINGULARITY.",
+            "your talent will expand...",
+            "LIKE A SINGULARITY."
         ],
-        typeSpeed: 35,
-        backSpeed: 25,
+        typeSpeed: 50,
+        backSpeed: 40,
         loop: false,
         showCursor: true,
-        backDelay: 2500,
+        backDelay: 2200,
         cursorChar: "|",
+        autoInsertCss: true,
         onComplete: function (self) {
             startAnimation();
         }

@@ -37,18 +37,6 @@ canvas {
     animation: scintillement 2s infinite alternate;
 }
 
-#final-text {
-    font-size: 48px;
-    position: absolute;
-    top: 42%;
-    left: 50%;
-    transform: translate(-50%, 0);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 @keyframes scintillement {
     0% {
         opacity: 1;
@@ -72,6 +60,7 @@ canvas {
 
 /* Text */
 .text-container {
+    width: 100%;
     position: absolute;
     text-align: center;
     color: white;
@@ -81,34 +70,35 @@ canvas {
     top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
-    display: flex;
-    column-gap: 2px;
+}
+
+.text-container * {
+    display: inline-block;
 }
 
 a {
     text-decoration: none !important;
 }
 
-.fade-up {
-    opacity: 0;
-    transform: translateY(50px); /* Déplace l'élément vers le bas */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+#final-text-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 20px;
 }
 
-.fade-up.active {
-    opacity: 1;
-    transform: translateY(0); /* Ramène l'élément à sa position normale */
+#final-text {
+    font-size: 48px;
+    display: none;
 }
 
-.fade-down {
-    opacity: 1;
-    transform: translateY(0); /* Déplace l'élément vers le bas */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.fade-down.inactive {
-    opacity: 0;
-    transform: translateY(50px); /* Ramène l'élément à sa position normale */
+#final-button {
+    display: none;
 }
 
 /* Button */
