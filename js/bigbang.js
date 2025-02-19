@@ -12,20 +12,27 @@ let clock = new THREE.Clock(); // Clock to keep track of elapsed time
 // Animate the text
 setTimeout(() => {
     animateText(() => {
-        init();
-        animate();
+        try {
+            init();
+            animate();
+        } catch (err) {
+            console.error(error);
+        }
 
         $("#singularity").hide();
 
         setTimeout(() => {
-            $("#typed-text").fadeOut(500);
-            $(".typed-cursor").fadeOut(500);
+            $("#typed-text").fadeOut(600);
+            $(".typed-cursor").fadeOut(600);
         }, 3000);
 
         setTimeout(() => {
-            $("#final-text").fadeIn(500);
-            $("#final-button").fadeIn(500);
-        }, 7200);
+            $("#final-text-container *").fadeIn(600);
+            $("#final-text-container").css("backdrop-filter", "blur(1px)");
+            $(".moon").fadeIn(600);
+            $(".astronaut").fadeIn(600);
+            params.expansionSpeed = 10;
+        }, 6000);
     });
 }, 0);
 

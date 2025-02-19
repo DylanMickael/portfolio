@@ -5,6 +5,11 @@ body {
     overflow: hidden;
     background-color: #000110;
     font-family: "Josefin Sans", sans-serif;
+    user-select: none;
+}
+
+* {
+    overflow: visible;
 }
 
 canvas {
@@ -90,15 +95,18 @@ a {
     align-items: center;
     justify-content: center;
     row-gap: 20px;
+    background: linear-gradient(to right, #0f0c2900, #302b6300, #24243e00);
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+#final-text-container * {
+    display: none;
 }
 
 #final-text {
     font-size: 48px;
-    display: none;
-}
-
-#final-button {
-    display: none;
 }
 
 /* Button */
@@ -144,18 +152,42 @@ button {
     align-items: center;
     font-family: inherit;
     cursor: pointer;
-    font-weight: 500;
-    font-size: 14px;
     padding: 0.8em 1.3em 0.8em 0.9em;
     color: white;
-    background: #ad5389;
-    background: linear-gradient(to right, #0f0c2950, #302b6350, #24243e50);
-    backdrop-filter: blur(10px);
     border: none;
     position: relative;
     overflow: hidden;
 }
 
+#skip-button {
+    font-size: 14px;
+    background: linear-gradient(to right, #190d8c30, #5f159c40, #3e242430);
+    border-radius: 2px;
+    backdrop-filter: blur(10px);
+}
+#cta-button {
+    font-size: 16px;
+    background: linear-gradient(
+        to right,
+        #9739e0,
+        #1ea6cc,
+        #1ea6cc,
+        #93dcf0
+    );
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(95, 21, 156, 0.8), 0 0 30px rgba(95, 21, 156, 0.6);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+#cta-button:hover {
+    box-shadow: 0 0 20px rgba(95, 21, 156, 1), 0 0 40px rgba(95, 21, 156, 0.8);
+    transform: scale(1.05);
+}
 button::before {
     content: '';
     position: absolute;
@@ -197,4 +229,128 @@ button:hover svg:not(.svg-inline--fa) {
 
 button:hover span {
   transform: translateX(7px);
+}
+
+/* Icon */
+.fa-star:nth-child(1) {
+  color: #817ff7;
+  filter: blur(0.8px);
+  font-size: 22px;
+  animation: reflexion-left 2s infinite;
+}
+.fa-star:nth-child(2) {
+  color: #b8e4ec;
+  filter: blur(0.9px);
+  font-size: 22px;
+  animation: reflexion-right 2s infinite;
+}
+@keyframes reflexion-left {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(-10deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes reflexion-right {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(10deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* Images */
+.astronaut {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    display: none;
+    animation: move 10s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(0em) translateY(0em);
+  }
+  25% {
+    transform: translateY(-1em) translateX(-1em);
+    rotate: -10deg;
+  }
+  50% {
+    transform: translateY(1em) translateX(-1em);
+  }
+  75% {
+    transform: translateY(-1.25em) translateX(1em);
+    rotate: 10deg;
+  }
+  100% {
+    transform: translateX(0em) translateY(0em);
+  }
+}
+
+.moon {
+    display: none;
+    position: fixed;
+    top: 70%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+        circle at 30% 30%,
+        #ffffff,
+        #7899f2
+    );
+    border-radius: 50%;
+    box-shadow: 
+        0 0 10px #2b7de2,
+        0 0 20px #636ee9,
+        0 0 60px #b4c1ec;
+    animation: rotate 10s linear infinite;
+}
+
+.moon::before,
+.moon::after {
+    content: '';
+    position: absolute;
+    background: rgba(0, 0, 200, 0.1);
+    border-radius: 50%;
+}
+
+.moon::before {
+    width: 70px;
+    height: 70px;
+    top: 20%;
+    left: 30%;
+    box-shadow: 
+        0 0 20px rgba(0, 0, 200, 0.2),
+        0 0 40px rgba(0, 0, 200, 0.1);
+}
+
+.moon::after {
+    width: 40px;
+    height: 40px;
+    top: 45%;
+    left: 20%;
+    box-shadow: 
+        0 0 15px rgba(0, 0, 200, 0.2),
+        0 0 30px rgba(0, 0, 200, 0.1);
+}
+
+/* Animation de rotation */
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(80deg);
+    }
 }
