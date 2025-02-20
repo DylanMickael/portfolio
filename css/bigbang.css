@@ -186,7 +186,7 @@ button {
     cursor: pointer;
     box-shadow: 0 0 15px rgba(95, 21, 156, 0.8), 0 0 30px rgba(95, 21, 156, 0.2);
     transition: box-shadow 0.3s ease, transform 0.3s ease;
-    animation: blinking 2s infinite ease;
+    animation: blinking 4.8s infinite ease-in-out;
 }
 
 #cta-button:hover {
@@ -195,14 +195,11 @@ button {
     animation: unset;
 }
 @keyframes blinking {
-  0% {
+  0%, 20%, 40%, 100% {
     transform: scale(1);
   }
-  50% {
+  10%, 30% {
     transform: scale(1.04);
-  }
-  100% {
-    transform: scale(1);
   }
 }
 button::before {
