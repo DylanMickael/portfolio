@@ -31,7 +31,7 @@ setTimeout(() => {
             $("#final-text-container").css("backdrop-filter", "blur(1px)");
             $(".moon").fadeIn(600);
             $(".astronaut").fadeIn(600);
-            params.expansionSpeed = 10;
+            params.expansionSpeed = 20;
         }, 6000);
     });
 }, 0);
@@ -398,10 +398,10 @@ function animateText(startAnimation) {
             "LIKE A SINGULARITY."
         ],
         typeSpeed: 40,
-        backSpeed: 40,
+        backSpeed: 20,
         loop: false,
         showCursor: true,
-        backDelay: 2400,
+        backDelay: 1800,
         cursorChar: "|",
         autoInsertCss: true,
         onComplete: function (self) {
