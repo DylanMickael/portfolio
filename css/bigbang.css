@@ -9,7 +9,7 @@ body {
 }
 
 * {
-    overflow: visible;
+    overflow: hidden !important;
 }
 
 canvas {
@@ -99,6 +99,7 @@ a {
     padding: 20px;
     border-radius: 20px;
     z-index: 2;
+    overflow: visible !important;
 }
 
 #final-text-container * {
@@ -110,6 +111,10 @@ a {
 }
 
 /* Button */
+#final-button {
+    overflow: visible !important;
+}
+
 #button-container {
     position: fixed;
     top: 2%;
@@ -311,10 +316,11 @@ button:hover span {
     );
     border-radius: 50%;
     box-shadow: 
-        0 0 10px #2b7de2,
-        0 0 20px #636ee9,
-        0 0 60px #b4c1ec;
+        0 0 10px #97bff099,
+        0 0 20px #8e93cfa1,
+        0 0 30px #b4c1ec9d;
     animation: rotate 10s linear infinite;
+    z-index: 1;
 }
 
 .moon::before,

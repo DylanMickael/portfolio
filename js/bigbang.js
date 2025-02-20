@@ -27,11 +27,12 @@ setTimeout(() => {
         }, 3000);
 
         setTimeout(() => {
+            params.expansionSpeed = 20;
             $("#final-text-container *").fadeIn(600);
             $("#final-text-container").css("backdrop-filter", "blur(1px)");
             $(".moon").fadeIn(600);
             $(".astronaut").fadeIn(600);
-            params.expansionSpeed = 20;
+            launchShootingStar();
         }, 6000);
     });
 }, 0);
@@ -381,7 +382,6 @@ function generateNebulaTexture() {
     return new THREE.CanvasTexture(canvas);
 }
 
-
 // --------------------------------------------------------------------------------
 // Function: animateText()
 // Uses canvas drawing to create a nebula-like texture with a radial gradient and
@@ -410,4 +410,128 @@ function animateText(startAnimation) {
     };
 
     const typed = new Typed("#typed-text", options);
+}
+
+// --------------------------------------------------------------------------------
+// Function: Shooting Star()
+// Uses canvas drawing to create a nebula-like texture with a radial gradient and
+// random noise to simulate stars and gaseous clouds.
+// --------------------------------------------------------------------------------
+function launchShootingStar() {
+    class ShootingStar {
+        constructor(id) {
+            this.n = 0;
+            this.m = 0;
+            this.defaultOptions = {
+                velocity: 8,
+                starSize: 14,
+                life: 300,
+                beamSize: 500,
+                dir: 1
+            };
+            this.options = {};
+            this.capa = document.querySelector(id) || document.body;
+            this.wW = this.capa.clientWidth;
+            this.hW = this.capa.clientHeight;
+        }
+
+        addBeamPart(x, y) {
+            this.n++;
+            const name = this.getRandom(100, 1);
+            const oldStar = document.getElementById(`star${name}`);
+            if (oldStar) {
+                oldStar.remove();
+            }
+            const starDiv = document.createElement("div");
+            starDiv.id = `star${name}`;
+            this.capa.appendChild(starDiv);
+
+            const hazDiv = document.createElement("div");
+            hazDiv.id = `haz${this.n}`;
+            hazDiv.className = 'haz';
+            hazDiv.style = `position:absolute; color:#0000ff; width:10px; height:10px; font-weight:bold; font-size:${this.options.starSize}px`;
+            hazDiv.textContent = '·';
+            starDiv.appendChild(hazDiv);
+
+            if (this.n > 1) {
+                const prevHaz = document.getElementById(`haz${this.n - 1}`);
+                if (prevHaz) {
+                    prevHaz.style.color = 'rgba(100,100,255,1)';
+                }
+            }
+
+            hazDiv.style.top = `${y + this.n}px`;
+            hazDiv.style.left = `${x + (this.n * this.options.dir)}px`;
+        }
+
+        delTrozoHaz() {
+            this.m++;
+            const haz = document.getElementById(`haz${this.m}`);
+            if (haz) {
+                haz.style.opacity = '0';
+            }
+            if (this.m >= this.options.beamSize) {
+                const paramsDiv = document.getElementById("ShootingStarParams");
+                if (paramsDiv) {
+                    paramsDiv.style.display = 'none';
+                }
+            }
+        }
+
+        getRandom(max, min) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        launchStar(options) {
+            if (typeof options !== "object") {
+                options = {};
+            }
+            this.options = Object.assign({}, this.defaultOptions, options);
+            this.n = 0;
+            this.m = 0;
+            const x = this.getRandom(this.wW - this.options.beamSize - 100, 100);
+            const y = this.getRandom(this.hW - this.options.beamSize - 100, 100);
+
+            for (let i = 0; i < this.options.beamSize; i++) {
+                setTimeout(() => {
+                    this.addBeamPart(x, y);
+                }, this.options.life + (i * this.options.velocity));
+            }
+            for (let i = 0; i < this.options.beamSize; i++) {
+                setTimeout(() => {
+                    this.delTrozoHaz();
+                }, this.options.beamSize + (i * this.options.velocity));
+            }
+
+            const paramsDiv = document.getElementById("ShootingStarParams");
+            if (paramsDiv) {
+                paramsDiv.innerHTML = `Launching shooting star. PARAMS: wW: ${this.wW} - hW: ${this.hW} - life: ${this.options.life} - beamSize: ${this.options.beamSize} - velocity: ${this.options.velocity}`;
+                paramsDiv.style.display = 'block';
+            }
+        }
+
+        launch(everyTime) {
+            if (typeof everyTime !== "number") {
+                everyTime = 10;
+            }
+            everyTime = everyTime * 1000;
+            this.launchStar();
+            setInterval(() => {
+                const options = {
+                    dir: 1,
+                    life: this.getRandom(400, 100),
+                    beamSize: this.getRandom(700, 400),
+                    velocity: this.getRandom(10, 4)
+                };
+                this.launchStar(options);
+            }, everyTime);
+        }
+    }
+
+    const shootingStarObj = new ShootingStar('body');
+    shootingStarObj.launch(4);
+    const shootingStarObj2 = new ShootingStar('body');
+    shootingStarObj2.launch(3);
+    const shootingStarObj3 = new ShootingStar('body');
+    shootingStarObj3.launch(2);
 }
