@@ -413,6 +413,7 @@ function launchFinalAnimation() {
     $("#final-text-container *").delay(1000).fadeIn(1000, function () {
         $(this).animate({ opacity: 1 }, 800);
         $("#final-text-container").css("backdrop-filter", "blur(1px)");
+        params.expansionSpeed = 0;
     });
     
 }
