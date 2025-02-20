@@ -27,13 +27,13 @@ setTimeout(() => {
         }, 3000);
 
         setTimeout(() => {
-            params.expansionSpeed = 20;
-            $("#final-text-container *").fadeIn(600);
-            $("#final-text-container").css("backdrop-filter", "blur(1px)");
-            $(".moon").fadeIn(600);
-            $(".astronaut").fadeIn(600);
+            launchFinalAnimation();
+            params.expansionSpeed = 50;
+        }, 7000);
+
+        setTimeout(() => {
             launchShootingStar();
-        }, 6000);
+        }, 8000);
     });
 }, 0);
 
@@ -47,7 +47,6 @@ $(window).on('load', function () {
 
 // --------------------------------------------------------------------------------
 // Function: init()
-// Sets up the scene, camera, renderer, lights, particle system, post-processing, etc.
 // --------------------------------------------------------------------------------
 function init() {
     // Create a new scene.
@@ -112,8 +111,6 @@ function init() {
 
 // --------------------------------------------------------------------------------
 // Function: createParticleSystem()
-// Creates a particle system where all particles originate at the singularity and
-// are assigned random velocities that will cause them to expand outward.
 // --------------------------------------------------------------------------------
 function createParticleSystem() {
     // Create a BufferGeometry to store particle positions.
@@ -165,7 +162,6 @@ function createParticleSystem() {
 
 // --------------------------------------------------------------------------------
 // Function: generateSprite()
-// Generates a circular, glowing sprite texture using the canvas element.
 // --------------------------------------------------------------------------------
 function generateSprite() {
     const canvas = document.createElement("canvas");
@@ -189,12 +185,11 @@ function generateSprite() {
 
 // --------------------------------------------------------------------------------
 // Function: setupGUI()
-// Sets up a dat.GUI panel to let users control simulation parameters.
 // --------------------------------------------------------------------------------
 function setupGUI() {
     // Define default parameters.
     params = {
-        expansionSpeed: 80, // Scales how fast the particles expand.
+        expansionSpeed: 70, // Scales how fast the particles expand.
         particleSize: 5, // Particle point size.
         bloomStrength: 2, // Bloom effect strength.
         bloomRadius: 0.5, // Bloom effect radius.
@@ -232,7 +227,6 @@ function setupGUI() {
 
 // --------------------------------------------------------------------------------
 // Function: onWindowResize()
-// Adjusts the camera aspect ratio and renderer size when the browser window resizes.
 // --------------------------------------------------------------------------------
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -243,8 +237,6 @@ function onWindowResize() {
 
 // --------------------------------------------------------------------------------
 // Function: animate()
-// The main animation loop: updates particle positions, adds additional cosmic
-// elements as time progresses, and renders the scene.
 // --------------------------------------------------------------------------------
 function animate() {
     requestAnimationFrame(animate);
@@ -274,8 +266,6 @@ function animate() {
 
 // --------------------------------------------------------------------------------
 // Function: updateParticles()
-// Moves each particle outward from the center by updating its position based on
-// its velocity and the user-controlled expansion speed.
 // --------------------------------------------------------------------------------
 function updateParticles(delta) {
     const positions = particleSystem.geometry.attributes.position.array;
@@ -293,8 +283,6 @@ function updateParticles(delta) {
 
 // --------------------------------------------------------------------------------
 // Function: createGalaxyCluster()
-// Creates a secondary particle system to simulate the appearance of galaxies and
-// star clusters in the later universe.
 // --------------------------------------------------------------------------------
 function createGalaxyCluster() {
     // const galaxyCount = 5000; // Number of galaxy particles
@@ -330,8 +318,6 @@ function createGalaxyCluster() {
 
 // --------------------------------------------------------------------------------
 // Function: createNebula()
-// Creates a large, semi-transparent sphere with a custom-generated texture to
-// simulate a nebula that forms as the universe expands.
 // --------------------------------------------------------------------------------
 function createNebula() {
     const nebulaGeometry = new THREE.SphereGeometry(500, 32, 32);
@@ -348,8 +334,6 @@ function createNebula() {
 
 // --------------------------------------------------------------------------------
 // Function: generateNebulaTexture()
-// Uses canvas drawing to create a nebula-like texture with a radial gradient and
-// random noise to simulate stars and gaseous clouds.
 // --------------------------------------------------------------------------------
 function generateNebulaTexture() {
     const size = 512;
@@ -384,24 +368,20 @@ function generateNebulaTexture() {
 
 // --------------------------------------------------------------------------------
 // Function: animateText()
-// Uses canvas drawing to create a nebula-like texture with a radial gradient and
-// random noise to simulate stars and gaseous clouds.
 // --------------------------------------------------------------------------------
 function animateText(startAnimation) {
     const options = {
         strings: [
             "", 
-            "At the beginning,",
-            "what you do may seem small.",
-            "But one day,",
-            "your talent will expand...",
+            "What you do may seem small now.",
+            "But your talent will expand...",
             "LIKE A SINGULARITY."
         ],
-        typeSpeed: 40,
+        typeSpeed: 30,
         backSpeed: 20,
         loop: false,
         showCursor: true,
-        backDelay: 1800,
+        backDelay: 2100,
         cursorChar: "|",
         autoInsertCss: true,
         onComplete: function (self) {
@@ -413,9 +393,32 @@ function animateText(startAnimation) {
 }
 
 // --------------------------------------------------------------------------------
-// Function: Shooting Star()
+// Function: launchFinalAnimation()
 // Uses canvas drawing to create a nebula-like texture with a radial gradient and
 // random noise to simulate stars and gaseous clouds.
+// --------------------------------------------------------------------------------
+function launchFinalAnimation() {
+    $("#final-text-container *").css({ display: 'none', opacity: 0 });
+    $(".moon").css({ display: 'none', opacity: 0, marginLeft: '100px' });
+    $(".astronaut").css({ display: 'none', opacity: 0, marginLeft: '-100px' });
+
+    $(".astronaut").delay(0).fadeIn(800, function () {
+        $(this).animate({ opacity: 1, marginLeft: '0px' }, 800);
+    });
+
+    $(".moon").delay(500).fadeIn(800, function () {
+        $(this).animate({ opacity: 1, marginLeft: '0px' }, 800);
+    });
+
+    $("#final-text-container *").delay(1000).fadeIn(1000, function () {
+        $(this).animate({ opacity: 1 }, 800);
+        $("#final-text-container").css("backdrop-filter", "blur(1px)");
+    });
+    
+}
+
+// --------------------------------------------------------------------------------
+// Function: Shooting Star()
 // --------------------------------------------------------------------------------
 function launchShootingStar() {
     class ShootingStar {
@@ -426,7 +429,7 @@ function launchShootingStar() {
                 velocity: 8,
                 starSize: 14,
                 life: 300,
-                beamSize: 500,
+                beamSize: 1000,
                 dir: 1
             };
             this.options = {};
@@ -456,7 +459,7 @@ function launchShootingStar() {
             if (this.n > 1) {
                 const prevHaz = document.getElementById(`haz${this.n - 1}`);
                 if (prevHaz) {
-                    prevHaz.style.color = 'rgba(100,100,255,1)';
+                    prevHaz.style.color = 'rgba(100,180,255,1)';
                 }
             }
 
@@ -520,7 +523,7 @@ function launchShootingStar() {
                 const options = {
                     dir: 1,
                     life: this.getRandom(400, 100),
-                    beamSize: this.getRandom(700, 400),
+                    beamSize: this.getRandom(2000, 1000),
                     velocity: this.getRandom(10, 4)
                 };
                 this.launchStar(options);
