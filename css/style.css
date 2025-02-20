@@ -292,13 +292,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   background-clip: content-box, border-box;
 }
 
-.primary-btn:hover #container-stars {
-  z-index: 1;
-  background-color: #212121;
-}
-
 .primary-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.08) !important;
 }
 
 .primary-btn:active {
