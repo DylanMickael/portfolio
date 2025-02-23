@@ -28,12 +28,11 @@ setTimeout(() => {
 
         setTimeout(() => {
             launchFinalAnimation();
-            params.expansionSpeed = 50;
         }, 7000);
 
         setTimeout(() => {
             launchShootingStar();
-        }, 10000);
+        }, 8000);
     });
 }, 0);
 
@@ -399,23 +398,16 @@ function animateText(startAnimation) {
 // --------------------------------------------------------------------------------
 function launchFinalAnimation() {
     $("#final-text-container *").css({ display: 'none', opacity: 0 });
-    $(".moon").css({ display: 'none', opacity: 0, marginLeft: '100px' });
-    $(".astronaut").css({ display: 'none', opacity: 0, marginLeft: '-100px' });
-
-    $(".astronaut").delay(0).fadeIn(800, function () {
-        $(this).animate({ opacity: 1, marginLeft: '0px' }, 800);
-    });
-
-    $(".moon").delay(500).fadeIn(800, function () {
-        $(this).animate({ opacity: 1, marginLeft: '0px' }, 800);
-    });
 
     $("#final-text-container *").delay(1000).fadeIn(1000, function () {
         $(this).animate({ opacity: 1 }, 800);
-        $("#final-text-container").css("backdrop-filter", "blur(1px)");
         params.expansionSpeed = 0;
     });
-    
+
+    $("#planet").delay(1200).fadeIn(1200, function () {
+        $(this).animate({ opacity: 1 }, 800);
+    });
+
 }
 
 // --------------------------------------------------------------------------------
