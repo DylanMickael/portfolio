@@ -28,6 +28,7 @@ setTimeout(() => {
 
         setTimeout(() => {
             launchFinalAnimation();
+            launchShootingStar();
         }, 5000);
     });
 }, 0);
@@ -396,7 +397,6 @@ function launchFinalAnimation() {
     $("#final-text-container *").delay(1000).fadeIn(1000, function () {
         $(this).animate({ opacity: 1 }, 800);
         params.expansionSpeed = 5;
-        launchShootingStar();
     });
 
     $("#planet").delay(2000).fadeIn(1000);
@@ -414,18 +414,18 @@ function launchShootingStar() {
     }
 
     function getRandomDelay() {
-        return (Math.random() * 10.5).toFixed(1);
+        return (Math.random() * 2).toFixed(1);
     }
 
     function getRandomDuration() {
-        return Math.floor(Math.random() * (10 - 4 + 1)) + 4;
+        return Math.floor(Math.random() * (10 - 6 + 1)) + 6;
     }
 
-    for (let i = 1; i <= 1; i++) {
+    for (let i = 1; i <= 10; i++) {
         const span = document.createElement('span');
 
         // Randomize values
-        span.style.top = `${getRandomTop(20, 120)}px`;
+        span.style.top = `${getRandomTop(50, 90)}px`;
         span.style.right = '-10px';
         span.style.left = 'initial';
         span.style.animationDelay = `${getRandomDelay()}s`;
