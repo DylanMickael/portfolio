@@ -27,14 +27,8 @@ setTimeout(() => {
         }, 3000);
 
         setTimeout(() => {
-            params.expansionSpeed = 50;
             launchFinalAnimation();
-            launchShootingStar();
-        }, 7000);
-
-        setTimeout(() => {
-            params.expansionSpeed = 10;
-        }, 8000);
+        }, 5000);
     });
 }, 0);
 
@@ -401,11 +395,11 @@ function launchFinalAnimation() {
 
     $("#final-text-container *").delay(1000).fadeIn(1000, function () {
         $(this).animate({ opacity: 1 }, 800);
+        params.expansionSpeed = 5;
+        launchShootingStar();
     });
 
-    $("#planet").delay(1000).fadeIn(1000, function () {
-        $(this).animate({ opacity: 1 }, 800);
-    });
+    $("#planet").delay(2000).fadeIn(1000);
 
 }
 
@@ -427,11 +421,11 @@ function launchShootingStar() {
         return Math.floor(Math.random() * (10 - 4 + 1)) + 4;
     }
 
-    for (let i = 1; i <= 30; i++) {
+    for (let i = 1; i <= 1; i++) {
         const span = document.createElement('span');
 
         // Randomize values
-        span.style.top = `${getRandomTop(20, 150)}px`;
+        span.style.top = `${getRandomTop(20, 120)}px`;
         span.style.right = '-10px';
         span.style.left = 'initial';
         span.style.animationDelay = `${getRandomDelay()}s`;
@@ -439,5 +433,5 @@ function launchShootingStar() {
 
         section.appendChild(span);
     }
-    $("#shooting-star").fadeIn(600);
+    $("#shooting-star").fadeIn(0);
 }
