@@ -395,8 +395,6 @@ function animateText(startAnimation) {
 
 // --------------------------------------------------------------------------------
 // Function: launchFinalAnimation()
-// Uses canvas drawing to create a nebula-like texture with a radial gradient and
-// random noise to simulate stars and gaseous clouds.
 // --------------------------------------------------------------------------------
 function launchFinalAnimation() {
     $("#final-text-container *").css({ display: 'none', opacity: 0 });
@@ -415,5 +413,31 @@ function launchFinalAnimation() {
 // Function: Shooting Star()
 // --------------------------------------------------------------------------------
 function launchShootingStar() {
-    $("section").fadeIn(600);
+    const section = document.querySelector('#shooting-star');
+
+    function getRandomTop(min, max) {
+        return Math.floor(Math.random() * max) + min;
+    }
+
+    function getRandomDelay() {
+        return (Math.random() * 10.5).toFixed(1);
+    }
+
+    function getRandomDuration() {
+        return Math.floor(Math.random() * (10 - 4 + 1)) + 4;
+    }
+
+    for (let i = 1; i <= 30; i++) {
+        const span = document.createElement('span');
+
+        // Randomize values
+        span.style.top = `${getRandomTop(20, 150)}px`;
+        span.style.right = '-10px';
+        span.style.left = 'initial';
+        span.style.animationDelay = `${getRandomDelay()}s`;
+        span.style.animationDuration = `${getRandomDuration()}s`;
+
+        section.appendChild(span);
+    }
+    $("#shooting-star").fadeIn(600);
 }
