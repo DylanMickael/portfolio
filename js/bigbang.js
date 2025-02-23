@@ -27,10 +27,12 @@ setTimeout(() => {
         }, 3000);
 
         setTimeout(() => {
+            params.expansionSpeed = 50;
             launchFinalAnimation();
         }, 7000);
 
         setTimeout(() => {
+            params.expansionSpeed = 10;
             launchShootingStar();
         }, 8000);
     });
@@ -401,10 +403,9 @@ function launchFinalAnimation() {
 
     $("#final-text-container *").delay(1000).fadeIn(1000, function () {
         $(this).animate({ opacity: 1 }, 800);
-        params.expansionSpeed = 0;
     });
 
-    $("#planet").delay(1200).fadeIn(1200, function () {
+    $("#planet").delay(1000).fadeIn(1000, function () {
         $(this).animate({ opacity: 1 }, 800);
     });
 
