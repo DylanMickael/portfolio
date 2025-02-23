@@ -29,11 +29,11 @@ setTimeout(() => {
         setTimeout(() => {
             params.expansionSpeed = 50;
             launchFinalAnimation();
+            launchShootingStar();
         }, 7000);
 
         setTimeout(() => {
             params.expansionSpeed = 10;
-            launchShootingStar();
         }, 8000);
     });
 }, 0);
