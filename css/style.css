@@ -118,7 +118,7 @@ span:not(.typed) {
 }
 
 .presentation-text {
-  background: linear-gradient(to right, #3147c3, #ff0099 90%);
+  /* background: linear-gradient(to right, #3147c3, #ff0099 90%); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
