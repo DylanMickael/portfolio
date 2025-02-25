@@ -112,12 +112,24 @@ span:not(.typed) {
   color: #1b4fde; /* Lien survolé : bleu foncé */
 }
 
+.hello-text {
+  font-size: 88px !important;
+  text-transform: unset !important;
+}
+
+.presentation-text {
+  background: linear-gradient(to right, #3147c3, #ff0099 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 h1 {
   font-size: 70px;
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 35px;
 }
 
 h3 {
@@ -2865,6 +2877,10 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   .hero__text h2 {
     font-size: 40px;
     line-height: 40px;
+  }
+
+  .hello-text {
+    font-size: 52px !important;
   }
 
   .grid-sizer {
