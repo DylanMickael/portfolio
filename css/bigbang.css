@@ -87,7 +87,7 @@ a {
 
 #final-text-container {
     position: fixed;
-    top: 46%;
+    top: 47%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -325,8 +325,8 @@ button:hover span {
     min-width: 800px;
     height: 100vh;
     position: fixed;
-    top: 80%;
-    left: -50%;
+    top: 82%;
+    left: -45%;
     border-radius: 50%;
     background-color: #000116;
     border-color: #5b51ea50;
