@@ -113,8 +113,7 @@ span:not(.typed) {
 }
 
 .hello-text {
-  font-size: 88px !important;
-  text-transform: unset !important;
+  font-size: 64px !important;
 }
 
 .presentation-text {
@@ -2880,7 +2879,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   }
 
   .hello-text {
-    font-size: 52px !important;
+    font-size: 38px !important;
   }
 
   .grid-sizer {
