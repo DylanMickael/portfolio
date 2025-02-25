@@ -87,7 +87,7 @@ a {
 
 #final-text-container {
     position: fixed;
-    top: 46%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
