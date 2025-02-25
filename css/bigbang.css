@@ -89,12 +89,13 @@ hr {
 
 .universe-text {
     text-transform: uppercase;
-    font-size: 68px;
+    font-size: 66px;
     display: inline-block;
     background: linear-gradient(to right, #3149c3, #fe53bb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    font-weight: 600;
 }
 
 a {
@@ -133,10 +134,10 @@ a {
 @media screen and (max-width: 926px) {
     #final-text {
         letter-spacing: 5px;
-        font-size: 28px;
+        font-size: 26px;
     }
     .universe-text {
-        font-size: 48px;
+        font-size: 45px;
     }
 }
 
