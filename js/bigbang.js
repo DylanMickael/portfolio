@@ -28,8 +28,11 @@ setTimeout(() => {
 
         setTimeout(() => {
             launchFinalAnimation();
+        }, 4000);
+
+        setTimeout(() => {
             launchShootingStar();
-        }, 5000);
+        }, 7000);
     });
 }, 0);
 
@@ -185,8 +188,8 @@ function generateSprite() {
 function setupGUI() {
     // Define default parameters.
     params = {
-        expansionSpeed: 70, // Scales how fast the particles expand.
-        particleSize: 5, // Particle point size.
+        expansionSpeed: 80, // Scales how fast the particles expand.
+        particleSize: 2, // Particle point size.
         bloomStrength: 2, // Bloom effect strength.
         bloomRadius: 0.5, // Bloom effect radius.
         bloomThreshold: 0, // Bloom effect threshold.
@@ -395,6 +398,7 @@ function launchFinalAnimation() {
     $("#final-text-container *").css({ display: 'none', opacity: 0 });
 
     $("#final-text-container *").delay(1000).fadeIn(1000, function () {
+        $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
         $(this).animate({ opacity: 1 }, 800);
         params.expansionSpeed = 5;
     });
@@ -425,13 +429,13 @@ function launchShootingStar() {
         const span = document.createElement('span');
 
         // Randomize values
-        span.style.top = `${getRandomTop(50, 90)}px`;
-        span.style.right = '-10px';
-        span.style.left = 'initial';
-        span.style.animationDelay = `${getRandomDelay()}s`;
-        span.style.animationDuration = `${getRandomDuration()}s`;
+        // span.style.top = `${getRandomTop(50, 90)}px`;
+        // span.style.right = '-10px';
+        // span.style.left = 'initial';
+        // span.style.animationDelay = `${getRandomDelay()}s`;
+        // span.style.animationDuration = `${getRandomDuration()}s`;
 
         section.appendChild(span);
     }
-    $("#shooting-star").fadeIn(0);
+    $("#shooting-star").fadeIn(1000);
 }

@@ -886,12 +886,22 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   fill: #1b4fde;
 }
 
+.skills .skills-item.item-cyan:hover .tool {
+  background-color: #1b4fde;
+  color: white !important;
+}
+
 .skills .skills-item.item-red path {
   color: #d06b6bd0;
 }
 
 .skills .skills-item.item-red:hover .icon path {
   color: #fff;
+}
+
+.skills .skills-item.item-red:hover .tool {
+  background-color: #d06b6b;
+  color: white !important;
 }
 
 .skills .skills-item.item-red:hover .icon .svg-path {
@@ -910,6 +920,11 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   fill: #6610f2;
 }
 
+.skills .skills-item.item-indigo:hover .tool {
+  background-color: #6610f2;
+  color: white !important;
+}
+
 .skills .skills-item.item-pink path {
   color: #f3268cd0;
 }
@@ -922,19 +937,26 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   fill: #f3268c;
 }
 
+.skills .skills-item.item-pink:hover .tool {
+  background-color: #f3268c;
+  color: white !important;
+}
+
 .toolbox {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 50px;
+  padding: 0 5%;
 }
 
 .tool {
   padding: 10px;
-  margin: 5px;
+  margin: 8px 5px;
   border: solid 1px;
   border-radius: 50px;
   font-size: 12px;
+  transition: ease-in-out 0.3s;
 }
 .tool:hover {
   color: white;
@@ -1190,7 +1212,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   height: 100%;
   width: 100%;
   background: url(../img/team/team-hover.png);
-  backdrop-filter: blur(1px);
+  backdrop-filter: blur(1.2px);
   content: "";
   z-index: -1;
 }
