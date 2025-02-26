@@ -326,7 +326,7 @@ function createNebula() {
         side: THREE.BackSide,
         transparent: true,
         opacity: 0.5,
-        color: 0x000146, 
+        color: 0x000146,
     });
     nebula = new THREE.Mesh(nebulaGeometry, nebulaMaterial);
     scene.add(nebula);
@@ -372,7 +372,7 @@ function generateNebulaTexture() {
 function animateText(startAnimation) {
     const options = {
         strings: [
-            "", 
+            "",
             "What you do may seem small now.",
             "But your talent will expand...",
             "LIKE A SINGULARITY."

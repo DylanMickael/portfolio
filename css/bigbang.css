@@ -8,6 +8,10 @@ body {
     user-select: none;
 }
 
+html:has( .launch) * {
+    cursor: none !important;
+}
+
 * {
     overflow: hidden !important;
 }
