@@ -1586,7 +1586,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 }
 
 .swiper-slide:not(.swiper-slide-visible) {
-  filter: blur(4px);
+  filter: blur(5px);
 }
 /*---------------------
   Testimonial
