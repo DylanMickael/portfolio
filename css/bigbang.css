@@ -64,9 +64,10 @@ canvas {
 }
 
 hr {
-    border-top: solid white 2px;
-    width: 100px;
-    margin-bottom: 55px;
+    border-bottom: 1px solid #ffffff;
+    width: 150px;
+    margin-top: 20px;
+    margin-bottom: 60px;
 }
 
 /* Text */
@@ -129,6 +130,7 @@ a {
 #final-text {
     letter-spacing: 15px;
     font-size: 36px;
+    transform: scaleY(1.1); 
 }
 
 @media screen and (max-width: 926px) {
@@ -205,7 +207,7 @@ a {
     align-items: center;
     width: 13rem;
     overflow: hidden;
-    height: 3.2rem;
+    height: 3.5rem;
     background-size: 300% 300%;
     backdrop-filter: blur(1rem);
     transition: 0.5s;
@@ -221,6 +223,7 @@ a {
         );
     background-origin: border-box;
     background-clip: content-box, border-box;
+    font-size: 18px;
 }
 
 #cta-button:hover {
@@ -253,14 +256,42 @@ a {
     transform: scale(1.05);
     animation: unset;
 }
-@keyframes blinking {
-  0%, 20%, 40%, 100% {
-    transform: scale(1);
-  }
-  10%, 30% {
-    transform: scale(1.04);
-  }
+
+.launch img {
+    position: relative;
+    transition: all 0.8s;
+    animation: launch 4s forwards;
+    z-index: 999;
 }
+
+@keyframes launch {
+    0% {
+        transform: rotate(45deg);
+    }
+    20%, 22%, 24%, 26%, 28%, 30% {
+        top: 3%;
+    }
+    21%, 23%, 25%, 27%, 29% {
+        top: 4%;
+    }
+    100% {
+        transform: rotate(45deg);
+        top: -80vh;
+    }
+}
+
+.trace {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    z-index: 5;
+    background-color: #0044ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #0044ff, 0 0 20px #0044ff, 0 0 30px #0044ff;
+    pointer-events: none;
+    animation: fadeOut 1s forwards;
+}
+
 button::before {
     content: '';
     position: absolute;
@@ -281,10 +312,10 @@ button:hover::before {
     left: 100%;
 }
 
-button svg:not(.svg-inline--fa) {
-  margin-right: 3px;
-  transform: rotate(30deg);
+button img {
+  margin-right: 5px;
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+  height: 30px;
 }
 
 button .svg-inline--fa {
@@ -296,8 +327,8 @@ button span {
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-button:hover svg:not(.svg-inline--fa) {
-  transform: translateX(5px) rotate(90deg);
+button:hover img {
+  transform: translateY(5px) rotate(45deg);
 }
 
 button:hover span {

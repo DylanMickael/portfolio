@@ -1484,8 +1484,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
 .footer__copyright__text {
   margin-bottom: 0;
   color: #ffffff;
-  opacity: 0.5;
-  font-size: 14px;
+  font-size: 12px;
+  letter-spacing: 2px;
   font-weight: 300;
 }
 .footer__copyright__text i {
@@ -1762,6 +1762,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 25px;
+  text-transform: uppercase;
 }
 
 .resume .resume-item {
@@ -1821,6 +1822,10 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   top: 0;
   background: #1b4fde;
   border: 2px solid #1b4fde;
+}
+
+.resume-subtitle {
+  text-transform: none !important;
 }
 
 /*---------------------

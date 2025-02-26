@@ -36,6 +36,7 @@ setTimeout(() => {
     });
 }, 0);
 
+$('#cta-button').on('click', animateRocket);
 /*------------------
     Preloader
 --------------------*/
@@ -438,4 +439,58 @@ function launchShootingStar() {
         section.appendChild(span);
     }
     $("#shooting-star").fadeIn(1000);
+}
+
+// --------------------------------------------------------------------------------
+// Function: Animate Rocket()
+// --------------------------------------------------------------------------------
+function animateRocket() {
+    setTimeout(() => {
+        window.location.pathname = "/portfolio.html";
+    }, 4000);
+
+    $(this).addClass('launch');
+
+    let trail = [];
+    const trailLength = 20;
+    const $image = $(".launch img");
+
+    const $followImage = $('<img>');
+    $followImage.css({
+        position: 'absolute',
+        transform: 'rotate(45deg)',
+        height: '30px'
+    });
+    $followImage.attr('src', '/img/cursors/rocket-launch.png');
+
+    $('body').append($followImage);
+
+    function updateTrail() {
+        const trace = document.createElement('div');
+        trace.classList.add('trace');
+        document.body.appendChild(trace);
+
+        const offset = $image.offset();
+        trace.style.left = `${offset.left + 20}px`;
+        trace.style.top = `${offset.top + 32}px`;
+
+        trail.push(trace);
+
+        if (trail.length > trailLength) {
+            const oldTrace = trail.shift();
+            oldTrace.remove();
+        }
+
+        $followImage.css({
+            left: `${offset.left + 7}px`,
+            top: `${offset.top}px`
+        });
+    }
+
+    function animate() {
+        updateTrail();
+        requestAnimationFrame(animate);
+    }
+
+    animate();
 }
