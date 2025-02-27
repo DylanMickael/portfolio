@@ -377,11 +377,11 @@ function animateText(startAnimation) {
             "But your talent will expand...",
             "LIKE A SINGULARITY."
         ],
-        typeSpeed: 30,
+        typeSpeed: 25,
         backSpeed: 20,
         loop: false,
         showCursor: true,
-        backDelay: 2100,
+        backDelay: 2000,
         cursorChar: "|",
         autoInsertCss: true,
         onComplete: function (self) {
