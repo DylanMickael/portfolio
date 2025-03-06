@@ -187,16 +187,16 @@ ol {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ffffff; /* Black color */
+  background: #ffffff;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffffff; /* Darker black color on hover */
+  background: #f0f0f0;
 }
 
 ::-webkit-scrollbar-track {
-  background: #000116; /* Darker background */
+  background: #000116;
 }
 
 /*---------------------
@@ -216,7 +216,7 @@ section>.container {
   margin-top: 200px;
 }
 section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
-  margin-top: 400px;
+  margin-top: 475px;
 }
 .section-title {
   margin-bottom: 50px;
