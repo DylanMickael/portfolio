@@ -1485,7 +1485,7 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   margin-bottom: 0;
   color: #ffffff;
   font-size: 12px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   font-weight: 300;
 }
 .footer__copyright__text i {

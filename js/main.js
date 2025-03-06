@@ -31,6 +31,25 @@
         }
     });
 
+
+    /*------------------
+        Header
+    --------------------*/
+    let lastScroll = 0;
+
+    $(window).on('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > lastScroll) {
+            $('.header').fadeOut(400);
+        } else {
+            $('.header').fadeIn(600);
+        }
+
+
+        lastScroll = currentScroll;
+    });
+
     /*------------------
         Scroll
     --------------------*/
