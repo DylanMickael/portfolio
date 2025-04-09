@@ -1562,6 +1562,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
     );
   background-origin: border-box;
   background-clip: content-box, border-box;
+  background-size: 300% 300%;
+  animation: gradient_301 5s ease infinite;
 }
 
 .about__text__desc {
@@ -1726,6 +1728,8 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   -webkit-transition: all, 0.5s;
   -o-transition: all, 0.5s;
   transition: all, 0.5s;
+  background-size: 300% 300%;
+  animation: gradient_301 5s ease infinite;
 }
 
 /*---------------------
