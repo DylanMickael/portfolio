@@ -363,6 +363,22 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
     left: 100%;
 }
 
+.icon__button {
+  font-size: 12px;
+  margin-right: 8px;
+  margin-bottom: 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover .icon__button {
+  font-size: 16px !important;
+}
+
+.icon__interface {
+  position: absolute;
+  z-index: 999;
+}
+
 /* Preloder */
 #preloder {
   position: fixed;

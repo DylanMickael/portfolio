@@ -404,12 +404,13 @@ function launchFinalAnimation() {
         params.expansionSpeed = 5;
     });
 
-    $("#planet").delay(2000).fadeIn(1000);
-
+    setTimeout(() => {
+        $("#planet").css({ display: 'block', opacity: 1 });
+    }, 2000);
 }
 
 // --------------------------------------------------------------------------------
-// Function: Shooting Star()
+// Function: launchShootingStar()
 // --------------------------------------------------------------------------------
 function launchShootingStar() {
     const section = document.querySelector('#shooting-star');
@@ -442,7 +443,7 @@ function launchShootingStar() {
 }
 
 // --------------------------------------------------------------------------------
-// Function: Animate Rocket()
+// Function: animateRocket()
 // --------------------------------------------------------------------------------
 function animateRocket() {
     setTimeout(() => {
@@ -493,4 +494,26 @@ function animateRocket() {
     }
 
     animate();
+}
+
+// --------------------------------------------------------------------------------
+// Function: initIllustrationPosition()
+// --------------------------------------------------------------------------------
+function initIllustrationPosition() {
+    const icons = document.querySelectorAll(".icon__interface");
+
+    const icon_positions = [
+        { x: 76, y: 62, size: 38, transform: "" },
+    ];
+
+    icons.forEach((icon, index) => {
+        if (icon_positions[index]) {
+            const { x, y, size, transform } = icon_positions[index];
+
+            icon.style.left = `${x}%`;
+            icon.style.top = `${y}%`;
+            icon.style.width = `${size}%`;
+            icon.style.transform = `${transform}`;
+        }
+    });
 }
