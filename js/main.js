@@ -289,22 +289,22 @@
     });
 
     /*------------------
-        Icons
+        Illustrations
     --------------------*/
-    const icons = document.querySelectorAll(".icon__interface");
+    const illustrations = document.querySelectorAll(".illustration");
 
-    const icon_positions = [
-        { x: 76, y: 62, size: 38, transform: "" },
+    const illustration_position = [
+        { x: 70, y: 10, size: 5, transform: "" },
     ];
 
-    icons.forEach((icon, index) => {
-        if (icon_positions[index]) {
-            const { x, y, size, transform } = icon_positions[index];
+    illustrations.forEach((illustration, index) => {
+        if (illustration_position[index]) {
+            const { x, y, size, transform } = illustration_position[index];
 
-            icon.style.left = `${x}%`;
-            icon.style.top = `${y}%`;
-            icon.style.width = `${size}%`;
-            icon.style.transform = `${transform}`;
+            illustration.style.left = `${x}%`;
+            illustration.style.top = `${y}%`;
+            illustration.style.width = `${size}%`;
+            illustration.style.transform = `${transform}`;
         }
     });
 

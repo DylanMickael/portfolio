@@ -500,20 +500,20 @@ function animateRocket() {
 // Function: initIllustrationPosition()
 // --------------------------------------------------------------------------------
 function initIllustrationPosition() {
-    const icons = document.querySelectorAll(".icon__interface");
+    const illustrations = document.querySelectorAll(".illustration");
 
-    const icon_positions = [
+    const illustration_positions = [
         { x: 76, y: 62, size: 38, transform: "" },
     ];
 
-    icons.forEach((icon, index) => {
-        if (icon_positions[index]) {
-            const { x, y, size, transform } = icon_positions[index];
+    illustrations.forEach((illustration, index) => {
+        if (illustration_positions[index]) {
+            const { x, y, size, transform } = illustration_positions[index];
 
-            icon.style.left = `${x}%`;
-            icon.style.top = `${y}%`;
-            icon.style.width = `${size}%`;
-            icon.style.transform = `${transform}`;
+            illustration.style.left = `${x}%`;
+            illustration.style.top = `${y}%`;
+            illustration.style.width = `${size}%`;
+            illustration.style.transform = `${transform}`;
         }
     });
 }
