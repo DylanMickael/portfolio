@@ -161,14 +161,14 @@ a {
 
 #final-text {
     letter-spacing: 15px;
-    font-size: 36px;
+    font-size: 37px;
     transform: scaleY(1.1); 
 }
 
 @media screen and (max-width: 926px) {
     #final-text {
         letter-spacing: 5px;
-        font-size: 26px;
+        font-size: 27px;
     }
     .universe-text {
         font-size: 45px;
@@ -218,18 +218,30 @@ a {
 }
 
 #skip-button {
+    padding: 0;
+    color: #ffffff;
     display: flex;
+    justify-content: center;
     align-items: center;
-    font-family: inherit;
-    cursor: pointer;
-    padding: 0.8em 1.3em 0.8em 0.9em;
-    color: white;
-    border: none;
-    position: relative;
+    width: 5rem;
+    overflow: hidden;
+    height: 2.5rem;
+    background-size: 300% 300%;
+    backdrop-filter: blur(1rem);
+    transition: 0.5s;
+    animation: gradient_301 5s ease infinite;
+    border: double 2px transparent !important;
+    background-image: linear-gradient(#000116, #000116),
+        linear-gradient(
+        137.48deg,
+        #1b4fde 10%,
+        #fe53bb 45%,
+        #8f51ea 67%,
+        #0044ff 87%
+        );
+    background-origin: border-box;
+    background-clip: content-box, border-box;
     font-size: 14px;
-    background: linear-gradient(to right, #190d8c30, #5f159c40, #3e242430);
-    border-radius: 2px;
-    backdrop-filter: blur(10px);
 }
 #cta-button {
     padding: 0;
