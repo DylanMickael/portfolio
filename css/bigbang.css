@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'aerospace';
+    src: url('/fonts/vipnagorgialla/Vipnagorgialla\ Rg.otf') format('opentype');
+    font-weight: normal;
+}
+
 body {
     height: 100vh;
     position: relative;
