@@ -188,13 +188,12 @@ ol {
 
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 6px;
   height: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #ffffff;
-  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
