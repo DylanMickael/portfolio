@@ -927,6 +927,40 @@ a:hover .icon__button {
   box-shadow: 0px 5px 35px 0px rgba(0, 0, 0, 0.1);
 }
 
+.skills .skills-item.item-white path {
+  fill: #fff;
+}
+
+.skills .skills-item.item-white:hover .icon path {
+  fill: #1b4fded0;
+}
+
+.skills .skills-item.item-white:hover .icon svg .svg-path {
+  fill: #fff;
+}
+
+.skills .skills-item.item-white:hover .tool {
+  background-color: #fff;
+  color: #1b4fde !important;
+}
+
+.skills .skills-item.item-pure-red path {
+  fill: #da2a62cd;
+}
+
+.skills .skills-item.item-pure-red:hover .icon path {
+  fill: #fff;
+}
+
+.skills .skills-item.item-pure-red:hover .icon svg .svg-path {
+  fill: #da2a62cd;
+}
+
+.skills .skills-item.item-pure-red:hover .tool {
+  background-color: #da2a62cd;
+  color: #fff !important;
+}
+
 .skills .skills-item.item-cyan path {
   fill: #1b4fded0;
 }
@@ -1029,6 +1063,15 @@ a:hover .icon__button {
 .tool.purple {
   border-color: #d06b6b;
   color: #d06b6b !important;
+}
+.tool.white {
+  border-color: #fff;
+  color: #fff !important;
+  opacity: 0.8;
+}
+.tool.pure-red {
+  border-color: #da2a62;
+  color: #da2a62 !important;
 }
 .tool.blue:hover {
   border-color: #0044ff;
