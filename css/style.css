@@ -928,20 +928,20 @@ a:hover .icon__button {
 }
 
 .skills .skills-item.item-white path {
-  fill: #fff;
+  fill: #b0b4c1;
 }
 
 .skills .skills-item.item-white:hover .icon path {
-  fill: #1b4fded0;
-}
-
-.skills .skills-item.item-white:hover .icon svg .svg-path {
   fill: #fff;
 }
 
+.skills .skills-item.item-white:hover .icon svg .svg-path {
+  fill: #b0b4c1;
+}
+
 .skills .skills-item.item-white:hover .tool {
-  background-color: #fff;
-  color: #1b4fde !important;
+  background-color: #b0b4c1;
+  color: #fff !important;
 }
 
 .skills .skills-item.item-pure-red path {
