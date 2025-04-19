@@ -105,7 +105,7 @@ hr {
 
 .universe-text {
     text-transform: uppercase;
-    font-size: 66px;
+    font-size: 69px;
     display: inline-block;
     background: 
     linear-gradient(
@@ -167,7 +167,7 @@ a {
 
 #final-text {
     letter-spacing: 15px;
-    font-size: 37px;
+    font-size: 40px;
     transform: scaleY(1.1); 
 }
 
