@@ -32,7 +32,7 @@ html {
 body {
   height: 100%;
   background-color: #000116;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "poppins", sans-serif;
   cursor: url("/img/cursors/rocket-launch.png") 0 0, auto !important;
   -webkit-font-smoothing: antialiased;
 }

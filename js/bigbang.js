@@ -32,7 +32,7 @@ setTimeout(() => {
 
         setTimeout(() => {
             launchShootingStar();
-        }, 7000);
+        }, 6000);
     });
 }, 0);
 
