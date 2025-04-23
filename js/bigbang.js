@@ -189,7 +189,7 @@ function generateSprite() {
 function setupGUI() {
     // Define default parameters.
     params = {
-        expansionSpeed: 80, // Scales how fast the particles expand.
+        expansionSpeed: 90, // Scales how fast the particles expand.
         particleSize: 2, // Particle point size.
         bloomStrength: 2, // Bloom effect strength.
         bloomRadius: 0.5, // Bloom effect radius.
