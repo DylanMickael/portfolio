@@ -939,8 +939,7 @@ a:hover .icon__button {
 }
 
 .skills .skills-item.item-white path {
-  fill: #fff;
-  opacity: 0.9;
+  fill: #b0b4c1;
 }
 
 .skills .skills-item.item-white:hover .icon path {
@@ -948,13 +947,11 @@ a:hover .icon__button {
 }
 
 .skills .skills-item.item-white:hover .icon svg .svg-path {
-  fill: #fff;
-  opacity: 0.9;
+  fill: #b0b4c1;
 }
 
 .skills .skills-item.item-white:hover .tool {
-  background-color: #fff;
-  opacity: 0.9;
+  background-color: #b0b4c1;
   color: #fff !important;
 }
 
