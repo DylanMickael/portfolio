@@ -396,13 +396,14 @@ function animateText(startAnimation) {
 // Function: launchFinalAnimation()
 // --------------------------------------------------------------------------------
 function launchFinalAnimation() {
-    $("#final-text-container *").css({ display: 'none', opacity: 0 });
-
-    $("#final-text-container *").delay(1000).fadeIn(1000, function () {
-        $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
-        $(this).animate({ opacity: 1 }, 800);
-        params.expansionSpeed = 5;
-    });
+    $("#final-text-container *")
+        .css({ display: 'none', opacity: 0 })
+        .delay(1000).fadeIn(1000, function () {
+            $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
+            $(this).animate({ opacity: 1 }, 800);
+            $("#final-button").addClass('fade-up');
+            params.expansionSpeed = 5;
+        });
 
     setTimeout(() => {
         $("#planet").css({ display: 'block', opacity: 1 });

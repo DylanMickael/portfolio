@@ -186,6 +186,21 @@ a {
     overflow: visible !important;
 }
 
+.fade-up {
+    animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 #button-container {
     position: fixed;
     top: 2%;
@@ -249,6 +264,7 @@ a {
     background-clip: content-box, border-box;
     font-size: 14px;
 }
+
 #cta-button {
     padding: 0;
     color: #ffffff;
