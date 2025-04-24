@@ -1947,8 +1947,8 @@ a:hover .icon__button {
   opacity: 1;
 }
 
-.portfolio__item__video {
-  height: 240px;
+.portfolio__item__image {
+  height: 280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1959,6 +1959,7 @@ a:hover .icon__button {
       -ms-flex-pack: center;
           justify-content: center;
   margin-bottom: 28px;
+  background-color: #020828;
 }
 .portfolio__item__video .play-btn {
   display: inline-block;
