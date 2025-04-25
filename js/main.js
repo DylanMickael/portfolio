@@ -221,10 +221,10 @@
     function aosInit() {
         AOS.init({
             offsetTop: 0,
-            duration: 600,
+            duration: 500,
             easing: 'ease-in-out',
             once: false,
-            mirror: true
+            mirror: false
         });
     }
     window.addEventListener('load', aosInit);

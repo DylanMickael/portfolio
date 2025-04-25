@@ -207,7 +207,7 @@ section>.container {
   margin-top: 200px;
 }
 section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
-  margin-top: 700px;
+  margin-top: 600px;
 }
 .section-title {
   margin-bottom: 50px;
