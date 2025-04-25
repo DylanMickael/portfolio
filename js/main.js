@@ -1,12 +1,3 @@
-/*  ---------------------------------------------------
-    Template Name: Dreams
-    Description: Dreams wedding template
-    Author: Colorib
-    Author URI: https://colorlib.com/
-    Version: 1.0
-    Created: Colorib
----------------------------------------------------------  */
-
 'use strict';
 
 (function ($) {
@@ -197,13 +188,6 @@
     });
 
     /*------------------
-        Video Popup
-    --------------------*/
-    $('.video-popup').magnificPopup({
-        type: 'iframe'
-    });
-
-    /*------------------
         Counter
     --------------------*/
     $('.counter_num').each(function () {
@@ -343,13 +327,40 @@
             userId
         ).then(
             (response) => {
-                alert('Your message has been sent!');
+                Toastify({
+                    text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
+                    duration: 3000,
+                    gravity: "bottom",
+                    position: "right",
+                    className: "toast-success",
+                    stopOnFocus: true,
+                    style: {
+                        background: "#020828",
+                        zIndex: 9999,
+                        marginBottom: '50px'
+                    },
+                    onClick: function () { }
+                }).showToast();
                 form.reset();
             },
             (err) => {
-                alert('Oops... ' + JSON.stringify(error));
+                Toastify({
+                    text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
+                    duration: 3000,
+                    gravity: "bottom",
+                    position: "right",
+                    className: "toast-error",
+                    stopOnFocus: true,
+                    escapeMarkup: false,
+                    style: {
+                        background: "#020828",
+                        zIndex: 9999,
+                        marginBottom: '50px'
+                    },
+                    onClick: function () { }
+                }).showToast();
             }
-        );
+        );        
     });
 
     /*------------------
