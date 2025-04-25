@@ -220,7 +220,7 @@
     --------------------*/
     function aosInit() {
         AOS.init({
-            offsetTop: 1,
+            offsetTop: 0,
             duration: 600,
             easing: 'ease-in-out',
             once: false,
