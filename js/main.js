@@ -306,6 +306,9 @@
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+
+        $("#sending-button-text").text("Sending...");
+
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const phone = document.getElementById('phone').value;
@@ -329,7 +332,7 @@
             (response) => {
                 Toastify({
                     text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
-                    duration: 3000,
+                    duration: 5000,
                     gravity: "bottom",
                     position: "right",
                     className: "toast-success",
@@ -342,11 +345,12 @@
                     onClick: function () { }
                 }).showToast();
                 form.reset();
+                $("#sending-button-text").text("Sending...");
             },
             (err) => {
                 Toastify({
                     text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
-                    duration: 3000,
+                    duration: 5000,
                     gravity: "bottom",
                     position: "right",
                     className: "toast-error",
@@ -359,6 +363,7 @@
                     },
                     onClick: function () { }
                 }).showToast();
+                $("#sending-button-text").text("Send Message");
             }
         );        
     });
