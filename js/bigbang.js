@@ -28,11 +28,11 @@ setTimeout(() => {
 
         setTimeout(() => {
             launchFinalAnimation();
-        }, 4000);
+        }, 3500);
 
         setTimeout(() => {
             launchShootingStar();
-        }, 6000);
+        }, 5500);
     });
 }, 0);
 
@@ -400,7 +400,7 @@ function launchFinalAnimation() {
         .css({ display: 'none', opacity: 0 })
         .delay(1000).fadeIn(1000, function () {
             $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
-            $(this).animate({ opacity: 1 }, 800);
+            $(this).animate({ opacity: 1 }, 1000);
             $("#final-button").addClass('fade-up');
             params.expansionSpeed = 5;
         });

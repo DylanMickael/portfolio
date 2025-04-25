@@ -19,12 +19,6 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
-@font-face {
-    font-family: 'aerospace';
-    src: url('/fonts/vipnagorgialla/Vipnagorgialla\ Rg.otf') format('opentype');
-    font-weight: normal;
-}
-
 html {
   overflow-x: hidden !important;
 }
