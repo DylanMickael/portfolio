@@ -402,7 +402,6 @@ function launchFinalAnimation() {
             $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
             $(this).animate({ opacity: 1 }, 1000);
             $("#final-button").addClass('fade-up');
-            params.expansionSpeed = 5;
         });
 
     setTimeout(() => {
