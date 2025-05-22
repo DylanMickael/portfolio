@@ -872,6 +872,7 @@ a:hover .icon__button {
 
 .skills .skills-item .icon {
   margin: 0 auto;
+  margin-bottom: 20px;
   width: 100px;
   height: 100px;
   display: flex;
