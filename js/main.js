@@ -1,290 +1,514 @@
-'use strict';
+// --------------------------------------------------------------------------------
+// Global variables for scene, camera, renderer, controls, and simulation objects.
+// --------------------------------------------------------------------------------
+let scene, camera, renderer, controls, composer;
+let particleSystem, particlePositions, particleVelocities;
+let galaxySystem = null; // Will hold the galaxy cluster (added later)
+let nebula = null; // Will hold the nebula background (added later)
+let particleCount = 50000; // Number of particles for the Big Bang explosion
+let params; // Object to store parameters controlled by the UI
+let clock = new THREE.Clock(); // Clock to keep track of elapsed time
 
-(function ($) {
-
-    /*------------------
-        Preloader
-    --------------------*/
-    $(window).on('load', function () {
-        $(".loader").fadeOut();
-        $("#preloder").delay(200).fadeOut("slow");
-
-        /*------------------
-            Portfolio filter
-        --------------------*/
-        $('.portfolio__filter li').on('click', function () {
-            $('.portfolio__filter li').removeClass('active');
-            $(this).addClass('active');
-        });
-        if ($('.portfolio__gallery').length > 0) {
-            var containerEl = document.querySelector('.portfolio__gallery');
-            var mixer = mixitup(containerEl);
-        }
-    });
-
-
-    /*------------------
-        Header
-    --------------------*/
-    let lastScroll = 0;
-
-    $(window).on('scroll', () => {
-        const currentScroll = window.pageYOffset;
-
-        if (currentScroll > lastScroll) {
-            $('.header').fadeOut(400);
-        } else {
-            $('.header').fadeIn(600);
+// Animate the text
+setTimeout(() => {
+    animateText(() => {
+        try {
+            init();
+            animate();
+        } catch (err) {
+            console.error(error);
         }
 
+        $("#singularity").hide();
 
-        lastScroll = currentScroll;
+        setTimeout(() => {
+            $("#typed-text").fadeOut(600);
+            $(".typed-cursor").fadeOut(600);
+        }, 3000);
+
+        setTimeout(() => {
+            launchFinalAnimation();
+        }, 3500);
+
+        setTimeout(() => {
+            launchShootingStar();
+        }, 5500);
+    });
+}, 0);
+
+$('#cta-button').on('click', animateRocket);
+/*------------------
+    Preloader
+--------------------*/
+$(window).on('load', function () {
+    $(".loader").fadeOut();
+    $("#preloder").delay(200).fadeOut("slow");
+});
+
+// --------------------------------------------------------------------------------
+// Function: init()
+// --------------------------------------------------------------------------------
+function init() {
+    // Create a new scene.
+    scene = new THREE.Scene();
+
+    // Create a perspective camera.
+    camera = new THREE.PerspectiveCamera(
+        60,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        10000
+    );
+    camera.position.set(0, 0, 200);
+
+    // Create the WebGL renderer with antialiasing and set its size.
+    renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true; // Enable shadow maps for added realism.
+    renderer.setClearColor(0x000110); // Set background color of the animation
+    document.body.appendChild(renderer.domElement);
+
+    // Add OrbitControls so the user can explore the scene.
+    controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; // Smooth out camera movement.
+    controls.dampingFactor = 0.05;
+
+    // Add ambient light to gently light the scene.
+    const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+    scene.add(ambientLight);
+
+    // Add a point light at the origin to simulate the intense energy of the Big Bang.
+    const pointLight = new THREE.PointLight(0xffffff, 2, 1000);
+    pointLight.position.set(0, 0, 0);
+    pointLight.castShadow = true;
+    scene.add(pointLight);
+
+    // Set up post-processing using EffectComposer and add a bloom pass to simulate volumetric light.
+    composer = new THREE.EffectComposer(renderer);
+    let renderPass = new THREE.RenderPass(scene, camera);
+    composer.addPass(renderPass);
+    let bloomPass = new THREE.UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        1.5, // strength
+        0.4, // radius
+        0.85 // threshold
+    );
+    bloomPass.threshold = 0;
+    bloomPass.strength = 0;
+    bloomPass.radius = 0;
+    composer.addPass(bloomPass);
+
+    // Create the primary particle system representing the initial Big Bang explosion.
+    createParticleSystem();
+
+    // Set up UI controls with dat.GUI.
+    setupGUI();
+
+    // Listen for window resize events.
+    window.addEventListener("resize", onWindowResize, false);
+}
+
+// --------------------------------------------------------------------------------
+// Function: createParticleSystem()
+// --------------------------------------------------------------------------------
+function createParticleSystem() {
+    // Create a BufferGeometry to store particle positions.
+    const geometry = new THREE.BufferGeometry();
+
+    // Allocate arrays for particle positions and velocities.
+    particlePositions = new Float32Array(particleCount * 3);
+    particleVelocities = new Float32Array(particleCount * 3);
+
+    // Initialize each particle at (0,0,0) with a random outward velocity.
+    for (let i = 0; i < particleCount; i++) {
+        // All particles start at the singularity (with a tiny offset if desired).
+        particlePositions[i * 3] = 0;
+        particlePositions[i * 3 + 1] = 0;
+        particlePositions[i * 3 + 2] = 0;
+
+        // Randomly determine the particle's direction (spherical coordinates).
+        let theta = Math.random() * 2 * Math.PI;
+        let phi = Math.acos(Math.random() * 2 - 1);
+        let speed = Math.random() * 0.5 + 0.5; // Speed between 0.5 and 1.0.
+        particleVelocities[i * 3] = speed * Math.sin(phi) * Math.cos(theta);
+        particleVelocities[i * 3 + 1] =
+            speed * Math.sin(phi) * Math.sin(theta);
+        particleVelocities[i * 3 + 2] = speed * Math.cos(phi);
+    }
+
+    // Attach the positions to the geometry.
+    geometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(particlePositions, 3)
+    );
+
+    // Create a PointsMaterial using a custom sprite texture for a soft glow.
+    const sprite = generateSprite();
+    const material = new THREE.PointsMaterial({
+        size: 2,
+        map: sprite,
+        blending: THREE.AdditiveBlending,
+        depthTest: false,
+        transparent: true,
+        opacity: 0.8,
+        color: 0xffffff,
     });
 
-    /*------------------
-        Scroll
-    --------------------*/
-    window.addEventListener("scroll", function () {
-        const header = document.querySelector(".header");
-        if (window.scrollY > 20) {
-            header.classList.add("scrolled");
-        } else {
-            header.classList.remove("scrolled");
-        }
+    // Create the particle system and add it to the scene.
+    particleSystem = new THREE.Points(geometry, material);
+    scene.add(particleSystem);
+}
+
+// --------------------------------------------------------------------------------
+// Function: generateSprite()
+// --------------------------------------------------------------------------------
+function generateSprite() {
+    const canvas = document.createElement("canvas");
+    canvas.width = 64;
+    canvas.height = 64;
+    const context = canvas.getContext("2d");
+
+    // Create a radial gradient for the glow.
+    const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.2, "rgba(255, 255, 255, 1)");
+    gradient.addColorStop(0.4, "rgba(40, 73, 206, 0.8)");
+    gradient.addColorStop(1, "#000116");
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 64, 64);
+
+    // Create and return a texture from the canvas.
+    const texture = new THREE.CanvasTexture(canvas);
+    return texture;
+}
+
+// --------------------------------------------------------------------------------
+// Function: setupGUI()
+// --------------------------------------------------------------------------------
+function setupGUI() {
+    // Define default parameters.
+    params = {
+        expansionSpeed: 100, // Scales how fast the particles expand.
+        particleSize: 2, // Particle point size.
+        bloomStrength: 2, // Bloom effect strength.
+        bloomRadius: 0.5, // Bloom effect radius.
+        bloomThreshold: 0, // Bloom effect threshold.
+    };
+
+    // Create a GUI panel.
+    // const gui = new dat.GUI({ width: 300 });
+    // gui.add(params, "expansionSpeed", 10, 200).name("Expansion Speed");
+    // gui
+    //     .add(params, "particleSize", 1, 10)
+    //     .name("Particle Size")
+    //     .onChange((value) => {
+    //         particleSystem.material.size = value;
+    //     });
+    // gui
+    //     .add(params, "bloomStrength", 0, 5)
+    //     .name("Bloom Strength")
+    //     .onChange((value) => {
+    //         composer.passes[1].strength = value;
+    //     });
+    // gui
+    //     .add(params, "bloomRadius", 0, 1)
+    //     .name("Bloom Radius")
+    //     .onChange((value) => {
+    //         composer.passes[1].radius = value;
+    //     });
+    // gui
+    //     .add(params, "bloomThreshold", 0, 1)
+    //     .name("Bloom Threshold")
+    //     .onChange((value) => {
+    //         composer.passes[1].threshold = value;
+    //     });
+}
+
+// --------------------------------------------------------------------------------
+// Function: onWindowResize()
+// --------------------------------------------------------------------------------
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    composer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// --------------------------------------------------------------------------------
+// Function: animate()
+// --------------------------------------------------------------------------------
+function animate() {
+    requestAnimationFrame(animate);
+
+    // Compute the time elapsed since the last frame.
+    const delta = clock.getDelta();
+
+    // Update the positions of the explosion particles.
+    updateParticles(delta);
+
+    // Gradually add additional elements to the universe:
+    // After 10 seconds, add a galaxy cluster; after 15 seconds, add a nebula.
+    let elapsed = clock.elapsedTime;
+    if (elapsed > 50 && !galaxySystem) {
+        createGalaxyCluster();
+    }
+    if (elapsed > 0 && !nebula) {
+        createNebula();
+    }
+
+    // Update camera controls.
+    controls.update();
+
+    // Render the scene using the post-processing composer (which includes bloom).
+    composer.render(delta);
+}
+
+// --------------------------------------------------------------------------------
+// Function: updateParticles()
+// --------------------------------------------------------------------------------
+function updateParticles(delta) {
+    const positions = particleSystem.geometry.attributes.position.array;
+    for (let i = 0; i < particleCount; i++) {
+        let index = i * 3;
+        positions[index] +=
+            particleVelocities[index] * params.expansionSpeed * delta;
+        positions[index + 1] +=
+            particleVelocities[index + 1] * params.expansionSpeed * delta;
+        positions[index + 2] +=
+            particleVelocities[index + 2] * params.expansionSpeed * delta;
+    }
+    particleSystem.geometry.attributes.position.needsUpdate = true;
+}
+
+// --------------------------------------------------------------------------------
+// Function: createGalaxyCluster()
+// --------------------------------------------------------------------------------
+function createGalaxyCluster() {
+    // const galaxyCount = 5000; // Number of galaxy particles
+    const galaxyCount = 0; // Number of galaxy particles
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(galaxyCount * 3);
+
+    // Randomly distribute galaxy particles in a large spherical region.
+    for (let i = 0; i < galaxyCount; i++) {
+        positions[i * 3] = (Math.random() - 0.5) * 1000;
+        positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;
+        positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
+    }
+    geometry.setAttribute(
+        "position",
+        new THREE.BufferAttribute(positions, 3)
+    );
+
+    // Create a PointsMaterial for the galaxy cluster with smaller, fainter points.
+    const material = new THREE.PointsMaterial({
+        size: 1.5,
+        color: 0xaaaaaa,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        opacity: 0.5,
+        depthTest: false,
     });
 
+    // Create the galaxy particle system and add it to the scene.
+    galaxySystem = new THREE.Points(geometry, material);
+    scene.add(galaxySystem);
+}
 
-    /*------------------
-        Background Set
-    --------------------*/
-    $('.set-bg').each(function () {
-        var bg = $(this).data('setbg');
-        $(this).css('background-image', 'url(' + bg + ')');
+// --------------------------------------------------------------------------------
+// Function: createNebula()
+// --------------------------------------------------------------------------------
+function createNebula() {
+    const nebulaGeometry = new THREE.SphereGeometry(500, 32, 32);
+    const nebulaMaterial = new THREE.MeshBasicMaterial({
+        map: generateNebulaTexture(),
+        side: THREE.BackSide,
+        transparent: true,
+        opacity: 0.5,
+        color: 0x000146,
     });
+    nebula = new THREE.Mesh(nebulaGeometry, nebulaMaterial);
+    scene.add(nebula);
+}
 
-    //Masonary
-    $('.work__gallery').masonry({
-        itemSelector: '.work__item',
-        columnWidth: '.grid-sizer',
-        gutter: 10
-    });
+// --------------------------------------------------------------------------------
+// Function: generateNebulaTexture()
+// --------------------------------------------------------------------------------
+function generateNebulaTexture() {
+    const size = 512;
+    const canvas = document.createElement("canvas");
+    canvas.width = size;
+    canvas.height = size;
+    const context = canvas.getContext("2d");
 
-    /*------------------
-		Navigation
-	--------------------*/
-    $(".mobile-menu").slicknav({
-        prependTo: '#mobile-menu-wrap',
-        allowParentLinks: true
-    });
+    // Create a radial gradient as the base of the nebula.
+    const gradient = context.createRadialGradient(
+        size / 2,
+        size / 2,
+        size / 8,
+        size / 2,
+        size / 2,
+        size / 2
+    );
+    gradient.addColorStop(0, "rgba(50, 0, 100, 0.8)");
+    gradient.addColorStop(1, "rgba(0, 0, 0, 0.0)");
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, size, size);
 
-    /*------------------
-		Hero Slider
-	--------------------*/
-    $('.hero__slider').owlCarousel({
+    // Add random noise dots to simulate stars and gas.
+    for (let i = 0; i < 1000; i++) {
+        context.fillStyle = "rgba(255,255,255," + Math.random() * 0.1 + ")";
+        const x = Math.random() * size;
+        const y = Math.random() * size;
+        context.fillRect(x, y, 1, 1);
+    }
+    return new THREE.CanvasTexture(canvas);
+}
+
+// --------------------------------------------------------------------------------
+// Function: animateText()
+// --------------------------------------------------------------------------------
+function animateText(startAnimation) {
+    const options = {
+        strings: [
+            "",
+            "What you do may seem small now.",
+            "But your talent will expand...",
+            "LIKE A SINGULARITY."
+        ],
+        typeSpeed: 25,
+        backSpeed: 20,
         loop: false,
-        dots: false,
-        mouseDrag: false,
-        animateOut: '',
-        animateIn: '',
-        items: 1,
-        margin: 0,
-        smartSpeed: 0,
-        autoHeight: false,
-        autoplay: false,
-    });
-
-    /*------------------
-        Testimonial Slider
-    --------------------*/
-    $(".about-slider").owlCarousel({
-        items: 1,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        nav: false,
-        dots: true,
-    });
-
-    var dot = $('.about-slider .owl-dot');
-    dot.each(function () {
-        var index = $(this).index() + 1;
-        if (index < 10) {
-            $(this).html('0').append(index);
-        } else {
-            $(this).html(index);
+        showCursor: true,
+        backDelay: 2000,
+        cursorChar: "|",
+        autoInsertCss: true,
+        onComplete: function (self) {
+            startAnimation();
         }
-    });
+    };
 
-    // Background Image Handling
-    $(".set-bg").each(function () {
-        var bg = $(this).attr("data-setbg");
-        $(this).css("background-image", "url(" + bg + ")");
-    });
+    const typed = new Typed("#typed-text", options);
+}
 
-    /*------------------
-        Testimonial Slider
-    --------------------*/
-    $(".testimonial__slider").owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 3,
-        dots: true,
-        dotsEach: 2,
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-        responsive: {
-            992: {
-                items: 3
-            },
-            768: {
-                items: 2
-            },
-            320: {
-                items: 1
-            }
-        }
-    });
-
-    /*------------------
-        Latest Slider
-    --------------------*/
-    $(".latest__slider").owlCarousel({
-        loop: true,
-        margin: 0,
-        items: 1,
-        dots: true,
-        dotsEach: 2,
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-    });
-
-    /*------------------
-        Logo Slider
-    --------------------*/
-    $(".logo__carousel").owlCarousel({
-        loop: true,
-        margin: 100,
-        items: 6,
-        dots: false,
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-        responsive: {
-            992: {
-                items: 5
-            },
-            768: {
-                items: 4
-            },
-            480: {
-                items: 3
-            },
-            320: {
-                items: 2
-            }
-        }
-    });
-
-    /*------------------
-        Counter
-    --------------------*/
-    $('.counter_num').each(function () {
-        $(this).prop('Counter', 0).animate({
-            Counter: $(this).text()
-        }, {
-            duration: 4000,
-            easing: 'swing',
-            step: function (now) {
-                $(this).text(Math.ceil(now));
-            }
+// --------------------------------------------------------------------------------
+// Function: launchFinalAnimation()
+// --------------------------------------------------------------------------------
+function launchFinalAnimation() {
+    $("#final-text-container *")
+        .css({ display: 'none', opacity: 0 })
+        .delay(1000).fadeIn(1000, function () {
+            $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
+            $(this).animate({ opacity: 1 }, 1000);
+            $("#final-button").addClass('fade-up');
         });
-    });
 
-    /*------------------
-        Image Swiper
-    --------------------*/
-    var swiper = new Swiper(".mySwiper", {
-        effect: "cards",
-        grabCursor: true,
-        initialSlide: 1,
-        cardsEffect: {
-            perSlideOffset: 10,
-            perSlideRotate: 2,
-        },
-    });
+    setTimeout(() => {
+        $("#planet").css({ display: 'block', opacity: 1 });
+    }, 2000);
+}
 
-    /*------------------
-        AOS
-    --------------------*/
-    function aosInit() {
-        AOS.init({
-            offsetTop: 0,
-            duration: 500,
-            easing: 'ease-in-out',
-            once: false,
-            mirror: false
-        });
+// --------------------------------------------------------------------------------
+// Function: launchShootingStar()
+// --------------------------------------------------------------------------------
+function launchShootingStar() {
+    const section = document.querySelector('#shooting-star');
+
+    function getRandomTop(min, max) {
+        return Math.floor(Math.random() * max) + min;
     }
-    window.addEventListener('load', aosInit);
 
-    /*------------------
-        Typed
-    --------------------*/
-    const selectTyped = document.querySelector('.typed');
-    if (selectTyped) {
-        let typed_strings = selectTyped.getAttribute('data-typed-items');
-        typed_strings = typed_strings.split(',');
-        new Typed('.typed', {
-            strings: typed_strings,
-            loop: true,
-            typeSpeed: 80,
-            backSpeed: 50,
-            backDelay: 2000
+    function getRandomDelay() {
+        return (Math.random() * 2).toFixed(1);
+    }
+
+    function getRandomDuration() {
+        return Math.floor(Math.random() * (10 - 6 + 1)) + 6;
+    }
+
+    for (let i = 1; i <= 10; i++) {
+        const span = document.createElement('span');
+
+        // Randomize values
+        // span.style.top = `${getRandomTop(50, 90)}px`;
+        // span.style.right = '-10px';
+        // span.style.left = 'initial';
+        // span.style.animationDelay = `${getRandomDelay()}s`;
+        // span.style.animationDuration = `${getRandomDuration()}s`;
+
+        section.appendChild(span);
+    }
+    $("#shooting-star").fadeIn(1000);
+}
+
+// --------------------------------------------------------------------------------
+// Function: animateRocket()
+// --------------------------------------------------------------------------------
+function animateRocket() {
+    setTimeout(() => {
+        window.location.pathname = "/portfolio.html";
+    }, 4000);
+
+    $(this).addClass('launch');
+
+    let trail = [];
+    const trailLength = 20;
+    const $image = $(".launch img");
+
+    const $followImage = $('<img>');
+    $followImage.css({
+        position: 'absolute',
+        transform: 'rotate(45deg)',
+        height: '30px'
+    });
+    $followImage.attr('src', '/img/cursors/rocket-launch.png');
+
+    $('body').append($followImage);
+
+    function updateTrail() {
+        const trace = document.createElement('div');
+        trace.classList.add('trace');
+        document.body.appendChild(trace);
+
+        const offset = $image.offset();
+        trace.style.left = `${offset.left + 20}px`;
+        trace.style.top = `${offset.top + 32}px`;
+
+        trail.push(trace);
+
+        if (trail.length > trailLength) {
+            const oldTrace = trail.shift();
+            oldTrace.remove();
+        }
+
+        $followImage.css({
+            left: `${offset.left + 7}px`,
+            top: `${offset.top}px`
         });
     }
 
-    /*------------------
-        Balls
-    --------------------*/
-    const balls = document.querySelectorAll(".ball");
+    function animate() {
+        updateTrail();
+        requestAnimationFrame(animate);
+    }
 
-    const positions = [
-        { x: -16, y: -18, size: 300 },
-        { x: 98, y: 80, size: 300 },
-        { x: 98, y: -10, size: 300 },
-        { x: 70, y: -15, size: 220 },
-        { x: -10, y: -40, size: 250 },
-        { x: 92, y: -40, size: 300 },
-        { x: -15, y: -40, size: 300 },
-        { x: 90, y: -20, size: 300 },
-        { x: -12, y: -40, size: 300 },
-    ];
+    animate();
+}
 
-    balls.forEach((ball, index) => {
-        if (positions[index]) {
-            const { x, y, size } = positions[index];
-
-            ball.style.left = `${x}%`;
-            ball.style.top = `${y}%`;
-            ball.style.width = `${size}px`;
-            ball.style.height = `${size}px`;
-        }
-    });
-
-    /*------------------
-        Illustrations
-    --------------------*/
+// --------------------------------------------------------------------------------
+// Function: initIllustrationPosition()
+// --------------------------------------------------------------------------------
+function initIllustrationPosition() {
     const illustrations = document.querySelectorAll(".illustration");
 
-    const illustration_position = [
-        { x: 70, y: 10, size: 5, transform: "" },
+    const illustration_positions = [
+        { x: 76, y: 62, size: 38, transform: "" },
     ];
 
     illustrations.forEach((illustration, index) => {
-        if (illustration_position[index]) {
-            const { x, y, size, transform } = illustration_position[index];
+        if (illustration_positions[index]) {
+            const { x, y, size, transform } = illustration_positions[index];
 
             illustration.style.left = `${x}%`;
             illustration.style.top = `${y}%`;
@@ -292,193 +516,4 @@
             illustration.style.transform = `${transform}`;
         }
     });
-
-    /*------------------
-        Mail Sender
-    --------------------*/
-    const userId = 'eqWIHcTZUiGnh6cH5';
-    const templateId = 'template_ue7t2rb';
-    const serviceId = 'service_2f6kux5';
-
-    const recipientEmail = 'mickaelrakotonarivo@gmail.com';
-
-    const form = document.getElementById('contact-form');
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        $("#sending-button-text").text("Sending...");
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
-
-        const templateParams = {
-            to_name: 'Dylan',
-            to_email: recipientEmail,
-            from_name: name,
-            from_email: email,
-            from_phone: phone,
-            message: `${message}`,
-        };
-
-        emailjs.send(
-            serviceId,
-            templateId,
-            templateParams,
-            userId
-        ).then(
-            (response) => {
-                Toastify({
-                    text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
-                    duration: 5000,
-                    gravity: "bottom",
-                    position: "right",
-                    className: "toast-success",
-                    stopOnFocus: true,
-                    style: {
-                        background: "#020828",
-                        zIndex: 9999,
-                        marginBottom: '50px'
-                    },
-                    onClick: function () { }
-                }).showToast();
-                form.reset();
-                $("#sending-button-text").text("Sending...");
-            },
-            (err) => {
-                Toastify({
-                    text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
-                    duration: 5000,
-                    gravity: "bottom",
-                    position: "right",
-                    className: "toast-error",
-                    stopOnFocus: true,
-                    escapeMarkup: false,
-                    style: {
-                        background: "#020828",
-                        zIndex: 9999,
-                        marginBottom: '50px'
-                    },
-                    onClick: function () { }
-                }).showToast();
-                $("#sending-button-text").text("Send Message");
-            }
-        );        
-    });
-
-    /*------------------
-        Menu Scroll
-    --------------------*/
-    function determinerSectionActive() {
-        const links = document.querySelectorAll('#navigation li a');
-
-        const scrollPosition = window.scrollY;
-
-        const sections = ['hero', 'resume', 'services', 'skills', 'projects', 'contact'];
-
-        sections.forEach((sectionId, index) => {
-            const sectionTop = document.getElementById(sectionId).offsetTop;
-            const sectionBottom = sectionTop + document.getElementById(sectionId).offsetHeight;
-
-            if (scrollPosition >= (sectionTop - 500) && scrollPosition < sectionBottom) {
-                links.forEach((link) => link.parentElement.classList.remove('active'));
-                links[index].parentElement.classList.add('active');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', determinerSectionActive);
-
-    document.addEventListener('DOMContentLoaded', function () {
-        determinerSectionActive();
-    });
-
-    /*------------------
-        CV Download
-    --------------------*/
-    $("#btn-download-cv").click(function () {
-        window.open('pdf/CV-Dylan-RAKOTONARIVO.pdf', '_blank');
-    });
-
-    /*------------------
-        Parallax Scroll
-    --------------------*/
-    var rellax = new Rellax('.rellax');
-
-    /*------------------
-        Cursor
-    --------------------*/
-    let trail = [];
-    const trailLength = 20;
-
-    document.addEventListener('mousemove', (e) => {
-        const cursor = document.createElement('div');
-        cursor.classList.add('cursor');
-        document.body.appendChild(cursor);
-
-        cursor.style.left = `${e.pageX + 20}px`;
-        cursor.style.top = `${e.pageY + 20}px`;
-
-        trail.push(cursor);
-
-        if (trail.length > trailLength) {
-            const oldCursor = trail.shift();
-            oldCursor.remove();
-        }
-    });
-
-    /*------------------
-        Social Media link
-    --------------------*/
-    function updateSocialVisibility() {
-        if ($(".slicknav_menu").css("display") === "none") {
-            $("#footer__nav__social").addClass("d-none");
-        } else {
-            $("#footer__nav__social").removeClass("d-none");
-        }
-    }
-
-    updateSocialVisibility();
-
-    $(window).on('resize', updateSocialVisibility);
-
-    /*------------------
-        Theatre
-    --------------------*/
-    var { core, studio } = Theatre;
-
-    // Restore to set new animations
-    studio.initialize();
-    studio.ui.hide();
-    // studio.ui.restore();
-
-    // Export states of new animations and replace the down below
-    const project = core.getProject("Portolio", {state:state});
-    const scene1 = project.sheet("Contact Card Twinkle");
-
-    const theatreCard = scene1.object("Contact Card", {
-        size: {
-            w: 0,
-            h: 0,
-        }, 
-        position: {
-            x: 0,
-            y: 0
-        },
-        opacity: 100
-    });
-
-    theatreCard.onValuesChange((newValues) => {
-        // Uncomment to animate the card using size or position
-        // $(".card").css( "width" ,`${newValues.size.w}`);
-        // $(".card").css("height", `${newValues.size.h}`);
-        // $(".card").css("transform", `translate(${newValues.position.x}px, ${newValues.position.y}px)`);
-        $(".card").css("opacity", `${newValues.opacity}%`);
-    });
-
-    $(".contact-button").on("click", () => {
-        scene1.sequence.play({range: [0, 3]});
-    });
-})(jQuery);
+}
