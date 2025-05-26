@@ -919,7 +919,7 @@ a:hover .icon__button {
 }
 
 .skills .skills-item.item-white path {
-  fill: #b0b4c1;
+  fill: #ddd;
 }
 
 .skills .skills-item.item-white:hover .icon path {
@@ -1057,7 +1057,7 @@ a:hover .icon__button {
 .tool.white {
   border-color: #fff;
   color: #fff !important;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 .tool.pure-red {
   border-color: #da2a62;

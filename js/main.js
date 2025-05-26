@@ -397,15 +397,36 @@ function animateText(startAnimation) {
 // --------------------------------------------------------------------------------
 function launchFinalAnimation() {
     $("#final-text-container *")
+        .not("hr")
+        .not("#description-text")
         .css({ display: 'none', opacity: 0 })
         .delay(1000).fadeIn(1000, function () {
             $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
             $(this).animate({ opacity: 1 }, 1000);
             $("#final-button").addClass('fade-up');
+            $("#final-text").addClass('fade-down');
+        });
+
+    $("#final-text-container hr")
+        .css({
+            width: '0%',
+        })
+        .delay(1400)
+        .fadeIn(500, function () {
+            $(this).animate({
+                width: '80%',
+            }, 500);
+        });
+    
+    $("#final-text-container #description-text")
+        .css({ display: 'none', opacity: 0 })
+        .delay(1800)
+        .fadeIn(1000, function () {
+            $(this).animate({ opacity: 1 }, 500);
         });
 
     setTimeout(() => {
-        $("#planet").css({ display: 'block', opacity: 1 });
+        $("#planet").css({ opacity: 1, top: "85%" });
     }, 2000);
 }
 

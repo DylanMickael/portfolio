@@ -208,6 +208,21 @@ a {
     }
 }
 
+.fade-down {
+    animation: fadeDown 1s forwards;
+}
+
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scaleY(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1.1);
+    }
+}
+
 #button-container {
     position: fixed;
     top: 2%;
@@ -415,20 +430,20 @@ button:hover span {
     min-width: 800px;
     height: 100vh;
     position: fixed;
-    top: 85%;
+    top: 88%;
     left: -25%;
     border-radius: 50%;
     background-color: #000116;
     border-color: #5b51ea50;
-    box-shadow: 0 0 60px 10px #451bde90,
-                0 0 100px 20px #451bde50,
-                0 0 140px 30px #451bde20,
-                inset 0 0 50px 2px #451bde90,
-                inset 0 0 80px 3px #5b51ea50,
-                inset 0 0 120px 4px #7253fe10;
+    box-shadow: 0 0 62px 8px #451bde60,
+                0 0 105px 17px #451bde40,
+                0 0 145px 25px #451bde1A,
+                inset 0 0 48px 1px #451bde70,
+                inset 0 0 78px 2px #5b51ea40,
+                inset 0 0 115px 3px #7253fe0D;
     overflow: hidden;
     opacity: 0;
-    transition: all 2000ms;
+    transition: all 1200ms;
 }
 
 /* Stars */
