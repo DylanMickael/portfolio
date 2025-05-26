@@ -2359,7 +2359,6 @@ a:hover .icon__button {
   background: #6225e6;
   transition: 1s;
   box-shadow: 6px 6px 0 black;
-  transform: skewX(-15deg);
   border: none;
 }
 
@@ -2379,18 +2378,11 @@ a:hover .icon__button {
 
 .cta:hover .second {
   transition: 0.5s;
-  margin-right: 45px;
+  margin-right: 10px;
 }
 
 .span {
   transform: skewX(15deg);
-}
-
-.second {
-  width: 20px;
-  margin-left: 30px;
-  position: relative;
-  top: 12%;
 }
 
 .one {
