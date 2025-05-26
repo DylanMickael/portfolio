@@ -1846,7 +1846,7 @@ a:hover .icon__button {
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
+  line-height: 1.4;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
@@ -2424,7 +2424,7 @@ a:hover .icon__button {
 }
 
 
-/*--------------------------------- Responsive Media Quaries -----------------------------*/
+/*--------------------------------- Responsive Media Queries -----------------------------*/
 @media only screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
@@ -2829,5 +2829,12 @@ a:hover .icon__button {
 
   .blog__details__quote {
     padding: 30px 40px 35px 35px;
+  }
+
+  .swiper-slide img {
+      width: 75%;
+      height: 80%;
+      object-fit: cover;
+      transform: translateY(30px);
   }
 }
