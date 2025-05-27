@@ -368,7 +368,7 @@
                 }).showToast();
                 $("#sending-button-text").text("Send Message");
             }
-        );        
+        );
     }
 
     // --------------------------------------------------------------------------------
@@ -476,9 +476,7 @@
 
             // Ensure 'state' is defined or loaded appropriately.
             // Using an empty object as a fallback if 'state' is not globally defined.
-            const projectState = typeof state !== 'undefined' ? state : {}; 
-            console.log(projectState);
-
+            const projectState = typeof state !== 'undefined' ? state : {};
             const project = core.getProject("Portolio", { state: projectState });
             const scene1 = project.sheet("Contact Card Twinkle");
 
