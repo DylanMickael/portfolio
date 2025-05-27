@@ -6,12 +6,6 @@
     // Global or module-level variables
     // --------------------------------------------------------------------------------
     let lastScrollPosition = 0;
-    const emailConfig = {
-        userId: 'eqWIHcTZUiGnh6cH5',
-        templateId: 'template_ue7t2rb',
-        serviceId: 'service_2f6kux5',
-        recipientEmail: 'mickaelrakotonarivo@gmail.com'
-    };
 
     // --------------------------------------------------------------------------------
     // Document Ready and Window Load Event Handlers
@@ -303,83 +297,79 @@
     }
 
     // --------------------------------------------------------------------------------
-    // Function: handleMailFormSubmit()
-    // Desc: Handles the submission of the contact form using EmailJS.
-    // --------------------------------------------------------------------------------
-    function handleMailFormSubmit(e) {
-        e.preventDefault();
-        const form = e.target;
-
-        $("#sending-button-text").text("Sending...");
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
-
-        const templateParams = {
-            to_name: 'Dylan',
-            to_email: emailConfig.recipientEmail,
-            from_name: name,
-            from_email: email,
-            from_phone: phone,
-            message: message,
-        };
-
-        emailjs.send(
-            serviceId,
-            templateId,
-            templateParams,
-            userId
-        ).then(
-            (response) => {
-                Toastify({
-                    text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
-                    duration: 5000,
-                    gravity: "bottom",
-                    position: "right",
-                    className: "toast-success",
-                    stopOnFocus: true,
-                    style: {
-                        background: "#020828",
-                        zIndex: 9999,
-                        marginBottom: '50px'
-                    },
-                    onClick: function () { }
-                }).showToast();
-                form.reset();
-                $("#sending-button-text").text("Send Message");
-            },
-            (err) => {
-                Toastify({
-                    text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
-                    duration: 5000,
-                    gravity: "bottom",
-                    position: "right",
-                    className: "toast-error",
-                    stopOnFocus: true,
-                    escapeMarkup: false,
-                    style: {
-                        background: "#020828",
-                        zIndex: 9999,
-                        marginBottom: '50px'
-                    },
-                    onClick: function () { }
-                }).showToast();
-                $("#sending-button-text").text("Send Message");
-            }
-        );
-    }
-
-    // --------------------------------------------------------------------------------
     // Function: initMailSender()
     // Desc: Initializes the contact form submission listener.
     // --------------------------------------------------------------------------------
     function initMailSender() {
         const form = document.getElementById('contact-form');
-        if (form) {
-            form.addEventListener('submit', handleMailFormSubmit);
-        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            document.getElementById("send-message-button").setAttribute("disabled", true);
+            $("#sending-button-text").text("Sending...");
+            $(".second").hide();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+
+            const mailSenderConfig = {
+                userId: 'eqWIHcTZUiGnh6cH5',
+                templateId: 'template_ue7t2rb',
+                serviceId: 'service_2f6kux5',
+                templateParams: {
+                    to_name: 'Dylan',
+                    to_email: 'mickaelrakotonarivo@gmail.com',
+                    from_name: name,
+                    from_email: email,
+                    from_phone: phone,
+                    message: `${message}`,
+                }
+            }
+
+            emailjs.send(mailSenderConfig).then(
+                () => {
+                    Toastify({
+                        text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
+                        duration: 5000,
+                        gravity: "bottom",
+                        position: "right",
+                        className: "toast-success",
+                        stopOnFocus: true,
+                        style: {
+                            background: "#020828",
+                            zIndex: 9999,
+                            marginBottom: '50px'
+                        },
+                        onClick: function () { }
+                    }).showToast();
+                    form.reset();
+                },
+                () => {
+                    Toastify({
+                        text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
+                        duration: 5000,
+                        gravity: "bottom",
+                        position: "right",
+                        className: "toast-error",
+                        stopOnFocus: true,
+                        escapeMarkup: false,
+                        style: {
+                            background: "#020828",
+                            zIndex: 9999,
+                            marginBottom: '50px'
+                        },
+                        onClick: function () { }
+                    }).showToast();
+                }
+            );
+
+            document.getElementById("send-message-button").removeAttribute("disabled");
+            $("#sending-button-text").text("Send Message");
+            $(".second").show();
+        });
     }
 
     // --------------------------------------------------------------------------------

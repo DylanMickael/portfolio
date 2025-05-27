@@ -2362,16 +2362,20 @@ a:hover .icon__button {
   border: none;
 }
 
-.cta:focus {
+.cta:disabled {
+  cursor: url("/img/cursors/rocket-launch.png") 0 0, auto !important;
+}
+
+.cta:not(:disabled):focus {
   outline: none;
 }
 
-.cta:hover {
+.cta:not(:disabled):hover {
   transition: 0.5s;
   box-shadow: 10px 10px 0 #290e8c;
 }
 
-.cta .second {
+.cta:not(:disabled) .second {
   transition: 0.5s;
   margin-right: 0px;
 }
