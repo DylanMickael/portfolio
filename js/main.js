@@ -45,6 +45,19 @@
         $('#cta-button').on('click', animateRocket);
     });
 
+    $(window).on('load', function () {
+        handlePreloader();
+        initAOS();
+    });
+
+    // --------------------------------------------------------------------------------
+    // Function: handlePreloader()
+    // --------------------------------------------------------------------------------
+    function handlePreloader() {
+        $(".loader").fadeOut();
+        $("#preloder").delay(200).fadeOut("slow");
+    }
+
     // --------------------------------------------------------------------------------
     // Function: init()
     // --------------------------------------------------------------------------------
@@ -107,6 +120,19 @@
 
         // Listen for window resize events.
         window.addEventListener("resize", onWindowResize, false);
+    }
+
+    // --------------------------------------------------------------------------------
+    // Function: initAOS()
+    // --------------------------------------------------------------------------------
+    function initAOS() {
+        AOS.init({
+            offsetTop: 1,
+            duration: 1200,
+            easing: 'ease-in-out',
+            once: false,
+            mirror: true
+        });
     }
 
     // --------------------------------------------------------------------------------

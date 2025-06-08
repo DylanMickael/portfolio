@@ -329,7 +329,12 @@
                 }
             }
 
-            emailjs.send(mailSenderConfig).then(
+            emailjs.send(
+                mailSenderConfig.serviceId,
+                mailSenderConfig.templateId,
+                mailSenderConfig.templateParams,
+                mailSenderConfig.userId
+            ).then(
                 () => {
                     Toastify({
                         text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
@@ -347,7 +352,8 @@
                     }).showToast();
                     form.reset();
                 },
-                () => {
+                (error) => {
+                    console.error('Failed to send email:', error);
                     Toastify({
                         text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
                         duration: 5000,

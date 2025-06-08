@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="vendors/aos/aos.css" type="text/css">
     <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="css/loader.css" type="text/css">
     <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body data-aos="fade-in">
@@ -82,17 +83,5 @@
     <!-- GUI library can be loaded at any point -->
     <script src="vendors/threejs/dat.gui.min.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        function aosInit() {
-            AOS.init({
-                offsetTop: 1,
-                duration: 1200,
-                easing: 'ease-in-out',
-                once: false,
-                mirror: true
-            });
-        }
-        window.addEventListener('load', aosInit);
-    </script>
 </body>
 </html>

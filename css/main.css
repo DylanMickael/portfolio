@@ -1,3 +1,6 @@
+/*----------------------------------------*/
+/* Base CSS
+/*----------------------------------------*/
 body {
     height: 100vh;
     position: relative;
@@ -20,6 +23,9 @@ canvas {
     display: block;
 }
 
+/*----------------------------------------*/
+/* Layout & Containers                    */
+/*----------------------------------------*/
 #main {
     display: flex;
     flex-direction: column;
@@ -29,93 +35,6 @@ canvas {
     top: 65%;
     left: 50%;
     transform: translate(-50%, 0);
-}
-
-#singularity {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -10px);
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: rgba(200, 200, 255, 0.8);
-    box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
-                0 0 20px 8px rgba(200, 210, 255, 0.7), 
-                0 0 30px 10px rgba(100, 110, 255, 0.5);
-    animation: scintillement 2s infinite alternate;
-}
-
-@keyframes scintillement {
-    0% {
-        opacity: 1;
-        box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
-                    0 0 20px 8px rgba(200, 210, 255, 0.7), 
-                    0 0 30px 10px rgba(100, 110, 255, 0.5);
-    }
-    50% {
-        opacity: 0.8;
-        box-shadow: 0 0 15px 7px rgba(200, 210, 255, 1), 
-                    0 0 25px 10px rgba(200, 210, 255, 0.8), 
-                    0 0 30px 10px rgba(100, 110, 255, 0.6);
-    }
-    100% {
-        opacity: 1;
-        box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
-                    0 0 20px 8px rgba(200, 210, 255, 0.7), 
-                    0 0 30px 10px rgba(100, 110, 255, 0.5);
-    }
-}
-
-hr {
-    border-bottom: 1px solid #a0a0ff30;
-    width: 80%;
-    margin-bottom: 40px;
-}
-
-.illustration {
-  position: absolute;
-  z-index: 999;
-}
-
-/* Text */
-.text-container {
-    width: 100%;
-    position: absolute;
-    text-align: center;
-    color: white;
-    font-size: 20px;
-    font-family: "Play", sans-serif;
-    position: fixed;
-    top: 90%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.text-container * {
-    display: inline-block;
-}
-
-@keyframes gradient_301 {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-a {
-    text-decoration: none !important;
-}
-
-#stretch {
-    font-weight: normal;
 }
 
 #final-text-container {
@@ -136,6 +55,37 @@ a {
 
 #final-text-container * {
     display: none;
+}
+
+#main hr, hr {
+    border-bottom: 1px solid #a0a0ff30;
+    width: 80%;
+    margin-bottom: 40px;
+}
+
+.illustration {
+    position: absolute;
+    z-index: 999;
+}
+
+/*----------------------------------------*/
+/* Text Styles                            */
+/*----------------------------------------*/
+.text-container {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    font-family: "Play", sans-serif;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-container * {
+    display: inline-block;
 }
 
 #final-text {
@@ -188,39 +138,11 @@ a {
     }
 }
 
-/* Button */
+/*----------------------------------------*/
+/* Button Styles                          */
+/*----------------------------------------*/
 #final-button {
     overflow: visible !important;
-}
-
-.fade-up {
-    animation: fadeUp 1s forwards;
-}
-
-@keyframes fadeUp {
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.fade-down {
-    animation: fadeDown 1s forwards;
-}
-
-@keyframes fadeDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px) scaleY(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scaleY(1.1);
-    }
 }
 
 #button-container {
@@ -231,33 +153,6 @@ a {
     justify-content: center;
     column-gap: 10px;
     animation: appearAnimation 10s forwards;
-}
-
-@keyframes appearAnimation {
-    0% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    12% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    20%, 30% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    25%, 35% {
-        transform: translateX(0);
-        opacity: 0.4;
-    }
-    40%, 80% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100%);
-        opacity: 0;
-    }
 }
 
 #skip-button {
@@ -325,59 +220,18 @@ a {
     animation: none;
 }
 
-@keyframes gradient_301 {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 #cta-button:hover {
     box-shadow: 0 0 20px rgba(95, 21, 156, 1), 0 0 40px rgba(95, 21, 156, 0.2);
     transform: scale(1.05);
     animation: unset;
 }
 
-.launch img {
-    position: relative;
-    transition: all 0.8s;
-    animation: launch 4s forwards;
-    z-index: 999;
+a {
+    text-decoration: none !important;
 }
 
-@keyframes launch {
-    0% {
-        transform: rotate(45deg);
-    }
-    20%, 22%, 24%, 26%, 28%, 30% {
-        top: 3%;
-    }
-    21%, 23%, 25%, 27%, 29% {
-        top: 4%;
-    }
-    100% {
-        transform: rotate(45deg);
-        top: -80vh;
-    }
-}
-
-.trace {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    z-index: 5;
-    background-color: #0044ff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #0044ff, 0 0 20px #0044ff, 0 0 30px #0044ff;
-    pointer-events: none;
-    animation: fadeOut 1s forwards;
+#stretch {
+    font-weight: normal;
 }
 
 button::before {
@@ -423,7 +277,155 @@ button:hover span {
   transform: translateX(7px);
 }
 
-/* Planet */
+/*----------------------------------------*/
+/* Animations & Keyframes                 */
+/*----------------------------------------*/
+@keyframes gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.fade-up {
+    animation: fadeUp 1s forwards;
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-down {
+    animation: fadeDown 1s forwards;
+}
+
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scaleY(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scaleY(1.1);
+    }
+}
+
+@keyframes appearAnimation {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    12% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    20%, 30% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    25%, 35% {
+        transform: translateX(0);
+        opacity: 0.4;
+    }
+    40%, 80% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+/*----------------------------------------*/
+/* Special Effects                        */
+/*----------------------------------------*/
+#singularity {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -10px);
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgba(200, 200, 255, 0.8);
+    box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
+                0 0 20px 8px rgba(200, 210, 255, 0.7), 
+                0 0 30px 10px rgba(100, 110, 255, 0.5);
+    animation: scintillement 2s infinite alternate;
+}
+
+@keyframes scintillement {
+    0% {
+        opacity: 1;
+        box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
+                    0 0 20px 8px rgba(200, 210, 255, 0.7), 
+                    0 0 30px 10px rgba(100, 110, 255, 0.5);
+    }
+    50% {
+        opacity: 0.8;
+        box-shadow: 0 0 15px 7px rgba(200, 210, 255, 1), 
+                    0 0 25px 10px rgba(200, 210, 255, 0.8), 
+                    0 0 30px 10px rgba(100, 110, 255, 0.6);
+    }
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
+                    0 0 20px 8px rgba(200, 210, 255, 0.7), 
+                    0 0 30px 10px rgba(100, 110, 255, 0.5);
+    }
+}
+
+.launch img {
+    position: relative;
+    transition: all 0.8s;
+    animation: launch 4s forwards;
+    z-index: 999;
+}
+
+@keyframes launch {
+    0% {
+        transform: rotate(45deg);
+    }
+    20%, 22%, 24%, 26%, 28%, 30% {
+        top: 3%;
+    }
+    21%, 23%, 25%, 27%, 29% {
+        top: 4%;
+    }
+    100% {
+        transform: rotate(45deg);
+        top: -80vh;
+    }
+}
+
+.trace {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    z-index: 5;
+    background-color: #0044ff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #0044ff, 0 0 20px #0044ff, 0 0 30px #0044ff;
+    pointer-events: none;
+    animation: fadeOut 1s forwards;
+}
+
+/*----------------------------------------*/
+/* Planet & Stars                         */
+/*----------------------------------------*/
 #planet {
     border: solid #000116 1px;
     width: 150vw;
@@ -446,7 +448,6 @@ button:hover span {
     transition: all 1200ms;
 }
 
-/* Stars */
 section{
     position: fixed;
     top: 0;
