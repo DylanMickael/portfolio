@@ -306,7 +306,7 @@
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            document.getElementById("send-message-button").setAttribute("disabled", true);
+            $("#send-message-button").attr("disabled", true);
             $("#sending-button-text").text("Sending...");
             $(".second").hide();
 
@@ -336,6 +336,10 @@
                 mailSenderConfig.userId
             ).then(
                 () => {
+                    $("#send-message-button").attr("disabled", false);
+                    $("#sending-button-text").text("Send Message");
+                    $(".second").show();
+
                     Toastify({
                         text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
                         duration: 5000,
@@ -346,7 +350,8 @@
                         style: {
                             background: "#020828",
                             zIndex: 9999,
-                            marginBottom: '50px'
+                            marginBottom: '50px',
+                            boxShadow: "0 4px 24px 0 rgba(2, 8, 70, 0.2)"
                         },
                         onClick: function () { }
                     }).showToast();
@@ -354,6 +359,11 @@
                 },
                 (error) => {
                     console.error('Failed to send email:', error);
+
+                    $("#send-message-button").attr("disabled", false);
+                    $("#sending-button-text").text("Send Message");
+                    $(".second").show();
+
                     Toastify({
                         text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
                         duration: 5000,
@@ -365,16 +375,13 @@
                         style: {
                             background: "#020828",
                             zIndex: 9999,
-                            marginBottom: '50px'
+                            marginBottom: '50px',
+                            boxShadow: "0 4px 24px 0 rgba(2, 8, 70, 0.2)"
                         },
                         onClick: function () { }
                     }).showToast();
                 }
             );
-
-            document.getElementById("send-message-button").removeAttribute("disabled");
-            $("#sending-button-text").text("Send Message");
-            $(".second").show();
         });
     }
 
@@ -480,7 +487,7 @@
                 size: {
                     w: 0,
                     h: 0,
-                }, 
+                },
                 position: {
                     x: 0,
                     y: 0
