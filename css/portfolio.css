@@ -1,4 +1,28 @@
 /*----------------------------------------*/
+/* Font Import                            */
+/*----------------------------------------*/
+@font-face {
+  font-family: 'good-timing';
+  src: url('../fonts/good-timing/good\ timing\ bd.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'electrolize';
+  src: url('../fonts/electrolize/Electrolize-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'audiowide';
+  src: url('../fonts/audiowide/Audiowide-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*----------------------------------------*/
 /* Base CSS
 /*----------------------------------------*/
 html {
@@ -8,9 +32,14 @@ html {
 body {
   height: 100%;
   background-color: #000116;
-  font-family: "poppins", sans-serif;
+  font-family: "electrolize", sans-serif;
   cursor: url("/img/cursors/rocket-launch.png") 0 0, auto !important;
   -webkit-font-smoothing: antialiased;
+}
+
+a, button, .section-title>span {
+  font-family: 'audiowide';
+  font-size: 0.9rem;
 }
 
 button, a, img:not(.hero__image) {
@@ -59,24 +88,7 @@ h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 800;
-  font-family: "Josefin Sans", sans-serif;
-}
-
-.button {
-  background-color: #fe53bb;
-  color: #ffffff;
-}
-
-.button:hover {
-  background-color: #1b4fde;
-}
-
-.h1 {
-  color: #1b4fde ;
-}
-
-primary-btn {
-  color: #fe53bb ;
+  font-family: "good-timing";
 }
 
 span:not(.typed) {
@@ -95,7 +107,7 @@ span:not(.typed) {
 }
 
 .hello-text {
-  font-size: 65px !important;
+  font-size: 3.9rem !important;
 }
 
 .presentation-text {
@@ -131,7 +143,6 @@ h6 {
 p {
   font-size: 14px;
   letter-spacing: 1px;
-  font-family: "Josefin Sans", sans-serif;
   color: #fff;
   opacity: 0.9;
   font-weight: 400;
@@ -325,7 +336,6 @@ section:not(:has(.hero__slider.owl-carousel)):not(:has(.about)) {
   font-size: 15px;
   color: #ffffff;
   background: #1b4fde;
-  font-family: "Play", sans-serif;
   font-weight: 700;
   border: none;
   display: inline-block;
@@ -481,7 +491,6 @@ a:hover .icon__button {
 }
 .header__nav__menu ul li a {
   font-size: 15px;
-  font-family: "Play", sans-serif;
   color: #ffffff;
   display: block;
   text-transform: uppercase;
@@ -559,7 +568,7 @@ a:hover .icon__button {
 .hero__slider.owl-carousel .owl-item.active .hero__text span {
   top: 0;
   opacity: 1;
-  font-size: 16px;
+  font-size: 1.1rem;
 }
 .hero__slider.owl-carousel .owl-item.active .hero__text h1 {
   top: 0;
@@ -741,7 +750,7 @@ a:hover .icon__button {
 }
 
 .skills .skills-item.item-white path {
-  fill: #ddd;
+  fill: #fff;
 }
 
 .skills .skills-item.item-white:hover .icon path {
@@ -749,11 +758,12 @@ a:hover .icon__button {
 }
 
 .skills .skills-item.item-white:hover .icon svg .svg-path {
-  fill: #b0b4c1;
+  fill: #7d93d6;
 }
 
 .skills .skills-item.item-white:hover .tool {
-  background-color: #b0b4c1;
+  background-color: #7d93d6;
+  border-color: #7d93d6;
   color: #fff !important;
 }
 
@@ -879,7 +889,6 @@ a:hover .icon__button {
 .tool.white {
   border-color: #fff;
   color: #fff !important;
-  opacity: 0.9;
 }
 .tool.pure-red {
   border-color: #da2a62;
@@ -904,9 +913,13 @@ a:hover .icon__button {
   height: 390px;
   position: relative;
   overflow: hidden;
+  transition: transform 0.8s;
+}
+.team__item:hover {
+  transform: scale(1.04);
 }
 .team__item:hover .team__item__text {
-  bottom: -20px;
+  bottom: -50px;
 }
 .team__item.team__item--second {
   margin-top: -60px;
@@ -922,6 +935,7 @@ a:hover .icon__button {
   text-align: center;
   position: absolute;
   left: 0;
+  font-weight: bolder;
   bottom: -10px;
   width: 100%;
   padding: 50px 0 30px;
@@ -930,6 +944,11 @@ a:hover .icon__button {
   -o-transition: all, 0.5s;
   transition: all, 0.5s;
 }
+
+.team__item__text p {
+  opacity: 1;
+}
+
 .team__item__text:before {
   position: absolute;
   left: 0;
@@ -1539,6 +1558,11 @@ a:hover .icon__button {
   margin-bottom: 18px;
   display: flex;
   column-gap: 30px;
+}
+.contact__widget__item:hover .services__item__icon:after {
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
 }
 .contact__widget__item__icon {
   position: relative;
