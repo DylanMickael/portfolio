@@ -46,6 +46,16 @@ canvas {
     display: block;
 }
 
+.smoke-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    opacity: 0.2;
+    display: none;
+}
+
 /*----------------------------------------*/
 /* Layout & Containers                    */
 /*----------------------------------------*/
@@ -62,7 +72,7 @@ canvas {
 
 #final-text-container {
     position: fixed;
-    top: 44%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -84,6 +94,26 @@ canvas {
     border-bottom: 1px solid #a0a0ff30;
     width: 80%;
     margin-bottom: 40px;
+}
+
+.nav__social {
+    position: fixed;
+    right: 0;
+    height: 100vh;
+    padding: 20px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    background-color: transparent;
+    z-index: 999;
+}
+
+.nav__social a {
+    color: white;
+    font-size: 25px;
 }
 
 /*----------------------------------------*/
@@ -155,6 +185,10 @@ canvas {
     }
     .universe-text {
         font-size: 45px;
+    }
+
+    .nav__social {
+        display: none !important;
     }
 }
 
@@ -447,30 +481,8 @@ button:hover span {
 }
 
 /*----------------------------------------*/
-/* Planet & Stars                         */
+/* Stars                                  */
 /*----------------------------------------*/
-#planet {
-    border: solid #000116 1px;
-    width: 150vw;
-    min-width: 800px;
-    height: 100vh;
-    position: fixed;
-    top: 88%;
-    left: -25%;
-    border-radius: 50%;
-    background-color: #000116;
-    border-color: #5b51ea50;
-    box-shadow: 0 0 62px 8px #451bde60,
-                0 0 105px 17px #451bde40,
-                0 0 145px 25px #451bde1A,
-                inset 0 0 48px 1px #451bde70,
-                inset 0 0 78px 2px #5b51ea40,
-                inset 0 0 115px 3px #7253fe0D;
-    overflow: hidden;
-    opacity: 0;
-    transition: all 1200ms;
-}
-
 section{
     position: fixed;
     top: 0;

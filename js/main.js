@@ -39,6 +39,7 @@
 
             setTimeout(() => {
                 launchShootingStar();
+                showSmoke();
             }, 5500);
         });
 
@@ -434,9 +435,7 @@
             });
 
         $("#final-text-container hr")
-            .css({
-                width: '0%',
-            })
+            .css({ width: '0%' })
             .delay(1400)
             .fadeIn(500, function () {
                 $(this).animate({
@@ -451,9 +450,11 @@
                 $(this).animate({ opacity: 1 }, 500);
             });
 
-        setTimeout(() => {
-            $("#planet").css({ opacity: 1, top: "85%" });
-        }, 2000);
+        $(".nav__social")
+            .css({ gap: "50px" })
+            .delay(2200)
+            .animate({ opacity: 1, gap: "30px" }, 500);
+
     }
 
     // --------------------------------------------------------------------------------
@@ -487,6 +488,13 @@
             section.appendChild(span);
         }
         $("#shooting-star").fadeIn(1000);
+    }
+
+    // --------------------------------------------------------------------------------
+    // Function: showSmoke()
+    // --------------------------------------------------------------------------------
+    function showSmoke() {
+        $(".smoke-canvas").css({ display: 'block' });
     }
 
     // --------------------------------------------------------------------------------
@@ -541,27 +549,5 @@
         }
 
         animate();
-    }
-
-    // --------------------------------------------------------------------------------
-    // Function: initIllustrationPosition()
-    // --------------------------------------------------------------------------------
-    function initIllustrationPosition() {
-        const illustrations = document.querySelectorAll(".illustration");
-
-        const illustration_positions = [
-            { x: 76, y: 62, size: 38, transform: "" },
-        ];
-
-        illustrations.forEach((illustration, index) => {
-            if (illustration_positions[index]) {
-                const { x, y, size, transform } = illustration_positions[index];
-
-                illustration.style.left = `${x}%`;
-                illustration.style.top = `${y}%`;
-                illustration.style.width = `${size}%`;
-                illustration.style.transform = `${transform}`;
-            }
-        });
     }
 })(jQuery);
