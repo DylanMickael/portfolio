@@ -86,11 +86,6 @@ canvas {
     margin-bottom: 40px;
 }
 
-.illustration {
-    position: absolute;
-    z-index: 999;
-}
-
 /*----------------------------------------*/
 /* Text Styles                            */
 /*----------------------------------------*/
@@ -392,10 +387,10 @@ button:hover span {
     box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
                 0 0 20px 8px rgba(200, 210, 255, 0.7), 
                 0 0 30px 10px rgba(100, 110, 255, 0.5);
-    animation: scintillement 2s infinite alternate;
+    animation: twinkle 2s infinite alternate;
 }
 
-@keyframes scintillement {
+@keyframes twinkle {
     0% {
         opacity: 1;
         box-shadow: 0 0 10px 5px rgba(200, 210, 255, 0.9), 
