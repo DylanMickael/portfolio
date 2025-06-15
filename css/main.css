@@ -99,8 +99,9 @@ canvas {
 .nav__social {
     position: fixed;
     right: 0;
-    height: 100vh;
-    padding: 20px 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px 80px 20px 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -109,6 +110,7 @@ canvas {
     opacity: 0;
     background-color: transparent;
     z-index: 999;
+    border-left: solid #a0a0ff30 1px;
 }
 
 .nav__social a {
