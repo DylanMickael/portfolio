@@ -278,11 +278,15 @@
     function positionBalls() {
         const balls = document.querySelectorAll(".ball");
         const positions = [
-            { x: -16, y: -18, size: 300 }, { x: 98, y: 80, size: 300 },
-            { x: 98, y: -10, size: 300 }, { x: 70, y: -15, size: 220 },
-            { x: -10, y: -40, size: 250 }, { x: 92, y: -40, size: 300 },
-            { x: -15, y: -40, size: 300 }, { x: 90, y: -20, size: 300 },
-            { x: -12, y: -40, size: 300 },
+            { x: -12, y: -18, size: 16 },
+            { x: 98, y: 80, size: 16 },
+            { x: -12, y: 0, size: 16 },
+            { x: 70, y: -15, size: 12 },
+            { x: -10, y: -40, size: 13 },
+            { x: 92, y: -40, size: 15 },
+            { x: -12, y: -40, size: 16 },
+            { x: 90, y: -20, size: 15 },
+            { x: -12, y: -40, size: 15 },
         ];
 
         balls.forEach((ball, index) => {
@@ -290,8 +294,10 @@
                 const { x, y, size } = positions[index];
                 ball.style.left = `${x}%`;
                 ball.style.top = `${y}%`;
-                ball.style.width = `${size}px`;
-                ball.style.height = `${size}px`;
+                ball.style.width = `${size}vw`;
+                ball.style.height = `${size}vw`;
+                ball.style.minWidth = "30px";
+                ball.style.minHeight = "30px";
             }
         });
     }
