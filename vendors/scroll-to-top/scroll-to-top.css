@@ -1,0 +1,85 @@
+/* scroll to top */
+.scroll-to-top {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 162);
+    border: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 0px 4px rgba(204, 160, 255, 0.253);
+    cursor: pointer;
+    transition-duration: 0.3s;
+    overflow: hidden;
+    position: fixed;
+    bottom: 5%;
+    right: 4%;
+    opacity: 0;
+    animation: pulse 2s infinite;
+    z-index: 1;
+}
+
+.svgIcon {
+    width: 12px;
+    transition-duration: 0.3s;
+    animation: bounce 1s infinite alternate;
+}
+
+.svgIcon path {
+    fill: white;
+}
+
+.scroll-to-top:hover {
+    width: 140px;
+    border-radius: 50px;
+    transition-duration: 0.3s;
+    background-color: rgb(255, 0, 162);
+    align-items: center;
+}
+
+.scroll-to-top:hover .svgIcon {
+    transform: translateY(-200%);
+    animation: none;
+}
+
+.scroll-to-top::before {
+    position: absolute;
+    bottom: -20px;
+    content: "Back to Top";
+    color: white;
+    font-size: 0px;
+}
+
+.scroll-to-top:hover::before {
+    font-size: 13px;
+    opacity: 1;
+    bottom: unset;
+    transition-duration: 0.3s;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0px 0px 0px 4px rgba(204, 160, 255, 0.253);
+    }
+    50% {
+        box-shadow: 0px 0px 0px 8px rgba(204, 160, 255, 0.1);
+    }
+    100% {
+        box-shadow: 0px 0px 0px 4px rgba(204, 160, 255, 0.253);
+    }
+}
+
+/* Animation de bounce pour la flèche */
+@keyframes bounce {
+    0% {
+        transform: translateY(2px);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(2px);
+    }
+}

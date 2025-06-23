@@ -25,14 +25,13 @@
   width: 120%;
   z-index: -1;
   opacity: 0.6;
-  transform: translateY(60%) rotate(2deg);
+  transform: translateY(30rem) rotate(2deg);
   background-color: transparent;
 }
   
 @media (max-width: 800px) {
     .northern-lights{
-        filter: blur(50px);
-        transform: translateY(5%) rotate(2deg);
+        transform: translateY(5rem) rotate(2deg);
     }
 }
 
@@ -45,7 +44,7 @@
       transparent,
       hsla(270, 100%, 60%, 0.25) 40%,
       transparent,
-      hsla(220, 100%, 65%, 0.65) 60%
+      hsla(224, 79%, 50%, 1) 60%
   );
   background-size: 100% 40vmax;
   background-position: center bottom;
