@@ -62,7 +62,7 @@ canvas {
 
 #final-text-container {
     position: fixed;
-    top: 50%;
+    top: 48%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -157,7 +157,7 @@ canvas {
 
     #final-text {
         letter-spacing: 5px;
-        font-size: 25px;
+        font-size: 24px;
     }
     .universe-text {
         font-size: 45px;

@@ -449,6 +449,13 @@
                 $(this).animate({ opacity: 1 }, 500);
             });
 
+        $(".wrapper")
+            .css({ display: 'none', opacity: 0 })
+            .delay(2500)
+            .fadeIn(1000, function () {
+                $(this).animate({ opacity: 1 }, 500);
+            });
+
     }
 
     // --------------------------------------------------------------------------------
