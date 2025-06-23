@@ -62,7 +62,7 @@ canvas {
 
 #final-text-container {
     position: fixed;
-    top: 48%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -152,7 +152,7 @@ canvas {
 
 @media screen and (max-width: 750px) {
     #final-text-container {
-        top: 48%;
+        top: 50%;
     }
 
     #final-text {
