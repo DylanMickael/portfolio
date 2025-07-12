@@ -427,7 +427,6 @@
             .not("#description-text")
             .css({ display: 'none', opacity: 0 })
             .delay(1000).fadeIn(1000, function () {
-                $("#final-text-container").css({ backdropFilter: 'blur(0.2px)' });
                 $(this).animate({ opacity: 1 }, 1000);
                 $("#final-button").addClass('fade-up');
                 $("#final-text").addClass('fade-down');
@@ -449,13 +448,16 @@
                 $(this).animate({ opacity: 1 }, 500);
             });
 
-        $(".wrapper")
-            .css({ display: 'none', opacity: 0 })
+        $("model-viewer")
+            .css({ opacity: 0 })
             .delay(2500)
             .fadeIn(1000, function () {
+                $("#final-text-container").css({ backdropFilter: 'blur(0.8px)' });
+                $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0.2)' });
                 $(this).animate({ opacity: 1 }, 500);
+                $(this).css({ transform: "scale(0.8)" });
+                animateRobot();
             });
-
     }
 
     // --------------------------------------------------------------------------------
@@ -542,6 +544,62 @@
             requestAnimationFrame(animate);
         }
 
+        stopRobotAnimation();
         animate();
     }
+
+    // --------------------------------------------------------------------------------
+    // Function: animateRobot()
+    // --------------------------------------------------------------------------------
+    function animateRobot() {
+        const $modelViewer = $('model-viewer');
+        const animationDuration = 800;
+        const pauseDuration = 10000;
+        let isMovingRight = true;
+
+        function moveRight() {
+            $modelViewer.animate({
+                left: '45%',
+                bottom: '50px',
+            }, animationDuration, 'swing', function () {
+                $modelViewer.css("transform", "scale(0.8)");
+                isMovingRight = false;
+                setTimeout(startMovement, pauseDuration);
+            });
+        }
+
+        function moveLeft() {
+            $modelViewer.animate({
+                left: '-20%',
+                bottom: '-1rem',
+            }, animationDuration, 'swing', function () {
+                $modelViewer.css("transform", "scale(1.1)");
+                isMovingRight = true;
+                setTimeout(startMovement, pauseDuration);
+            });
+        }
+
+        function startMovement() {
+            if (isMovingRight) {
+                moveRight();
+            } else {
+                moveLeft();
+            }
+        }
+
+        startMovement();
+    }
+
+    // --------------------------------------------------------------------------------
+    // Function: stopRobotAnimation()
+    // --------------------------------------------------------------------------------
+    function stopRobotAnimation() {
+        const $modelViewer = $('model-viewer');
+        const modelViewer = $modelViewer[0];
+
+        if (modelViewer) {
+            modelViewer.timeScale = 0.1;
+        }
+    }
+
 })(jQuery);
