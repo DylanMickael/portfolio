@@ -9,7 +9,7 @@
     let particleSystem, particlePositions, particleVelocities;
     let galaxySystem = null; // Will hold the galaxy cluster (added later)
     let nebula = null; // Will hold the nebula background (added later)
-    let particleCount = 50000; // Number of particles for the Big Bang explosion
+    let particleCount = 20000; // Number of particles for the Big Bang explosion
     let params; // Object to store parameters controlled by the UI
     let clock = new THREE.Clock(); // Clock to keep track of elapsed time
 
@@ -35,7 +35,7 @@
 
             setTimeout(() => {
                 launchFinalAnimation();
-            }, 3200);
+            }, 2600);
 
             setTimeout(() => {
                 launchShootingStar();
@@ -449,8 +449,8 @@
             });
 
         $("model-viewer")
-            .css({ opacity: 0 })
-            .delay(2500)
+            .css({ display: 'none', opacity: 0 })
+            .delay(3000)
             .fadeIn(1000, function () {
                 $("#final-text-container").css({ backdropFilter: 'blur(0.8px)' });
                 $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0)' });
