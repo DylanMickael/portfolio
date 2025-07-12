@@ -453,7 +453,7 @@
             .delay(2500)
             .fadeIn(1000, function () {
                 $("#final-text-container").css({ backdropFilter: 'blur(0.8px)' });
-                $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0.2)' });
+                $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0)' });
                 $(this).animate({ opacity: 1 }, 500);
                 $(this).css({ transform: "scale(0.8)" });
                 animateRobot();
@@ -598,7 +598,7 @@
         const modelViewer = $modelViewer[0];
 
         if (modelViewer) {
-            modelViewer.timeScale = 0.9;
+            modelViewer.timeScale = 0.2;
         }
     }
 
