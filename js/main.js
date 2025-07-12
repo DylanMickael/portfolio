@@ -598,7 +598,7 @@
         const modelViewer = $modelViewer[0];
 
         if (modelViewer) {
-            modelViewer.timeScale = 0.1;
+            modelViewer.timeScale = 0.9;
         }
     }
 

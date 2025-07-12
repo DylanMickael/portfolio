@@ -135,6 +135,7 @@
                 loop: false,
                 dots: false,
                 mouseDrag: false,
+                touchDrag: false,
                 animateOut: '',
                 animateIn: '',
                 items: 1,
