@@ -571,6 +571,10 @@ a:hover .icon__button {
 #languageDropdown svg {
   width: 22px;
   height: 22px;
+  transition: transform 100ms linear;
+}
+#languageDropdown svg:hover {
+  transform: scale(1.2);
 }
 .dropdown-menu {
   background-color: #020828;
