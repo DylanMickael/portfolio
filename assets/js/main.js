@@ -396,13 +396,20 @@
     // Function: animateText()
     // --------------------------------------------------------------------------------
     function animateText(startAnimation) {
+        const frenchStrings = [
+            "",
+            "Tout semblera petit au début.",
+            "Mais ton talent grandira...",
+            "COMME UNE SINGULARITÉ."
+        ]
+        const englishStrings = [
+            "",
+            "What you do may seem small now.",
+            "But your talent will expand...",
+            "LIKE A SINGULARITY."
+        ]
         const options = {
-            strings: [
-                "",
-                "What you do may seem small now.",
-                "But your talent will expand...",
-                "LIKE A SINGULARITY."
-            ],
+            strings: window.location.pathname.includes("en") ? englishStrings : frenchStrings,
             typeSpeed: 25,
             backSpeed: 20,
             loop: false,
@@ -498,7 +505,8 @@
     // --------------------------------------------------------------------------------
     function animateRocket() {
         setTimeout(() => {
-            window.location.pathname = "/portfolio.html";
+            const pathname = window.location.pathname.includes("en") ? "/en/portfolio.html" : "/fr/portfolio.html"
+            window.location.pathname = pathname;
         }, 4000);
 
         $(this).addClass('launch');
@@ -513,7 +521,7 @@
             transform: 'rotate(45deg)',
             height: '30px'
         });
-        $followImage.attr('src', '/img/cursors/rocket-launch.png');
+        $followImage.attr('src', '/assets/img/cursors/rocket-launch.png');
 
         $('body').append($followImage);
 

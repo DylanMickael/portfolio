@@ -2,91 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Videograph Template">
-    <meta name="keywords" content="Videograph, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- Site Tite -->
     <title>Dylan RAKOTONARIVO - Developer, Designer, Public Speaker</title>
-
-    <!-- Site Icon -->
-    <link rel="icon" type="image/png" href="img/logo/Logo-dark.png">
-
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="vendors/bootstrap/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="vendors/aos/aos.css" type="text/css">
-    <link rel="stylesheet" href="vendors/fontawesome/css/all.min.css" type="text/css">
-    <link rel="stylesheet" href="css/loader.css" type="text/css">
-    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="icon" type="image/png" href="/assets/img/logo/Logo-dark.png">
 </head>
-<body data-aos="fade-in">
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-    <div id="singularity"></div>
-    <div class="text-container">
-        <div id="typed-text"></div>
-    </div>
-    <div id="final-text-container" class="text-center text-white">
-        <p id="final-text">
-            <span class="welcome">WELCOME TO MY</span>
-            <strong class="universe-text">universe</strong>
-        </p>
-        <hr/>
-        <p id="description-text">
-            This is my personal portfolio website, where you can find my projects, skills, and experiences. Feel free to explore and
-            get to know me better. Come and reach out to me! <img src="img/illustrations/vlogger.gif" width="25" height="25">
-        </p>
-        <a id="final-button" href="#">
-            <button id="cta-button">
-                <img id="rocket" src="img/cursors/rocket-launch.png" alt="">
-                <span class="pt-1">Start exploring</span>
-            </button>
-        </a>
-    </div>
-    <div id="button-container">
-        <a href="/portfolio.html">
-            <button id="skip-button">
-                Skip
-                <i class="fa fa-step-forward"></i>
-            </button>
-        </a>
-    </div>
-
-    <model-viewer 
-        title="Model based on https://sketchfab.com/3d-models/robot-playground-59fc99d8dcb146f3a6c16dbbcc4680da"
-        src="models/robot_playground.glb" 
-        interaction-prompt="none"
-        alt=""
-        camera-controls
-        autoplay>
-    </model-viewer>
-
-    <section id="shooting-star"></section>
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/gsap.min.js"></script>
-    <script src="vendors/typed.js/typed.umd.js"></script>
-    <script src="vendors/aos/aos.js"></script>
-    <script src="vendors/fontawesome/js/all.min.js"></script>
-    <script src="vendors/threejs/three.min.js"></script>
-    <script src="vendors/threejs/CopyShader.js"></script>
-    <script src="vendors/threejs/LuminosityHighPassShader.js"></script>
-    
-    <!-- Post-processing components in dependency order -->
-    <script src="vendors/threejs/EffectComposer.js"></script>
-    <script src="vendors/threejs/ShaderPass.js"></script>
-    <script src="vendors/threejs/RenderPass.js"></script>
-    <script src="vendors/threejs/UnrealBloomPass.js"></script>
-    <script src="vendors/threejs/RoundedBoxGeometry.js"></script>
-    <script type="module" src="vendors/threejs/model-viewer.min.js"></script>
-    
-    <!-- Controls -->
-    <script src="vendors/threejs/OrbitControls.js"></script>
-    
-    <!-- GUI library can be loaded at any point -->
-    <script src="vendors/threejs/dat.gui.min.js"></script>
-    <script src="js/main.js"></script>
+<body>
+    <script>
+        var preferedLanguage = window.localStorage.getItem("PREFERED_LANGUAGE");
+        if (!preferedLanguage) {
+            preferedLanguage = "EN";
+            window.localStorage.setItem("PREFERED_LANGUAGE", preferedLanguage);
+        }
+        window.location.pathname = preferedLanguage === "EN" ? "/en" : "/fr";
+    </script>
 </body>
 </html>

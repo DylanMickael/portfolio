@@ -33,7 +33,7 @@ body {
   height: 100%;
   background-color: #000116;
   font-family: "electrolize", sans-serif;
-  cursor: url("/img/cursors/rocket-launch.png") 0 0, auto !important;
+  cursor: url("../img/cursors/rocket-launch.png") 0 0, auto !important;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -43,7 +43,7 @@ a, button, .section-title>span {
 }
 
 button, a, img:not(.hero__image) {
-  cursor: url("/img/cursors/astronaut.png") 0 0, auto !important;
+  cursor: url("../img/cursors/astronaut.png") 0 0, auto !important;
 }
 
 html, body {
@@ -440,7 +440,7 @@ a:hover .icon__button {
 .header__nav__menu ul li {
   list-style: none;
   display: inline-block;
-  margin-right: 45px;
+  margin-right: 42px;
   position: relative;
 }
 .header__nav__menu ul li.active a:after {
@@ -535,20 +535,21 @@ a:hover .icon__button {
 .header__nav__social {
   display: inline-block;
   position: relative;
-  padding-left: 50px;
+  padding-left: 35px;
+  margin-left: 5px;
 }
 .header__nav__social:before {
   position: absolute;
   left: 0;
   top: 4px;
-  height: 13px;
+  height: 20px;
   width: 1px;
   background: rgba(225, 225, 225, 0.2);
   content: "";
 } 
 .header__nav__social a {
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   margin-right: 20px;
 }
 .header__nav__social a svg {
@@ -559,6 +560,35 @@ a:hover .icon__button {
 }
 .header__nav__social a:last-child {
   margin-right: 0;
+}
+#languageDropdown {
+  background-color: transparent;
+  border: transparent;
+}
+#languageDropdown:hover {
+  background-color: #000116;
+}
+#languageDropdown svg {
+  width: 22px;
+  height: 22px;
+}
+.dropdown-menu {
+  background-color: #020828;
+  transition: all 3s ease-in-out;
+}
+.dropdown-item {
+  background-color: #020828;
+  color: white;
+  padding: 10px;
+}
+.dropdown-item:hover {
+  color: white;
+  background: linear-gradient(to right, #0044ff, #290e8c);
+}
+.dropdown-item svg {
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
 }
 .slicknav_menu {
   display: none;

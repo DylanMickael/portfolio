@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Videograph Template">
+    <meta name="keywords" content="Videograph, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Site Tite -->
+    <title>Dylan RAKOTONARIVO - Developeur, Concepteur, Orateur</title>
+
+    <!-- Site Icon -->
+     <link rel="icon" type="image/png" href="/assets/img/logo/Logo-dark.png">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/assets/vendors/bootstrap/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/vendors/aos/aos.css" type="text/css">
+    <link rel="stylesheet" href="/assets/vendors/fontawesome/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/loader.css" type="text/css">
+    <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
+</head>
+
+<body data-aos="fade-in">
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <div id="singularity"></div>
+    <div class="text-container">
+        <div id="typed-text"></div>
+    </div>
+    <div id="final-text-container" class="text-center text-white">
+        <p id="final-text">
+            <span class="welcome">CECI EST MON</span>
+            <strong class="universe-text">univers</strong>
+        </p>
+        <hr />
+        <p id="description-text">
+            Bienvenue dans mon site portfolio professionnel, où vous trouverez mes projets, compétences et expériences. N'hésitez
+            pas à l'explorer pour mieux me connaître et contactez-moi ! <img src="/assets/img/illustrations/vlogger.gif"
+                width="25" height="25">
+        </p>
+        <a id="final-button" href="#">
+            <button id="cta-button">
+                <img id="rocket" src="/assets/img/cursors/rocket-launch.png" alt="">
+                <span class="pt-1">Explorer</span>
+            </button>
+        </a>
+    </div>
+    <div id="button-container">
+        <a href="/en/portfolio.html">
+            <button id="skip-button">
+                Passer
+                <i class="fa fa-step-forward"></i>
+            </button>
+        </a>
+    </div>
+
+    <model-viewer
+        title="Model based on https://sketchfab.com/3d-models/robot-playground-59fc99d8dcb146f3a6c16dbbcc4680da"
+        src="/assets/models/robot_playground.glb" interaction-prompt="none" alt="" camera-controls autoplay>
+    </model-viewer>
+
+    <section id="shooting-star"></section>
+
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/gsap.min.js"></script>
+    <script src="/assets/vendors/typed.js/typed.umd.js"></script>
+    <script src="/assets/vendors/aos/aos.js"></script>
+    <script src="/assets/vendors/fontawesome/js/all.min.js"></script>
+    <script src="/assets/vendors/threejs/three.min.js"></script>
+    <script src="/assets/vendors/threejs/CopyShader.js"></script>
+    <script src="/assets/vendors/threejs/LuminosityHighPassShader.js"></script>
+
+    <!-- Post-processing components in dependency order -->
+    <script src="/assets/vendors/threejs/EffectComposer.js"></script>
+    <script src="/assets/vendors/threejs/ShaderPass.js"></script>
+    <script src="/assets/vendors/threejs/RenderPass.js"></script>
+    <script src="/assets/vendors/threejs/UnrealBloomPass.js"></script>
+    <script src="/assets/vendors/threejs/RoundedBoxGeometry.js"></script>
+    <script type="module" src="/assets/vendors/threejs/model-viewer.min.js"></script>
+
+    <!-- Controls -->
+    <script src="/assets/vendors/threejs/OrbitControls.js"></script>
+
+    <!-- GUI library can be loaded at any point -->
+    <script src="/assets/vendors/threejs/dat.gui.min.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

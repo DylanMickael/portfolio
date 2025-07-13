@@ -14,11 +14,13 @@
         setupBackgroundImages();
         initMobileNavigation();
         initHeroSlider();
+        initDropdownEvent();
         initAboutSlider();
         initTestimonialSlider();
         initLatestSlider();
         initImageSwiper();
         initTypedJs();
+        initPreferedLanguage();
         positionBalls();
         initMailSender();
         initParallaxScroll();
@@ -54,6 +56,41 @@
         $(".loader").fadeOut();
         $("#preloder").delay(200).fadeOut("slow");
     }
+
+    // --------------------------------------------------------------------------------
+    // Function: initPreferedLanguage()
+    // Desc: Initialise the prefered language in localStorage.
+    // --------------------------------------------------------------------------------
+    function initPreferedLanguage() {
+        const preferedLanguage = window.location.pathname.includes("en") ? "EN":"FR";
+        window.localStorage.setItem("PREFERED_LANGUAGE", preferedLanguage);
+    }
+
+    // --------------------------------------------------------------------------------
+    // Function: initPreferedLanguage()
+    // Desc: Initialise the prefered language in localStorage.
+    // --------------------------------------------------------------------------------
+    function initDropdownEvent() {
+        var dropdownToggle = document.getElementById('languageDropdown');
+        if (dropdownToggle) {
+            dropdownToggle.addEventListener('click', function (e) {
+                e.preventDefault();
+                var menu = document.querySelector('.dropdown-menu');
+                if (menu) {
+                    menu.classList.toggle('show');
+                }
+            });
+        }
+    }
+
+    // Hide dropdown when clicking outside
+    document.addEventListener('click', function (e) {
+        var menu = document.querySelector('.dropdown-menu');
+        var toggle = document.getElementById('languageDropdown');
+        if (menu && toggle && !toggle.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.remove('show');
+        }
+    });
 
     // --------------------------------------------------------------------------------
     // Function: handleHeaderVisibilityOnScroll()
