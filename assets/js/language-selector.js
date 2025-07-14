@@ -1,4 +1,4 @@
-const flags = [
+const FLAGS = [
     {
         key: "FR",
         text: "Français",
@@ -51,29 +51,29 @@ const flags = [
     }
 ];
 
-(function ($) {
-    var selectedFlag;
-    var unSelectedFlag;
-
+function getCurrentFlags() {
     if (window.location.pathname.includes('/fr/')) {
-        selectedFlag = flags.find(flag => flag.key === 'FR');
-        unSelectedFlag = flags.find(flag => flag.key === 'UK');
+        return {
+            selected: FLAGS.find(flag => flag.key === 'FR'),
+            unselected: FLAGS.find(flag => flag.key === 'UK')
+        };
     } else {
-        selectedFlag = flags.find(flag => flag.key === 'UK');
-        unSelectedFlag = flags.find(flag => flag.key === 'FR');
+        return {
+            selected: FLAGS.find(flag => flag.key === 'UK'),
+            unselected: FLAGS.find(flag => flag.key === 'FR')
+        };
     }
+}
 
-    const $dropdownButton = `
-        <button id="languageDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            ${selectedFlag.svg}
-        </button>
-    `;
-
-    const $languageDropdown = `
+function createLanguageDropdown(selectedFlag, unSelectedFlag, counter) {
+    const dropdownId = `language-dropdown-${counter}`;
+    const dropdownMenuClass = `dropdown-menu-${counter}`;
+    return `
         <div class="dropdown">
-            ${$dropdownButton}
-            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <button id="${dropdownId}" class="language-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                ${selectedFlag.svg}
+            </button>
+            <ul class="dropdown-menu ${dropdownMenuClass}" aria-labelledby="${dropdownId}">
                 <li>
                     <a class="dropdown-item" href="#">
                         ${selectedFlag.svg} ${selectedFlag.text}
@@ -87,6 +87,34 @@ const flags = [
             </ul>
         </div>
     `;
+}
 
-    $('.language__selector').append($languageDropdown);
+function attachDropdownEvents(dropdownId, menuClass) {
+    const $dropdownToggle = $(`#${dropdownId}`);
+    const $menu = $(`.${menuClass}`);
+
+    $dropdownToggle.on('click', function (e) {
+        e.preventDefault();
+        $menu.toggleClass('show');
+    });
+
+    $(document).on('click', function (e) {
+        if (
+            !$dropdownToggle.is(e.target) &&
+            $dropdownToggle.has(e.target).length === 0 &&
+            !$menu.is(e.target) &&
+            $menu.has(e.target).length === 0
+        ) {
+            $menu.removeClass('show');
+        }
+    });
+}
+
+(function ($) {
+    let languageDropdownCounter = 0;
+    const { selected, unselected } = getCurrentFlags();
+
+    $('.language__selector').append(createLanguageDropdown(selected, unselected, languageDropdownCounter));
+    attachDropdownEvents(`language-dropdown-${languageDropdownCounter}`, `dropdown-menu-${languageDropdownCounter}`);
+    languageDropdownCounter++;
 })(jQuery);

@@ -19,7 +19,8 @@
             removeIds: true,
             removeClasses: false,
             removeStyles: false,
-			brand: '',
+            brand: '',
+            languageSelectorHtml: '',
             animations: 'jquery',
             init: function () {},
             beforeOpen: function () {},
@@ -113,10 +114,10 @@
         // create menu bar
         $this.mobileNav.attr('class', prefix + '_nav');
         menuBar = $('<div class="' + prefix + '_menu"></div>');
-		if (settings.brand !== '') {
-			var brand = $('<div class="' + prefix + '_brand">'+settings.brand+'</div>');
-			$(menuBar).append(brand);
-		}
+        if (settings.brand !== '') {
+            var brand = $('<div class="' + prefix + '_brand">'+settings.brand+'</div>');
+            $(menuBar).append(brand);
+        }
         $this.btn = $(
             ['<' + settings.parentTag + ' aria-haspopup="true" role="button" tabindex="0" class="' + prefix + '_btn ' + prefix + '_collapsed">',
                 '<span class="' + prefix + '_menutxt">' + settings.label + '</span>',
@@ -128,7 +129,11 @@
             '</' + settings.parentTag + '>'
             ].join('')
         );
+        // Ajout du language selector juste après le bouton
         $(menuBar).append($this.btn);
+        if (settings.languageSelectorHtml && settings.languageSelectorHtml !== '') {
+            $(menuBar).append(settings.languageSelectorHtml);
+        }
         if(settings.appendTo !== '') {
             $(settings.appendTo).append(menuBar);
         } else {

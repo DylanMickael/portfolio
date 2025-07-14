@@ -561,24 +561,28 @@ a:hover .icon__button {
 .header__nav__social a:last-child {
   margin-right: 0;
 }
-#languageDropdown {
+.language-dropdown {
   background-color: transparent;
   border: transparent;
 }
-#languageDropdown:hover {
+.language-dropdown:hover {
   background-color: #000116;
 }
-#languageDropdown svg {
+.language-dropdown svg {
   width: 22px;
   height: 22px;
   transition: transform 100ms linear;
 }
-#languageDropdown svg:hover {
+.language-dropdown svg:hover {
   transform: scale(1.2);
 }
 .dropdown-menu {
   background-color: #020828;
-  transition: all 3s ease-in-out;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out !important;
+}
+.dropdown-menu.show {
+  opacity: 1;
 }
 .dropdown-item {
   background-color: #020828;
@@ -597,7 +601,26 @@ a:hover .icon__button {
 .slicknav_menu {
   display: none;
 }
-
+.slicknav_menu .dropdown {
+  position: absolute;
+  right: 65px;
+  top: 32px;
+  opacity: 1;
+  transform: scale(1);
+  transition: right 200ms ease-in-out, opacity  200ms ease-in-out, transform 300ms ease-in-out;
+}
+.slicknav_menu:has(.slicknav_open) .dropdown {
+  right: -65px;
+  opacity: 0;
+  transform: scale(0);
+}
+.slicknav_menu .dropdown button svg  {
+  width: 34px;
+  height: 34px;
+}
+.slicknav_menu .dropdown-menu {
+  transform: translateX(-70%);
+}
 /*---------------------
   Hero
 -----------------------*/

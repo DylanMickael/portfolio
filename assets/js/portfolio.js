@@ -14,7 +14,6 @@
         setupBackgroundImages();
         initMobileNavigation();
         initHeroSlider();
-        initDropdownEvent();
         initAboutSlider();
         initTestimonialSlider();
         initLatestSlider();
@@ -65,32 +64,6 @@
         const preferedLanguage = window.location.pathname.includes("en") ? "EN":"FR";
         window.localStorage.setItem("PREFERED_LANGUAGE", preferedLanguage);
     }
-
-    // --------------------------------------------------------------------------------
-    // Function: initPreferedLanguage()
-    // Desc: Initialise the prefered language in localStorage.
-    // --------------------------------------------------------------------------------
-    function initDropdownEvent() {
-        var dropdownToggle = document.getElementById('languageDropdown');
-        if (dropdownToggle) {
-            dropdownToggle.addEventListener('click', function (e) {
-                e.preventDefault();
-                var menu = document.querySelector('.dropdown-menu');
-                if (menu) {
-                    menu.classList.toggle('show');
-                }
-            });
-        }
-    }
-
-    // Hide dropdown when clicking outside
-    document.addEventListener('click', function (e) {
-        var menu = document.querySelector('.dropdown-menu');
-        var toggle = document.getElementById('languageDropdown');
-        if (menu && toggle && !toggle.contains(e.target) && !menu.contains(e.target)) {
-            menu.classList.remove('show');
-        }
-    });
 
     // --------------------------------------------------------------------------------
     // Function: handleHeaderVisibilityOnScroll()
@@ -154,11 +127,15 @@
     // Desc: Initializes mobile navigation using Slicknav.
     // --------------------------------------------------------------------------------
     function initMobileNavigation() {
+        const { selected, unselected } = getCurrentFlags();
+
         if ($(".mobile-menu").length > 0 && $.fn.slicknav) {
             $(".mobile-menu").slicknav({
                 prependTo: '#mobile-menu-wrap',
-                allowParentLinks: true
+                allowParentLinks: true,
+                languageSelectorHtml: createLanguageDropdown(selected, unselected, 1)
             });
+            attachDropdownEvents(`language-dropdown-1`, `dropdown-menu-1`);
         }
     }
 
