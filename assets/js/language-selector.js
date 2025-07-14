@@ -95,7 +95,7 @@ function attachDropdownEvents(dropdownId, menuClass) {
 
     $dropdownToggle.on('click', function (e) {
         e.preventDefault();
-        $menu.toggleClass('show');
+        $menu.toggleClass('show-animated');
     });
 
     $(document).on('click', function (e) {
@@ -105,7 +105,7 @@ function attachDropdownEvents(dropdownId, menuClass) {
             !$menu.is(e.target) &&
             $menu.has(e.target).length === 0
         ) {
-            $menu.removeClass('show');
+            $menu.removeClass('show-animated');
         }
     });
 }

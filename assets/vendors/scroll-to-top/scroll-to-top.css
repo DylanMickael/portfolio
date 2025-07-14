@@ -47,7 +47,7 @@
 .scroll-to-top::before {
     position: absolute;
     bottom: -20px;
-    content: "Back to Top";
+    content: var(--scroll-to-top-text, "Back to Top");
     color: white;
     font-size: 0px;
 }

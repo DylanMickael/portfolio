@@ -8,6 +8,10 @@ scrollToTopButton.innerHTML = `
 
 document.body.appendChild(scrollToTopButton);
 
+if (window.location.pathname.includes('/fr/')) {
+    document.documentElement.style.setProperty('--scroll-to-top-text', '"Retour en haut"');
+}
+
 scrollToTopButton.addEventListener('click', () => {
     window.scrollTo({
         top: 0,

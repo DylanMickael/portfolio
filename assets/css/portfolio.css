@@ -561,6 +561,9 @@ a:hover .icon__button {
 .header__nav__social a:last-child {
   margin-right: 0;
 }
+.language__selector {
+  transform: translateY(2px);
+}
 .language-dropdown {
   background-color: transparent;
   border: transparent;
@@ -579,10 +582,16 @@ a:hover .icon__button {
 .dropdown-menu {
   background-color: #020828;
   opacity: 0;
-  transition: opacity 300ms ease-in-out !important;
+  visibility: hidden;
+  max-height: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
+  display: block;
 }
-.dropdown-menu.show {
+.dropdown-menu.show-animated {
   opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 .dropdown-item {
   background-color: #020828;
@@ -722,7 +731,7 @@ a:hover .icon__button {
   .hero__image__container::before {
     content: "";
     height: 95%;
-    width: 80%;
+    width: 90%;
   }
 }
 @keyframes shadow-apparition {
