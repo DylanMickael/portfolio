@@ -630,6 +630,19 @@ a:hover .icon__button {
 .slicknav_menu .dropdown-menu {
   transform: translateX(-70%);
 }
+.slicknav_icon-bar {
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+.slicknav_open .slicknav_icon-bar:first-of-type {
+  transform: translateY(250%) rotate(40deg) ;
+}
+.slicknav_open .slicknav_icon-bar:nth-of-type(2) {
+  opacity: 0;
+  transform: translateX(-5px);
+}
+.slicknav_open .slicknav_icon-bar:last-of-type {
+  transform: translateY(-250%) rotate(-40deg);
+}
 /*---------------------
   Hero
 -----------------------*/
