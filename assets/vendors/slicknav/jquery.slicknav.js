@@ -143,6 +143,15 @@
 
         // iterate over structure adding additional structure
         var items = $this.mobileNav.find('li');
+
+        // Fermer le menu après clic sur un navlink (mobile)
+        $this.mobileNav.find('a').on('click', function(e) {
+            // Ne ferme que si le menu est ouvert et le lien n'est pas un parent
+            var isParent = $(this).parent().hasClass(prefix+'_parent');
+            if (!isParent && $this.btn.hasClass(prefix+'_open')) {
+                setTimeout(function() { $this.close(); }, 100); // délai pour laisser le lien agir
+            }
+        });
         $(items).each(function () {
             var item = $(this),
                 data = {};

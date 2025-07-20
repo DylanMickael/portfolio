@@ -323,6 +323,18 @@
     // --------------------------------------------------------------------------------
     function initMailSender() {
         const form = document.getElementById('contact-form');
+        const messages = {
+            success: {
+                en: "🎉 Your message has been sent successfully! I'll get back to you soon.",
+                fr: "🎉 Votre message a bien été envoyé ! Je vous répondrai bientôt."
+            },
+            error: {
+                en: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
+                fr: `⚠️ Oups ! L'envoi du message a échoué. Veuillez réessayer ou m'envoyer un email directement <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">ici</a>`,
+            }
+        }
+        const successMessageText = window.location.pathname.includes('/fr/') ? messages.success.fr : messages.success.en;
+        const errorMessageText = window.location.pathname.includes('/fr/') ? messages.error.fr : messages.error.en;
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -362,7 +374,7 @@
                     $(".second").show();
 
                     Toastify({
-                        text: "🎉 Your message has been sent successfully! I'll get back to you soon.",
+                        text: successMessageText,
                         duration: 5000,
                         gravity: "bottom",
                         position: "right",
@@ -386,7 +398,7 @@
                     $(".second").show();
 
                     Toastify({
-                        text: `⚠️ Oops! Message failed to send. Please try again or email me directly <a href="mailto:mickaelrakotonarivo@gmail.com" style="color: white; text-decoration: underline; font-weight: bold;">here</a>`,
+                        text: errorMessageText,
                         duration: 5000,
                         gravity: "bottom",
                         position: "right",
@@ -434,7 +446,7 @@
     // --------------------------------------------------------------------------------
     function setupCvDownloadListener() {
         $("#btn-download-cv").on('click', function () {
-            window.open('pdf/CV-Dylan-RAKOTONARIVO.pdf', '_blank');
+            window.open('/assets/pdf/CV-Dylan-RAKOTONARIVO.pdf', '_blank');
         });
     }
 

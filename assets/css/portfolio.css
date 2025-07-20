@@ -634,14 +634,14 @@ a:hover .icon__button {
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
 }
 .slicknav_open .slicknav_icon-bar:first-of-type {
-  transform: translateY(250%) rotate(40deg) ;
+  transform: translate(1px, 240%) rotate(42deg) ;
 }
 .slicknav_open .slicknav_icon-bar:nth-of-type(2) {
   opacity: 0;
   transform: translateX(-5px);
 }
 .slicknav_open .slicknav_icon-bar:last-of-type {
-  transform: translateY(-250%) rotate(-40deg);
+  transform: translate(-1px, -270%) rotate(-42deg);
 }
 /*---------------------
   Hero
@@ -1110,10 +1110,11 @@ a:hover .icon__button {
 .footer__nav__social {
   display: inline-block;
   position: relative;
+  transform: translateY(-50%);
 }
 .footer__nav__social a {
   color: white;
-  font-size: 28px;
+  font-size: 32px;
   margin-right: 50px;
 }
 .footer__nav__social a:last-child {
