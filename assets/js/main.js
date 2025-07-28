@@ -46,8 +46,8 @@
     });
 
     $(window).on('load', function () {
-        handlePreloader();
         initAOS();
+        handlePreloader();
     });
 
     // --------------------------------------------------------------------------------
@@ -455,16 +455,16 @@
                 $(this).animate({ opacity: 1 }, 500);
             });
 
-        $("model-viewer")
-            .css({ display: 'none', opacity: 0 })
-            .delay(3000)
-            .fadeIn(1000, function () {
-                $("#final-text-container").css({ backdropFilter: 'blur(0.8px)' });
-                $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0)' });
-                $(this).animate({ opacity: 1 }, 500);
-                $(this).css({ transform: "scale(0.8)" });
-                animateRobot();
-            });
+        // $("model-viewer")
+        //     .css({ display: 'none', opacity: 0 })
+        //     .delay(3000)
+        //     .fadeIn(1000, function () {
+        //         $("#final-text-container").css({ backdropFilter: 'blur(0.8px)' });
+        //         $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0)' });
+        //         $(this).animate({ opacity: 1 }, 500);
+        //         $(this).css({ transform: "scale(0.8)" });
+        //         animateRobot();
+        //     });
     }
 
     // --------------------------------------------------------------------------------
