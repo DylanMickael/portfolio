@@ -600,7 +600,7 @@ a:hover .icon__button {
 }
 .dropdown-item:hover {
   color: white;
-  background: linear-gradient(to right, #0044ff, #290e8c);
+  background: #040d44;
 }
 .dropdown-item svg {
   margin-right: 5px;
@@ -730,15 +730,25 @@ a:hover .icon__button {
   left: 50%;
   transform: translateX(-50%);
   border: solid rgba(0, 0, 255, 0.2) 2px;
-  animation: shadow-apparition 0.7s ease-in 1.2s forwards;
+  animation: shadow-apparition 0.7s ease-in 0.8s forwards;
 }
 .hero__image {
   width: 30rem !important;
   position: relative;
   bottom: 2px;
   left: 50%;
-  filter: brightness(0.9) contrast(1.1);
+  filter: brightness(0.6) contrast(1.1);
   transform: translateX(-48%) !important;
+  animation: brightenImage 0.7s ease-in 0.8s forwards;
+}
+
+@keyframes brightenImage {
+  0% {
+    filter: brightness(0.6) contrast(1.1);
+  }
+  100% {
+    filter: brightness(0.8) contrast(1.1);
+  }
 }
 @media only screen and (max-width: 405px) {
   .hero__image__container::before {
