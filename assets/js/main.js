@@ -17,7 +17,8 @@
     // Document Ready and Window Load Event Handlers
     // --------------------------------------------------------------------------------
     $(document).ready(function () {
-        // Animate typed text
+        handlePreloader();
+
         animateText(() => {
             try {
                 init();
@@ -47,7 +48,6 @@
 
     $(window).on('load', function () {
         initAOS();
-        handlePreloader();
     });
 
     // --------------------------------------------------------------------------------

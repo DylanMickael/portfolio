@@ -11,6 +11,7 @@
     // Document Ready and Window Load Event Handlers
     // --------------------------------------------------------------------------------
     $(document).ready(function () {
+        handlePreloader();
         setupBackgroundImages();
         initMobileNavigation();
         initHeroSlider();
@@ -42,7 +43,6 @@
     });
 
     $(window).on('load', function () {
-        handlePreloader();
         initPortfolioFilter();
         initAOS();
     });
