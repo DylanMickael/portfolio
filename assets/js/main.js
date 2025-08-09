@@ -7,11 +7,11 @@
     // --------------------------------------------------------------------------------
     let scene, camera, renderer, controls, composer;
     let particleSystem, particlePositions, particleVelocities;
-    let galaxySystem = null; // Will hold the galaxy cluster (added later)
-    let nebula = null; // Will hold the nebula background (added later)
-    let particleCount = 20000; // Number of particles for the Big Bang explosion
+    let particleCount = 5000; // Number of particles for the Big Bang explosion
     let params; // Object to store parameters controlled by the UI
     let clock = new THREE.Clock(); // Clock to keep track of elapsed time
+    let stopAnimation = false; 
+    let shouldDecreaseExpansion = false; 
 
     // --------------------------------------------------------------------------------
     // Document Ready and Window Load Event Handlers
@@ -36,10 +36,11 @@
 
             setTimeout(() => {
                 launchFinalAnimation();
-            }, 2600);
+            }, 2500);
 
             setTimeout(() => {
                 launchShootingStar();
+                shouldDecreaseExpansion = true;
             }, 5500);
         });
 
@@ -222,33 +223,6 @@
             bloomThreshold: 0, // Bloom effect threshold.
         };
 
-        // Create a GUI panel.
-        // const gui = new dat.GUI({ width: 300 });
-        // gui.add(params, "expansionSpeed", 10, 200).name("Expansion Speed");
-        // gui
-        //     .add(params, "particleSize", 1, 10)
-        //     .name("Particle Size")
-        //     .onChange((value) => {
-        //         particleSystem.material.size = value;
-        //     });
-        // gui
-        //     .add(params, "bloomStrength", 0, 5)
-        //     .name("Bloom Strength")
-        //     .onChange((value) => {
-        //         composer.passes[1].strength = value;
-        //     });
-        // gui
-        //     .add(params, "bloomRadius", 0, 1)
-        //     .name("Bloom Radius")
-        //     .onChange((value) => {
-        //         composer.passes[1].radius = value;
-        //     });
-        // gui
-        //     .add(params, "bloomThreshold", 0, 1)
-        //     .name("Bloom Threshold")
-        //     .onChange((value) => {
-        //         composer.passes[1].threshold = value;
-        //     });
     }
 
     // --------------------------------------------------------------------------------
@@ -265,23 +239,20 @@
     // Function: animate()
     // --------------------------------------------------------------------------------
     function animate() {
-        requestAnimationFrame(animate);
+        if(!stopAnimation) requestAnimationFrame(animate);
 
         // Compute the time elapsed since the last frame.
         const delta = clock.getDelta();
 
+        // Réduction progressive de l'expansionSpeed si activée
+        if (shouldDecreaseExpansion && params.expansionSpeed > 5) {
+            if (params.expansionSpeed > 10) {
+                params.expansionSpeed -= 0.4;
+            }
+        }
+
         // Update the positions of the explosion particles.
         updateParticles(delta);
-
-        // Gradually add additional elements to the universe:
-        // After 10 seconds, add a galaxy cluster; after 15 seconds, add a nebula.
-        let elapsed = clock.elapsedTime;
-        if (elapsed > 50 && !galaxySystem) {
-            createGalaxyCluster();
-        }
-        if (elapsed > 0 && !nebula) {
-            createNebula();
-        }
 
         // Update camera controls.
         controls.update();
@@ -305,91 +276,6 @@
                 particleVelocities[index + 2] * params.expansionSpeed * delta;
         }
         particleSystem.geometry.attributes.position.needsUpdate = true;
-    }
-
-    // --------------------------------------------------------------------------------
-    // Function: createGalaxyCluster()
-    // --------------------------------------------------------------------------------
-    function createGalaxyCluster() {
-        // const galaxyCount = 5000; // Number of galaxy particles
-        const galaxyCount = 0; // Number of galaxy particles
-        const geometry = new THREE.BufferGeometry();
-        const positions = new Float32Array(galaxyCount * 3);
-
-        // Randomly distribute galaxy particles in a large spherical region.
-        for (let i = 0; i < galaxyCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 1000;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 1000;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 1000;
-        }
-        geometry.setAttribute(
-            "position",
-            new THREE.BufferAttribute(positions, 3)
-        );
-
-        // Create a PointsMaterial for the galaxy cluster with smaller, fainter points.
-        const material = new THREE.PointsMaterial({
-            size: 1.5,
-            color: 0xaaaaaa,
-            blending: THREE.AdditiveBlending,
-            transparent: true,
-            opacity: 0.5,
-            depthTest: false,
-        });
-
-        // Create the galaxy particle system and add it to the scene.
-        galaxySystem = new THREE.Points(geometry, material);
-        scene.add(galaxySystem);
-    }
-
-    // --------------------------------------------------------------------------------
-    // Function: createNebula()
-    // --------------------------------------------------------------------------------
-    function createNebula() {
-        const nebulaGeometry = new THREE.SphereGeometry(500, 32, 32);
-        const nebulaMaterial = new THREE.MeshBasicMaterial({
-            map: generateNebulaTexture(),
-            side: THREE.BackSide,
-            transparent: true,
-            opacity: 0.5,
-            color: 0x000146,
-        });
-        nebula = new THREE.Mesh(nebulaGeometry, nebulaMaterial);
-        scene.add(nebula);
-    }
-
-    // --------------------------------------------------------------------------------
-    // Function: generateNebulaTexture()
-    // --------------------------------------------------------------------------------
-    function generateNebulaTexture() {
-        const size = 512;
-        const canvas = document.createElement("canvas");
-        canvas.width = size;
-        canvas.height = size;
-        const context = canvas.getContext("2d");
-
-        // Create a radial gradient as the base of the nebula.
-        const gradient = context.createRadialGradient(
-            size / 2,
-            size / 2,
-            size / 8,
-            size / 2,
-            size / 2,
-            size / 2
-        );
-        gradient.addColorStop(0, "rgba(50, 0, 100, 0.8)");
-        gradient.addColorStop(1, "rgba(0, 0, 0, 0.0)");
-        context.fillStyle = gradient;
-        context.fillRect(0, 0, size, size);
-
-        // Add random noise dots to simulate stars and gas.
-        for (let i = 0; i < 1000; i++) {
-            context.fillStyle = "rgba(255,255,255," + Math.random() * 0.1 + ")";
-            const x = Math.random() * size;
-            const y = Math.random() * size;
-            context.fillRect(x, y, 1, 1);
-        }
-        return new THREE.CanvasTexture(canvas);
     }
 
     // --------------------------------------------------------------------------------
@@ -454,17 +340,6 @@
             .fadeIn(1000, function () {
                 $(this).animate({ opacity: 1 }, 500);
             });
-
-        // $("model-viewer")
-        //     .css({ display: 'none', opacity: 0 })
-        //     .delay(3000)
-        //     .fadeIn(1000, function () {
-        //         $("#final-text-container").css({ backdropFilter: 'blur(0.8px)' });
-        //         $("#final-text-container").css({ backgroundColor: 'rgba(0,1,10,0)' });
-        //         $(this).animate({ opacity: 1 }, 500);
-        //         $(this).css({ transform: "scale(0.8)" });
-        //         animateRobot();
-        //     });
     }
 
     // --------------------------------------------------------------------------------
@@ -554,48 +429,6 @@
 
         stopRobotAnimation();
         animate();
-    }
-
-    // --------------------------------------------------------------------------------
-    // Function: animateRobot()
-    // --------------------------------------------------------------------------------
-    function animateRobot() {
-        const $modelViewer = $('model-viewer');
-        const animationDuration = 800;
-        const pauseDuration = 10000;
-        let isMovingRight = true;
-
-        function moveRight() {
-            $modelViewer.animate({
-                left: '45%',
-                bottom: '50px',
-            }, animationDuration, 'swing', function () {
-                $modelViewer.css("transform", "scale(0.8)");
-                isMovingRight = false;
-                setTimeout(startMovement, pauseDuration);
-            });
-        }
-
-        function moveLeft() {
-            $modelViewer.animate({
-                left: '-20%',
-                bottom: '-1rem',
-            }, animationDuration, 'swing', function () {
-                $modelViewer.css("transform", "scale(1.1)");
-                isMovingRight = true;
-                setTimeout(startMovement, pauseDuration);
-            });
-        }
-
-        function startMovement() {
-            if (isMovingRight) {
-                moveRight();
-            } else {
-                moveLeft();
-            }
-        }
-
-        startMovement();
     }
 
     // --------------------------------------------------------------------------------
