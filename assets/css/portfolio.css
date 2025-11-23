@@ -779,7 +779,51 @@ a:hover .icon__button {
 # Skills Section
 --------------------------------------------------------------*/
 .skills-item-container {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
+    perspective: 1000px;
+}
+
+.skills .skills-item {
+    transition: transform 0.5s ease-out; 
+    position: relative; 
+    overflow: hidden; 
+    transform-style: preserve-3d;
+}
+
+.skills .skills-item-container:hover .skills-item {
+    transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.skills .skills-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.05) 35%, 
+        rgba(255, 255, 255, 0.25) 50%, 
+        rgba(255, 255, 255, 0.05) 65%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: translateX(-100%) skewX(-30deg); 
+    transition: all 0.5s ease-out;
+    opacity: 0; 
+    pointer-events: none; 
+}
+
+.skills .skills-item-container:hover .skills-item::before {
+    transform: translateX(100%) skewX(-30deg); 
+    opacity: 0.6;
+    transition: transform 0.8s ease-out;
+}
+
+.skills .skills-item:hover {
+    box-shadow: none;
 }
 
 .skills .skills-item {
@@ -1572,6 +1616,122 @@ a:hover .icon__button {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+}
+
+.portfolio__item__image {
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Définition des Keyframes (réutilisées de votre modèle) */
+@keyframes bounce-visit {
+    0% {
+        transform: translateX(2px);
+    }
+    50% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(2px);
+    }
+}
+
+/* Style initial du bouton (Petit Cercle) */
+.btn-visit {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background-color: #6225e680;
+  color: white;
+  font-weight: 500; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.btn-visit .fa-arrow-right {
+  font-size: 16px;
+  transition: transform 0.3s ease-in-out;
+  /* animation: bounce-visit 1s infinite alternate; */
+  color: #020828;
+}
+
+.btn-visit:hover .fa-arrow-right {
+  display: none;
+}
+
+.btn-visit:hover {
+    width: 110px;
+    border-radius: 50px;
+    background-color: #f0f0f0; 
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-visit:hover .fa-arrow-right {
+    transform: translateX(100%);
+    animation: none;
+}
+
+.btn-visit::before {
+  position: absolute;
+  content: "Visit"; 
+  transform: translateX(-150%);
+  opacity: 0; 
+  color: #020828;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-visit:hover::before {
+  transform: translateX(0); 
+  opacity: 1;
+}
+
+.btn-visit a {
+  text-decoration: none;
+}
+
+.portfolio__item__image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); 
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.portfolio__item__image:hover::after {
+    opacity: 1; 
+}
+
+.portfolio__item__image .fa {
+    position: relative;
+    z-index: 11;
 }
 
 /*---------------------
