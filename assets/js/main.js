@@ -284,7 +284,7 @@
     function animateText(startAnimation) {
         const frenchStrings = [
             "",
-            "Tout semblera petit au début.",
+            "Tout peut sembler petit au début.",
             "Mais ton talent grandira...",
             "COMME UNE SINGULARITÉ."
         ]
