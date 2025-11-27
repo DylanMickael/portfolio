@@ -26,7 +26,8 @@ function applyTranslationsToIndex() {
         $('#hero-button').html(' <i class="fa fa-phone icon__button"></i>' + heroButtonText);
         $('#hero-hello-text').text(i18nUtil.getTranslation('hero_hello'));
         $('#hero-presentation-text').text(i18nUtil.getTranslation('hero_presentation'));
-
+        $('#hero-typed-initial-text').text(i18nUtil.getTranslation('hero_typed_initial_text'));
+        
         // News section
         $('#news-subtitle').text(i18nUtil.getTranslation('news_subtitle'));
         $('#news-title').text(i18nUtil.getTranslation('news_title'));

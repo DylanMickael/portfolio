@@ -17,7 +17,8 @@
 
     "hero_hello": "Bonjour !!",
     "hero_presentation": "Je suis Dylan",
-    "hero_typed_items": "Développeur web,Designer web,Orateur", 
+    "hero_typed_items":  ["Développeur web", "Designer", "Orateur"],
+    "hero_typed_initial_text":  "Développeur web",
     "hero_contact_button": "Me contacter",
     "news_subtitle": "Nouvelles",
     "news_title": "Quoi de neuf ?",
