@@ -1,7 +1,6 @@
 {
     "page_title": "Dylan RAKOTONARIVO - Développeur, Designer, Conférencier Public",
     "meta_description": "Ceci est mon site portfolio, où vous trouverez mes projets, mes compétences et mes expériences. N'hésitez pas à explorer et à mieux me connaître. Contactez-moi!",
-    "story_tell": ["", "Tout peut sembler petit au début.", "Mais ton talent grandira...", "COMME UNE SINGULARITÉ."],
     "welcome_to_my": "VISITEZ MON",
     "universe_text": "univers",
     "description_text": "Ceci est mon site portfolio, où vous trouverez mes projets, mes compétences et mes expériences. N'hésitez pas à explorer et à mieux me connaître. Venez me contacter!",
@@ -17,9 +16,8 @@
 
     "hero_hello": "Bonjour !!",
     "hero_presentation": "Je suis Dylan",
-    "hero_typed_items":  ["Développeur web", "Designer", "Orateur"],
-    "hero_typed_initial_text":  "Développeur web",
     "hero_contact_button": "Me contacter",
+
     "news_subtitle": "Nouvelles",
     "news_title": "Quoi de neuf ?",
     "news_heading": "Toujours plus haut, toujours plus loin",

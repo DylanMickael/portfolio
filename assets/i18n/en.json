@@ -1,7 +1,6 @@
 {
     "page_title": "Dylan RAKOTONARIVO - Developer, Designer, Public Speaker",
     "meta_description": "This is my portfolio website, where you can find my projects, skills, and experiences. Feel free to explore and get to know me better. Come and reach out to me!",
-    "story_tell": ["", "What you do may seem small now.", "But your talent will expand...", "LIKE A SINGULARITY."],
     "welcome_to_my": "WELCOME TO MY",
     "universe_text": "universe",
     "description_text": "This is my portfolio website, where you can find my projects, skills, and experiences. Feel free to explore and get to know me better. Come and reach out to me!",
@@ -17,8 +16,6 @@
 
     "hero_hello": "Hello !!",
     "hero_presentation": "I'm Dylan",
-    "hero_typed_items":  ["Web developer", "Designer", "Public speaker"],
-    "hero_typed_initial_text":  "Web developer",
     "hero_contact_button": "Contact Me Now",
 
     "news_subtitle": "News",
